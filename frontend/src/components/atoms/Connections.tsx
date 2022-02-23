@@ -23,6 +23,7 @@ const Connections: React.FC<ConnectionsProps> = ({
     </Text>
     <Wrap>
       {connections
+        .filter(c => c)
         .sort((a, b) => b.correlation - a.correlation)
         .map((connection) => (
           <Button
