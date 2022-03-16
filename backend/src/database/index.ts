@@ -19,6 +19,10 @@ export const PREFIXES = {
     prefix: 'unsdg',
     iri: 'http://metadata.un.org/sdg/',
   },
+  EULANG: {
+    prefix: 'eulang',
+    iri: 'http://publications.europa.eu/resource/authority/language/'
+  }
 };
 
 export default new EnapsoGraphDBClient.Endpoint({
