@@ -56,15 +56,15 @@ Promise.all([
                             url
                         }
                         docList.push(document);
-                    });
-                });
-            });
+                    })
+                })
+            })
             resolve();
             //console.log(docList);
             
             // TODO: Pass into queries
             
-        });
+        })
     })
 ]).then(() => {
     bulkInsertDocuments(docList, relationsList);
