@@ -16,7 +16,6 @@ export default (documents: Document[], relations: DocumentSDGRelation[]): string
         const docUri = `<${PREFIXES.SDG.iri}documents.${doc.id}>`;
         const langUri = `<${PREFIXES.EULANG.iri}${doc.language}>`;
         const relatedSDGs = relations.filter(rel => rel.celexID == doc.celexID);
-        const relatedTargets = relatedSDGs.map(rel => rel.targets);
         
         console.log(doc.celexID);
         insertStatements = insertStatements.concat(
@@ -30,21 +29,24 @@ export default (documents: Document[], relations: DocumentSDGRelation[]): string
             `
         )
             
-        //TODO: also update the goals and targets so that we get a two-way relation
         relatedSDGs.forEach(rel => {
             rel.goals.forEach(SDG => {
+                let sdgUri = `<${PREFIXES.SDG.iri}B${SDG}>`
                 insertStatements = insertStatements.concat(
                     `
-                    ${docUri} SDG:isAboutSDG <${PREFIXES.SDG.iri}B${SDG}>
+                    ${docUri} SDG:isAboutSDG ${sdgUri}
+                    ${sdgUri} SDG:goalHasDocument ${docUri}
                     `
                 )
             },
                 
-            Object.keys(relatedTargets).forEach((key: string) => {
-                relatedTargets[key].forEach(target => {
+            Object.keys(rel.targets).forEach((key: string) => {
+                rel.targets[key].forEach(target => {
+                    let targetUri = `<${PREFIXES.SDG.iri}${key}.${target}>`;
                     insertStatements = insertStatements.concat(
                         `
-                        ${docUri} SDG:isAboutTarget <${PREFIXES.SDG.iri}${key}.${target}> 
+                        ${docUri} SDG:isAboutTarget ${targetUri}
+                        ${targetUri} SDG:targetHasDocument ${docUri}
                         `
                     )
                 })
