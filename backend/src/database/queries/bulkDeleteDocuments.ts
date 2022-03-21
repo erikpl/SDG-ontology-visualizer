@@ -24,6 +24,7 @@ export default (documents: Document[]): string => {
     }
     where {
       VALUES ?uri { ${uris} }.
+      VALUES ?val { ${uris} }.
       ?uri ?prop ?val.
     }`;
 };

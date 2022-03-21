@@ -16,7 +16,7 @@ const SustainabilityGoalsList: React.FC = () => {
 
   const loadSustainabilityGoals = async () => {
     const data = await getSustainabilityGoals();
-    setSustainabilityGoals(data.filter((sdg: SustainabilityGoal) => !sdg.instancesOf.includes("metadata.un.org")));
+    setSustainabilityGoals(data.filter((sdg: SustainabilityGoal) => !sdg.instancesOf.includes('metadata.un.org')));
   };
 
   useEffect(() => {
