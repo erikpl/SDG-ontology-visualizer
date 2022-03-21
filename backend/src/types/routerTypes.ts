@@ -43,6 +43,8 @@ export type DataSeriesRequest = Request<DataSeriesParams>;
 
 export type NodeArrayResponse = Response<Array<Node>>;
 
+export type DocumentArrayResponse = Response<Array<Document>>;
+
 export type OntologyArrayResponse = Response<Array<Ontology>>;
 
 export type SingleOntologyResponse = Response<Ontology>;
