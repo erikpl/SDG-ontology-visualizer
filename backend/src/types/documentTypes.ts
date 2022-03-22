@@ -20,6 +20,14 @@ export type LanguageReference = keyof typeof Language;
 export type FormatReference = keyof typeof Format;
 
 enum Format {
+    FMX4,
+    DOCX,
+    PDFA2A,
+    XHTML
+};
+
+// Saving this in case we need it
+enum Format2 {
     ZIP,
     XML,
     RDF,
