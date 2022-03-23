@@ -6,6 +6,7 @@ import {
 import { PREFIXES } from '../index';
 
 export default (nodeId: string): string => {
+  console.log(nodeId);
   const node = mapIdToOntologyEntity(nodeId);
   if (!node) return '';
 

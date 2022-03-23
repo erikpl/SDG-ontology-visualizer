@@ -28,7 +28,6 @@ Promise.all([
                     goals,
                     targets
                 }
-                //console.log(relation);
                 relationsList.push(relation);
             })
         })
@@ -38,7 +37,7 @@ Promise.all([
         fs.readFile("./cellar_documents.json", {encoding: "utf-8"}, (err, data) => {
             if (err) throw err;
             let rawData = JSON.parse(data);  
-            rawData.slice(0, 3).forEach((work) => {
+            rawData.forEach((work) => {
                 work.languages.forEach((expression) => {
                     const title = expression.title;
                     const celexID = work.id;
@@ -60,9 +59,6 @@ Promise.all([
                 })
             })
             resolve();
-            //console.log(docList);
-            
-            // TODO: Pass into queries
             
         })
     })
