@@ -1,9 +1,11 @@
-import { CorrelationFilter, Node } from '../../types/ontologyTypes';
+import { CorrelationFilter, Node, SubGoal, SustainabilityGoal } from '../../types/ontologyTypes';
 import {
   CLEAR_SELECTED_NODE,
   OntologyState,
   OntologyStateAction,
   SELECT_NODE,
+  SELECT_SDG,
+  SELECT_SUBGOAL,
   SetCorrelationFilterAction,
   SetCorrelationFilterPayload,
   SET_CORRELATION_FILTER,
@@ -25,6 +27,8 @@ const createNewCorrelationFilter = (
 
 const defaultState: OntologyState = {
   selectedNode: undefined,
+  selectedSDG: undefined,
+  selectedSubGoal: undefined,
   correlationFilter: {
     pLow: true,
     pMedium: true,
@@ -52,6 +56,16 @@ const ontologyReducer = (
         ...state,
         correlationFilter: createNewCorrelationFilter(state.correlationFilter, action.payload),
       };
+    case SELECT_SDG:
+      return {
+        ...state,
+        selectedSDG: action.payload,
+      };
+    case SELECT_SUBGOAL:
+      return {
+        ...state,
+        selectedSubGoal: action.payload,
+      };
     default:
       return state;
   }
@@ -60,6 +74,16 @@ const ontologyReducer = (
 export const selectNode = (node: Node): OntologyStateAction => ({
   type: 'SELECT_NODE',
   payload: node,
+});
+
+export const selectSDG = (sdg: SustainabilityGoal): OntologyStateAction => ({
+  type: 'SELECT_SDG',
+  payload: sdg,
+});
+
+export const selectSubgoal = (subgoal: SubGoal): OntologyStateAction => ({
+  type: 'SELECT_SUBGOAL',
+  payload: subgoal,
 });
 
 export const setCorrelationFilter = (
