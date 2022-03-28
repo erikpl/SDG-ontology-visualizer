@@ -14,6 +14,7 @@
 
 import { Request, Response } from 'express';
 import { Annotation, Node, Ontology, DataPoint } from './ontologyTypes';
+import { Document } from './documentTypes';
 
 type RegexQueryParams = {
   search?: string;

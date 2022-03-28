@@ -10,7 +10,6 @@ import getSubGoals from '../database/getSubGoals';
 import getSustainabilityGoals from '../database/getSustainabilityGoals';
 import getTradeOff from '../database/getTradeOffTo';
 import CheckMunicipalityByCode from '../database/CheckMunicipalityByCode';
-import getRelevantDocuments from '../database/getRelevantDocuments';
 import {
   AnnotationResponse,
   AnyResponse,
@@ -23,6 +22,7 @@ import {
 } from '../types/routerTypes';
 import onError from './middleware/onError';
 import verifyDatabaseAccess from './middleware/verifyDatabaseAccess';
+import getDocumentsForSubgoal from '../database/getDocumentsForSubgoal';
 
 const router = Router();
 
@@ -119,12 +119,10 @@ const checkMunicipalityByCode = async (req: Request, res: AnyResponse) => {
   }
 };
 
-// TODO: determine if ClassIdRequest is appropriate
-const getRelevantDocumentsByClassId = async (req: ClassIdRequest, res: DocumentArrayResponse) => {
+const getDocumentsForSubgoalByClassId = async (req: ClassIdRequest, res: DocumentArrayResponse) => {
   try {
-    // TODO: Is the classId field appropriate for this use case?
-    const data = await getRelevantDocuments(req.body.classId);
-    // TODO: will the result be returned as JSON?
+    const data = await getDocumentsForSubgoal(req.params.classId);
+
     res.json(data);
   } catch (e: any) {
     onError(e, req, res);
@@ -141,7 +139,7 @@ router.get('/tradeoff/:classId', verifyDatabaseAccess, getTradeOffToNodes);
 router.get('/developmentarea/:classId', verifyDatabaseAccess, getDevelopmentAreaToNodes);
 router.get('/subgoals/:classId', verifyDatabaseAccess, getSubGoalsfromSDG);
 router.get('/checkMunicipalityByCode', verifyDatabaseAccess, checkMunicipalityByCode);
-// TODO: might have to change this one
-router.get('/relevantDocuments/:classId', verifyDatabaseAccess, getRelevantDocumentsByClassId);
+
+router.get('/subgoalDocuments/:classId', verifyDatabaseAccess, getDocumentsForSubgoalByClassId);
 
 export default router;

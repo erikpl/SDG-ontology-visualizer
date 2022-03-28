@@ -2,10 +2,10 @@ import { format } from "prettier";
 
 export type Document = {
     celexID: string;
-    id: string;
-    title: string;
-    language: LanguageReference;
-    format: FormatReference;
+    id :string;
+    //title: string;
+    language: string;
+    formatName: string;
     url: string;
 }
 
