@@ -122,6 +122,7 @@ const checkMunicipalityByCode = async (req: Request, res: AnyResponse) => {
 const getDocumentsForSubgoalByClassId = async (req: ClassIdRequest, res: DocumentArrayResponse) => {
   try {
     const data = await getDocumentsForSubgoal(req.params.classId);
+    console.log(data);
 
     res.json(data);
   } catch (e: any) {
