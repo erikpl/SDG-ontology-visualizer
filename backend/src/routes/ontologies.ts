@@ -129,6 +129,7 @@ const getDocumentsForSubgoalByClassId = async (req: ClassIdRequest, res: Documen
   }
 }
 
+
 router.get('/relations/:classId', verifyDatabaseAccess, getRelationsFromClass);
 router.get('/subclasses/:classId', verifyDatabaseAccess, getSubclassesFromClass);
 router.get('/annotations/:classId', verifyDatabaseAccess, getAnnotationsFromClass);
