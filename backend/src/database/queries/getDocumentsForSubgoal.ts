@@ -8,7 +8,7 @@ export default (subgoalIRI: string): string => {
   // TODO: Add title to database
   return `
       ${prefixString}
-      SELECT ?celexID ?url ?id ?formatName ?language
+      SELECT ?celexID ?url ?id ?format ?language
       WHERE { 
         ?document SDG:isAboutTarget <${subgoalIRI}>.
         ?document SDG:docSource ?url.
@@ -18,7 +18,7 @@ export default (subgoalIRI: string): string => {
         {
           SELECT ?formatName
           WHERE {
-            ?format rdf:label ?formatName.
+            ?format rdf:label ?format.
           }	
         }
 
