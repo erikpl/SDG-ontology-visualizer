@@ -8,6 +8,5 @@ import login from './login';
 export default async (subgoalURI: string): Promise<Array<Document>> => {
     const query = getDocumentsForSubgoal(subgoalURI);
 
-    return DB.query(query, { transform: 'toJSON' });
-    //.then((resp) => console.log(resp));
+    return DB.query(query, { transform: 'toJSON' }).then((resp) => resp.records);
 }
