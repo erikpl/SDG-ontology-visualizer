@@ -14,11 +14,11 @@ export default (subgoalIRI: string): string => {
         ?document SDG:docSource ?url.
         ?document SDG:celexID ?celexID.
         ?document SDG:docID ?id.
-        ?document SDG:docFormat ?format.
+        ?document SDG:docFormat ?formatName.
         {
-          SELECT ?formatName
+          SELECT ?format
           WHERE {
-            ?format rdf:label ?format.
+            ?formatName rdf:label ?format.
           }	
         }
 

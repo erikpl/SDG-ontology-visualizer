@@ -5,7 +5,7 @@ export type Document = {
     id :string;
     //title: string;
     language: string;
-    formatName: string;
+    format: string;
     url: string;
 }
 
@@ -176,7 +176,6 @@ enum Format2 {
     IMMC_XML,
     HDT,
     LEG,
-    7Z,
     AAC,
     APPX,
     ARJ,

@@ -1,4 +1,4 @@
-import { Annotation, SustainabilityGoal, Node, Ontology, SubGoal } from '../types/ontologyTypes';
+import { Annotation, SustainabilityGoal, Node, Ontology, SubGoal, Document } from '../types/ontologyTypes';
 import api from './api';
 
 export const getRelations = async (nodeId: string): Promise<Array<Ontology>> => {
@@ -28,6 +28,16 @@ export const getAnnotations = async (nodeId: string): Promise<Annotation> => {
 export const getSubclasses = async (nodeId: string): Promise<Array<Node>> => {
   try {
     const data: Array<Node> = await api.GET(`ontologies/subclasses/${encodeURIComponent(nodeId)}`);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
+export const getDocumentsForSubgoal = async (): Promise<Array<Document>> => {
+  try {
+    const data = await api.GET('ontologies/subgoalDocuments/http%3A%2F%2Fwww.semanticweb.org%2Faga%2Fontologies%2F2017%2F9%2FSDG%238.10');
     return data;
   } catch (e) {
     console.log(e);
