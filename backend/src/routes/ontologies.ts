@@ -10,7 +10,7 @@ import getSubGoals from '../database/getSubGoals';
 import getSustainabilityGoals from '../database/getSustainabilityGoals';
 import getTradeOff from '../database/getTradeOffTo';
 import CheckMunicipalityByCode from '../database/CheckMunicipalityByCode';
-import getRelevantDocuments from '../database/getRelevantDocuments';
+import getRelevantDocumentsFromGoal from '../database/getRelevantDocumentsFromGoal';
 import {
   AnnotationResponse,
   AnyResponse,
@@ -119,17 +119,22 @@ const checkMunicipalityByCode = async (req: Request, res: AnyResponse) => {
   }
 };
 
+
+
+/*
 // TODO: determine if ClassIdRequest is appropriate
-const getRelevantDocumentsByClassId = async (req: ClassIdRequest, res: DocumentArrayResponse) => {
+const getRelevantDocumentsFromGoalByClassId= async (req: ClassIdRequest, res: DocumentArrayResponse) => {
   try {
     // TODO: Is the classId field appropriate for this use case?
-    const data = await getRelevantDocuments(req.body.classId);
+    // TODO: How to fix the type compatability issue?
+    const data = await getRelevantDocumentsFromGoal(req.body.classId);
     // TODO: will the result be returned as JSON?
     res.json(data);
   } catch (e: any) {
     onError(e, req, res);
   }
 }
+*/
 
 router.get('/relations/:classId', verifyDatabaseAccess, getRelationsFromClass);
 router.get('/subclasses/:classId', verifyDatabaseAccess, getSubclassesFromClass);
@@ -141,7 +146,7 @@ router.get('/tradeoff/:classId', verifyDatabaseAccess, getTradeOffToNodes);
 router.get('/developmentarea/:classId', verifyDatabaseAccess, getDevelopmentAreaToNodes);
 router.get('/subgoals/:classId', verifyDatabaseAccess, getSubGoalsfromSDG);
 router.get('/checkMunicipalityByCode', verifyDatabaseAccess, checkMunicipalityByCode);
-// TODO: might have to change this one
-router.get('/relevantDocuments/:classId', verifyDatabaseAccess, getRelevantDocumentsByClassId);
+// TODO: change to a single method for both goals and target if we can check if the class ID belongs to a goal or target
+router.get('/relevantDocuments/:classId', verifyDatabaseAccess, getRelevantDocumentsFromGoalByClassId);
 
 export default router;
