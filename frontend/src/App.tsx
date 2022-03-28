@@ -20,6 +20,7 @@ import GDCSelectMunicipality from './components/pages/GDCSelectMunicipality';
 import GDCViewMunicipality from './components/pages/GDCViewMunicipality';
 import GDCCompareMunicipalities from './components/pages/GDCCompareMunicipalities';
 import GDCDataEntry from './components/pages/GDCDataEntry';
+import Documents from './components/pages/Documents';
 
 const App: React.FC = () => {
   // Better to do this in a global scope so that it's easily visible!
@@ -57,6 +58,8 @@ const App: React.FC = () => {
                 <Route path="/ontology" exact component={OntologyPage} />
                 <Route path="/about" exact component={About} />
                 <Route path="/login" exact component={Login} />
+                <Route path="/documents" exact component={Documents} />
+
                 <Route
                   exact
                   path="/gdc/compare/:municipality/:otherMunicipality"

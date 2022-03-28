@@ -8,8 +8,10 @@ import {
   Text,
 } from '@chakra-ui/react';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import colorSwitcher from '../../common/colorSwitcher';
+import { selectSubgoal } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { SubGoal } from '../../types/ontologyTypes';
 
@@ -20,7 +22,13 @@ type SubGoalContainerProps = {
 const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
   subGoalNode,
 }: SubGoalContainerProps) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
+  const onClickSubGoal = (subgoal: SubGoal) => {
+    dispatch(selectSubgoal(subgoal));
+  };
 
   return (
     <Accordion allowToggle>
@@ -39,6 +47,16 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
         </AccordionButton>
         <AccordionPanel>
           <Text fontSize="sm">{subGoalNode.description}</Text>
+          <Text
+            style={{ color: 'blue', textAlign: 'right', fontSize: 'sm' }}
+            onClick={() => {
+              onClickSubGoal(subGoalNode);
+              window.scrollTo(0, 0);
+              history.push('/documents');
+            }}
+          >
+            Vis dokumenter
+          </Text>
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
