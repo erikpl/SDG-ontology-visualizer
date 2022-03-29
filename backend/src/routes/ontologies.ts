@@ -119,12 +119,14 @@ const checkMunicipalityByCode = async (req: Request, res: AnyResponse) => {
   }
 };
 
-const getDocumentsForSubgoalByClassId = async (req: ClassIdRequest, res: DocumentArrayResponse) => {
+const getDocumentsForSubgoalByClassId = async (req: Request, res: DocumentArrayResponse) => {
   try {
+    const langCodes = req.params.langCodes.split(',');
     // unary + converts to number
     // Assuming languageCodes will be sent as a part of the request body. Change if necessary
     // const data = await getDocumentsForSubgoal(req.params.classId, req.body.languageCodes, +req.params.pageNumber);
-    const data = await getDocumentsForSubgoal(req.params.classId);
+
+    const data = await getDocumentsForSubgoal(req.params.classId, langCodes, +req.params.pageNumber);
     
     // TODO: fjern når vi finner språkkoden på vanlig vis
     // Replace the language URL with the language code
@@ -151,6 +153,6 @@ router.get('/developmentarea/:classId', verifyDatabaseAccess, getDevelopmentArea
 router.get('/subgoals/:classId', verifyDatabaseAccess, getSubGoalsfromSDG);
 router.get('/checkMunicipalityByCode', verifyDatabaseAccess, checkMunicipalityByCode);
 
-router.get('/subgoalDocuments/:classId', verifyDatabaseAccess, getDocumentsForSubgoalByClassId);
+router.get('/subgoalDocuments/:classId/:langCodes/:pageNumber', verifyDatabaseAccess, getDocumentsForSubgoalByClassId);
 
 export default router;
