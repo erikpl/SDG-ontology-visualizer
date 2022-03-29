@@ -121,6 +121,9 @@ const checkMunicipalityByCode = async (req: Request, res: AnyResponse) => {
 
 const getDocumentsForSubgoalByClassId = async (req: ClassIdRequest, res: DocumentArrayResponse) => {
   try {
+    // unary + converts to number
+    // Assuming languageCodes will be sent as a part of the request body. Change if necessary
+    // const data = await getDocumentsForSubgoal(req.params.classId, req.body.languageCodes, +req.params.pageNumber);
     const data = await getDocumentsForSubgoal(req.params.classId);
     console.log(data);
 
