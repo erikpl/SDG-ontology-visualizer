@@ -72,7 +72,7 @@ export type CorrelationFilter = {
 export type Document = {
   celexID: string;
   id :string;
-  //title: string;
+  title: string;
   language: string;
   format: string;
   url: string;
