@@ -125,8 +125,14 @@ const getDocumentsForSubgoalByClassId = async (req: ClassIdRequest, res: Documen
     // Assuming languageCodes will be sent as a part of the request body. Change if necessary
     // const data = await getDocumentsForSubgoal(req.params.classId, req.body.languageCodes, +req.params.pageNumber);
     const data = await getDocumentsForSubgoal(req.params.classId);
-    console.log(data);
-
+    
+    // TODO: fjern når vi finner språkkoden på vanlig vis
+    // Replace the language URL with the language code
+    for (let i = 0; i < data.length; i++) {
+      // The language code is the 7th element when splitting the URL on forward slashes
+      data[i]['language'] = data[i]['language'].split('/')[6];
+    }
+    
     res.json(data);
   } catch (e: any) {
     onError(e, req, res);
