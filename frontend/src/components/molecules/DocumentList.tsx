@@ -15,7 +15,10 @@ const DocumentList: React.FC = () => {
   const loadDocuments = async () => {
     if (!selectedSubgoal) return;
     const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
-    setDocList(data);
+    console.log(data);
+    // TODO: remove once you make the pretty boxes, this just flattens the list of lists
+    const allDocs = data.reduce((accumulator, value) => accumulator.concat(value), []);
+    setDocList(allDocs);
   };
 
   useEffect(() => {

@@ -43,5 +43,6 @@ export default (subgoalIRI: string, langCodes: Array<string>, pageNumber: number
         
         ${fullFilterString}
       }
+      ORDER BY ASC(?celexID)
       ${pagingString}`;
 };

@@ -23,6 +23,7 @@ import {
 import onError from './middleware/onError';
 import verifyDatabaseAccess from './middleware/verifyDatabaseAccess';
 import getDocumentsForSubgoal from '../database/getDocumentsForSubgoal';
+import { Document } from 'types/documentTypes';
 
 const router = Router();
 
@@ -127,15 +128,25 @@ const getDocumentsForSubgoalByClassId = async (req: Request, res: DocumentArrayR
     // const data = await getDocumentsForSubgoal(req.params.classId, req.body.languageCodes, +req.params.pageNumber);
 
     const data = await getDocumentsForSubgoal(req.params.classId, langCodes, +req.params.pageNumber);
-    
+   
+    // Documents are sorted into arrays of documents by celexID
+    // The internal arrays are sorted by language, alphabetically (I think)
+    var documentsArray: Document[][] = [];
+    var celexIds = new Set(data.map(doc => doc.celexID));
+    celexIds.forEach(id => {
+      documentsArray.push(data.filter(doc => doc.celexID == id));
+    });
+
+    console.log(documentsArray);
     // TODO: fjern når vi finner språkkoden på vanlig vis
+    // Trur ikje vi ork ^ går treigar
     // Replace the language URL with the language code
     for (let i = 0; i < data.length; i++) {
       // The language code is the 7th element when splitting the URL on forward slashes
       data[i]['language'] = data[i]['language'].split('/')[6];
     }
     
-    res.json(data);
+    res.json(documentsArray);
   } catch (e: any) {
     onError(e, req, res);
   }
