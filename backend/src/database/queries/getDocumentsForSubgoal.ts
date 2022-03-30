@@ -6,7 +6,10 @@ import { PREFIXES } from '../index';
 export default (subgoalIRI: string, langCodes: Array<string>, pageNumber: number): string => {
 // export default (subgoalIRI: string): string => {
   const prefixString = parsePrefixesToQuery(PREFIXES.SDG, PREFIXES.SCHEMA, PREFIXES.RDFS, PREFIXES.EULANG, PREFIXES.SKOS);
-  const pageSize = 20 * langCodes.length;
+  
+  const expectedDocuments = 10;
+  const expectedFormats = 5;
+  const pageSize = expectedDocuments * expectedFormats * langCodes.length;
   // TODO: Trenger vi mer enn URL, format og language? (og title)
   // TODO: endre rdf:docTitle til SDG:docTitle når dokumentene blir oppdatert
   // TODO: få ut språkkoden direkte
