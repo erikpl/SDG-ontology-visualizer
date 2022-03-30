@@ -127,7 +127,7 @@ const getDocumentsForSubgoalByClassId = async (req: Request, res: DocumentArrayR
     // Assuming languageCodes will be sent as a part of the request body. Change if necessary
     // const data = await getDocumentsForSubgoal(req.params.classId, req.body.languageCodes, +req.params.pageNumber);
 
-    const data = await getDocumentsForSubgoal(req.params.classId, langCodes, +req.params.pageNumber);
+    const data = await getDocumentsForSubgoal(req.params.classId, langCodes, +req.params.offset);
    
     // Documents are sorted into arrays of documents by celexID
     // The internal arrays are sorted by language, alphabetically (I think)
@@ -164,6 +164,6 @@ router.get('/developmentarea/:classId', verifyDatabaseAccess, getDevelopmentArea
 router.get('/subgoals/:classId', verifyDatabaseAccess, getSubGoalsfromSDG);
 router.get('/checkMunicipalityByCode', verifyDatabaseAccess, checkMunicipalityByCode);
 
-router.get('/subgoalDocuments/:classId/:langCodes/:pageNumber', verifyDatabaseAccess, getDocumentsForSubgoalByClassId);
+router.get('/subgoalDocuments/:classId/:langCodes/:offset', verifyDatabaseAccess, getDocumentsForSubgoalByClassId);
 
 export default router;

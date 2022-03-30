@@ -5,7 +5,7 @@ import { Document } from '../types/documentTypes';
 import { response } from 'express';
 import login from './login';
 
-export default async (subgoalURI: string, langCodes: Array<string>, pageNumber: number): Promise<Array<Document>> => {
+export default async (subgoalURI: string, langCodes: Array<string>, offset: number): Promise<Array<Document>> => {
 // export default async (subgoalURI: string): Promise<Array<Document>> => {
     const query = getDocumentsForSubgoal(subgoalURI, langCodes, pageNumber);
 
