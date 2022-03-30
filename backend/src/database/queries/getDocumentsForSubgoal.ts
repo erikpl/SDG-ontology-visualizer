@@ -37,13 +37,7 @@ export default (subgoalIRI: string, langCodes: Array<string>, pageNumber: number
         ?document SDG:celexID ?celexID.
         ?document SDG:docID ?id.
         ?document SDG:docFormat ?formatName.
-        {
-          SELECT ?format
-          WHERE {
-            ?formatName rdf:label ?format.
-          }	
-        }
-
+        ?formatName rdf:label ?format
         ?document rdf:docTitle ?title.
         ?document SDG:docLanguage ?language.
         
