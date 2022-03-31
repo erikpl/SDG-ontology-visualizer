@@ -49,6 +49,9 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
           <Text fontSize="sm">{subGoalNode.description}</Text>
           <Text
             style={{ color: 'blue', textAlign: 'right', fontSize: 'sm' }}
+            _hover={{
+              cursor: 'pointer',
+            }}
             onClick={() => {
               onClickSubGoal(subGoalNode);
               window.scrollTo(0, 0);
