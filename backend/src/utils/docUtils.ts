@@ -11,7 +11,7 @@ export const documentDataTo3DResponse = (data: Document[], langCodes: string[]) 
       
       let documentsArray: Document[][] = [];
       // To handle edge case that one or more queried language isnt present at all
-      let celexIds = new Set(data.map(doc => doc.celexID));
+      let celexIds: Set<string> = new Set(data.map(doc => doc.celexID));
   
       // Return array
       let langGroupedArray: Document[][][] = [];
@@ -27,7 +27,7 @@ export const documentDataTo3DResponse = (data: Document[], langCodes: string[]) 
   
         // Create language groupings by filtering and pushing if the language exists for the given document
         for (let langIndex = 0; langIndex < langCodes.length; langIndex++) {
-          let langMatches = documentsArray[celexIndex].filter(doc => doc.language == langCodes[langIndex]);
+          let langMatches: Document[] = documentsArray[celexIndex].filter(doc => doc.language == langCodes[langIndex]);
           if (langMatches.length != 0) celexGroup.push(langMatches);
         }
   

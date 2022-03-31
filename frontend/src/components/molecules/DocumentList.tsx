@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getDocumentsForSubgoal } from '../../api/ontologies';
+import { getDocumentsForSubgoal, getRelatedSubgoalsForDocument } from '../../api/ontologies';
 import { RootState } from '../../state/store';
 import { Document } from '../../types/ontologyTypes';
 import DocumentBox from '../atoms/DocumentBox';
@@ -17,7 +17,9 @@ const DocumentList: React.FC = () => {
     const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
     console.log(data);
     // TODO: remove once you make the pretty boxes, this just flattens the list of lists
-    const allDocs = data.flat();
+    const allDocs: Document[] = data.flat(3);
+    const test = await getRelatedSubgoalsForDocument(allDocs[0].url);
+    console.log(test);
     setDocList(allDocs);
   };
 

@@ -16,7 +16,7 @@ import {
   ClassIdRequest,
   DocumentArrayArrayResponse,
   EmptyRequest,
-  NodeArrayArrayResponse,
+  NodeArrayMapResponse,
   NodeArrayResponse,
   OntologyArrayResponse,
   RegexRequest,
@@ -26,8 +26,9 @@ import verifyDatabaseAccess from './middleware/verifyDatabaseAccess';
 import getDocumentsForSubgoal from '../database/getDocumentsForSubgoal';
 import { Document } from 'types/documentTypes';
 
-import {documentDataTo3DResponse} from 'utils/docUtils';
-import getRelatedSubgoalsForDocument from 'database/getRelatedSubgoalsForDocument';
+import {documentDataTo3DResponse} from '../utils/docUtils';
+import getRelatedSubgoalsForDocument from '../database/getRelatedSubgoalsForDocument';
+import { Node, SubGoal } from 'types/ontologyTypes';
 
 const router = Router();
 
@@ -151,10 +152,10 @@ const getDocumentsForSubgoalByClassId = async (req: Request, res: DocumentArrayA
   }
 };
 
-const getRelatedSubgoalsForDocumentByClassId = async (req: Request, res: NodeArrayArrayResponse) => {
+const getRelatedSubgoalsForDocumentByClassId = async (req: Request, res: NodeArrayResponse) => {
   try {
     let nodes = await getRelatedSubgoalsForDocument(req.params.classId);
-    console.log(nodes);
+    res.json(nodes);
   } catch (e: any) {
     onError(e, req, res);
   }

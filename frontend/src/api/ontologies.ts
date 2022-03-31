@@ -47,6 +47,26 @@ export const getDocumentsForSubgoal = async (subgoalname: string, langList: Arra
   }
 };
 
+export const getRelatedSubgoalsForDocument = async (documentURL: string): Promise<Map<number, Array<Node>>> => {
+  try {
+    const docID = documentURL.slice(documentURL.indexOf('cellar/') + 7, documentURL.lastIndexOf('/'));
+    const data: Array<Node> = await api.GET(`ontologies/relatedSubgoalsForDocument/http%3A%2F%2Fwww.semanticweb.org%2Faga%2Fontologies%2F2017%2F9%2FSDG%23documents.${docID}`);
+    
+    const dataMap: Map<number, Array<Node>> = new Map;
+    // ^ dataMap[1] = all subgoals of goal 1 
+    for (let i = 1; i < 18; i += 1) {
+      const matches = data.filter(node => (node as SubGoal).SubjectLabel.slice(0, (node as SubGoal).SubjectLabel.indexOf('.')) === i.toString());
+      if (matches.length > 0)
+        dataMap.set(i, matches);
+    }
+
+    return dataMap;
+  } catch (e) {
+    console.log(e);
+    return new Map;
+  }
+};
+
 export const getSustainabilityGoals = async (): Promise<Array<SustainabilityGoal>> => {
   try {
     const data = await api.GET('ontologies/sustainabilityGoals');
