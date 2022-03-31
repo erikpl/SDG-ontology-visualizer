@@ -14,8 +14,7 @@ export default (subgoalIRI: string, langCodes: Array<string>, offset: number): s
   // TODO: endre rdf:docTitle til SDG:docTitle når dokumentene blir oppdatert
   // TODO: få ut språkkoden direkte
 
-  // Assuming that the pageNumber is one-indexed
-  const pagingString = `LIMIT ${queryLimit} OFFSET ${queryLimit * (offset-1)}`;
+  const pagingString = `LIMIT ${queryLimit} OFFSET ${offset}`;
   
   let innerFilterString = '';
   let connectiveString = ' || ';
