@@ -4,15 +4,12 @@ import {
 import { PREFIXES } from '../index';
 
 export default (subgoalIRI: string, langCodes: Array<string>, offset: number): string => {
-// export default (subgoalIRI: string): string => {
   const prefixString = parsePrefixesToQuery(PREFIXES.SDG, PREFIXES.SCHEMA, PREFIXES.RDFS, PREFIXES.EULANG, PREFIXES.SKOS);
   
   const expectedDocuments = 10;
   const expectedFormats = 5;
   const queryLimit = expectedDocuments * expectedFormats * langCodes.length;
   // TODO: Trenger vi mer enn URL, format og language? (og title)
-  // TODO: endre rdf:docTitle til SDG:docTitle når dokumentene blir oppdatert
-  // TODO: få ut språkkoden direkte
 
   const pagingString = `LIMIT ${queryLimit} OFFSET ${offset}`;
   

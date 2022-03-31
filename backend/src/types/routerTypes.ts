@@ -44,6 +44,8 @@ export type DataSeriesRequest = Request<DataSeriesParams>;
 
 export type NodeArrayResponse = Response<Array<Node>>;
 
+export type NodeArrayArrayResponse = Response<Array<Array<Node>>>;
+
 export type DocumentArrayResponse = Response<Array<Array<Document>>>;
 
 export type DocumentArrayArrayResponse = Response<Array<Array<Array<Document>>>>;
