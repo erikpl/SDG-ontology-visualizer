@@ -16,7 +16,7 @@ const Documents: React.FC = () => {
       <Flex
         align="left"
         justify="left"
-        justifyContent="space-evenly"
+        justifyContent="space-between"
         spacing="10"
         bg="cyan.700"
         padding="50px"
