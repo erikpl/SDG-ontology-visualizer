@@ -1,13 +1,13 @@
 import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getDocumentsForSubgoal, getRelatedSubgoalsForDocument } from '../../api/ontologies';
+import { getDocumentsForSubgoal } from '../../api/ontologies';
 import { RootState } from '../../state/store';
 import { Document } from '../../types/ontologyTypes';
 import DocumentBox from '../atoms/DocumentBox';
 
 const DocumentList: React.FC = () => {
-  const [docList, setDocList] = useState<Array<Document>>([]);
+  const [docList, setDocList] = useState<Array<Array<Array<Document>>>>([]);
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
   const langList = ['ENG', 'DAN', 'NLD', 'ITA', 'DEU'];
   const pageNum = 1;
@@ -17,10 +17,10 @@ const DocumentList: React.FC = () => {
     const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
     console.log(data);
     // TODO: remove once you make the pretty boxes, this just flattens the list of lists
-    const allDocs: Document[] = data.flat(3);
-    const test = await getRelatedSubgoalsForDocument(allDocs[0].url);
-    console.log(test);
-    setDocList(allDocs);
+    // const allDocs: Document[] = data.flat(3);
+    // const test = await getRelatedSubgoalsForDocument(allDocs[0].url);
+    // console.log(test);
+    setDocList(data);
   };
 
   useEffect(() => {
@@ -38,8 +38,8 @@ const DocumentList: React.FC = () => {
           Dokumenter
         </Heading>
       </Box>
-      {docList.map((document) => (
-        <DocumentBox document={document} />
+      {docList.map((commonCelexDocuments) => (
+        <DocumentBox commonCelexDocuments={commonCelexDocuments} />
       ))}
       <Flex justifyContent="space-around">
         Side &nbsp;

@@ -35,11 +35,10 @@ export const getSubclasses = async (nodeId: string): Promise<Array<Node>> => {
   }
 };
 
-export const getDocumentsForSubgoal = async (subgoalname: string, langList: Array<string>, pageNumber: number): Promise<Array<Array<Document>>> => {
+export const getDocumentsForSubgoal = async (subgoalname: string, langList: Array<string>, pageNumber: number): Promise<Array<Array<Array<Document>>>> => {
   try {
     const URI = `${subgoalname}/${langList.toString()}/${pageNumber.toString()}`;
-    console.log(URI);
-    const data: Array<Array<Document>> = await api.GET(`ontologies/subgoalDocuments/http%3A%2F%2Fwww.semanticweb.org%2Faga%2Fontologies%2F2017%2F9%2FSDG%23${encodeURI(URI)}`);
+    const data: Array<Array<Array<Document>>> = await api.GET(`ontologies/subgoalDocuments/http%3A%2F%2Fwww.semanticweb.org%2Faga%2Fontologies%2F2017%2F9%2FSDG%23${encodeURI(URI)}`);
     return data;
   } catch (e) {
     console.log(e);
