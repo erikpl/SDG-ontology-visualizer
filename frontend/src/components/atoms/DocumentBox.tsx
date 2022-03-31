@@ -19,8 +19,10 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getRelatedSubgoalsForDocument } from '../../api/ontologies';
+import { selectSubgoal } from '../../state/reducers/ontologyReducer';
 import { Document, SubGoal } from '../../types/ontologyTypes';
 
 type DocumentBoxProps = {
@@ -30,9 +32,9 @@ type DocumentBoxProps = {
 const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: DocumentBoxProps) => {
   const [relatedGoals, setRelatedGoals] = useState<Array<Array<SubGoal>>>([]);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onClickSeeRelatedGoals = async (document: Document) => {
-    console.log('pressed');
     if (relatedGoals.length === 0){
       const goals = await getRelatedSubgoalsForDocument(document.url);
       setRelatedGoals(goals);
@@ -41,6 +43,9 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
 
   const getGoalLabelFromSubgoal = (subgoal: SubGoal) => subgoal.SubjectLabel.slice(0, subgoal.SubjectLabel.indexOf('.'));
   
+  const onClickSubGoal = (subgoal: SubGoal) => {
+    dispatch(selectSubgoal(subgoal));
+  };
 
   return (
     <Accordion allowMultiple allowToggle width="55%" onChange={() => onClickSeeRelatedGoals(commonCelexDocuments[0][0])}>
@@ -74,12 +79,17 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
                     <AccordionIcon />
                   </AccordionButton>
                    <AccordionPanel>
-                   <VStack align="start">
+                   <VStack align="start" justify="center"> 
                     {relatedGoals.map(subgoalList => (
                       <HStack align="start">
-                        <Box width="20px" textAlign="end">{getGoalLabelFromSubgoal(subgoalList[0])}</Box>
+                        <Text width="20px" textAlign="end" fontWeight="bold">{getGoalLabelFromSubgoal(subgoalList[0])}</Text>
                         {subgoalList.map(subgoal => (
-                          <Tag bgColor="cyan.100" width="40px">{subgoal.SubjectLabel}</Tag>
+                          <Button bgColor="cyan.100" width="40px" height="20px"
+                          onClick={() => {
+                            window.scrollTo(0, 0);
+                            onClickSubGoal(subgoal);
+                            history.replace('/documents');
+                          }}>{subgoal.SubjectLabel}</Button>
                           ))}
                       </HStack>
                     ))}

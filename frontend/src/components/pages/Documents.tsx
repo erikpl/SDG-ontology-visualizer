@@ -11,6 +11,7 @@ const Documents: React.FC = () => {
   const history = useHistory();
   const selectedSDG = useSelector((state: RootState) => state.ontology.selectedSDG);
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
+
   return (
     <Stack spacing="10">
       <Flex
