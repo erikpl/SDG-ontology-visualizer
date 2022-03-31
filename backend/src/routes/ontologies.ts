@@ -123,6 +123,15 @@ const checkMunicipalityByCode = async (req: Request, res: AnyResponse) => {
 
 // TODO: error handling?
 // TODO: move into its own function
+/*
+  Returns an array that's grouped by celexIDs, and then by language, in the prioritized order.
+  The format order within each group-of-groups is not changed.
+
+  Access the array using array[celexIdIndex][languageIndex][formatInstance], where 0 denotes the 
+  highest prioritized language, 1 the second highest, and so on. 
+  Note that languages which do not exist for the specified celexIds are ommited, so the index is 
+  simply an ordering of the ones which are available.
+*/
 const getDocumentsForSubgoalByClassId = async (req: Request, res: DocumentArrayArrayResponse) => {
   try {
     const langCodes = req.params.langCodes.split(',');
