@@ -46,6 +46,8 @@ export type NodeArrayResponse = Response<Array<Node>>;
 
 export type DocumentArrayResponse = Response<Array<Array<Document>>>;
 
+export type DocumentArrayArrayResponse = Response<Array<Array<Array<Document>>>>;
+
 export type OntologyArrayResponse = Response<Array<Ontology>>;
 
 export type SingleOntologyResponse = Response<Ontology>;
