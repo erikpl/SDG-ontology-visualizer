@@ -20,6 +20,7 @@ import {
   NodeArrayResponse,
   OntologyArrayResponse,
   RegexRequest,
+  StringResponse,
 } from '../types/routerTypes';
 import onError from './middleware/onError';
 import verifyDatabaseAccess from './middleware/verifyDatabaseAccess';
@@ -29,6 +30,7 @@ import { Document } from 'types/documentTypes';
 import {documentDataTo3DResponse} from '../utils/docUtils';
 import getRelatedSubgoalsForDocument from '../database/getRelatedSubgoalsForDocument';
 import { Node, SubGoal } from 'types/ontologyTypes';
+import getSustainabilityGoal from '../database/getSustainabilityGoal';
 
 const router = Router();
 
@@ -161,6 +163,16 @@ const getRelatedSubgoalsForDocumentByClassId = async (req: Request, res: NodeArr
   }
 };
 
+const getSustainabilityGoalByClassId = async (req: Request, res: NodeArrayResponse) => {
+  try {
+    console.log(req.params.classId);
+    const nodes = await getSustainabilityGoal(req.params.classId);
+    res.json(nodes);
+  } catch (e) {
+    onError(e, req, res);
+  }
+}
+
 router.get('/relations/:classId', verifyDatabaseAccess, getRelationsFromClass);
 router.get('/subclasses/:classId', verifyDatabaseAccess, getSubclassesFromClass);
 router.get('/annotations/:classId', verifyDatabaseAccess, getAnnotationsFromClass);
@@ -173,6 +185,6 @@ router.get('/subgoals/:classId', verifyDatabaseAccess, getSubGoalsfromSDG);
 router.get('/checkMunicipalityByCode', verifyDatabaseAccess, checkMunicipalityByCode);
 router.get('/relatedSubgoalsForDocument/:classId', verifyDatabaseAccess, getRelatedSubgoalsForDocumentByClassId);
 router.get('/subgoalDocuments/:classId/:langCodes/:offset', verifyDatabaseAccess, getDocumentsForSubgoalByClassId);
-
+router.get('/sustainabilityGoals/:classId', verifyDatabaseAccess, getSustainabilityGoalByClassId);
 
 export default router;

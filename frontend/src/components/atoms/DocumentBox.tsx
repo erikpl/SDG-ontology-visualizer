@@ -21,9 +21,11 @@ import {
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getRelatedSubgoalsForDocument } from '../../api/ontologies';
-import { selectSubgoal } from '../../state/reducers/ontologyReducer';
-import { Document, SubGoal } from '../../types/ontologyTypes';
+import { getRelatedSubgoalsForDocument, getSustainabilityGoal } from '../../api/ontologies';
+import { mapSustainabilityGoalToNode } from '../../common/node';
+import { setError } from '../../state/reducers/apiErrorReducer';
+import { selectNode, selectSDG, selectSubgoal } from '../../state/reducers/ontologyReducer';
+import { Document, SubGoal, SustainabilityGoal } from '../../types/ontologyTypes';
 
 type DocumentBoxProps = {
   commonCelexDocuments: Document[][];
@@ -43,7 +45,10 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
 
   const getGoalLabelFromSubgoal = (subgoal: SubGoal) => subgoal.SubjectLabel.slice(0, subgoal.SubjectLabel.indexOf('.'));
   
-  const onClickSubGoal = (subgoal: SubGoal) => {
+  const onClickSubGoal = async (subgoal: SubGoal) => {
+    const goal = await getSustainabilityGoal(getGoalLabelFromSubgoal(subgoal));
+    console.log(goal[0]);
+    dispatch(selectSDG(goal[0]));
     dispatch(selectSubgoal(subgoal));
   };
 

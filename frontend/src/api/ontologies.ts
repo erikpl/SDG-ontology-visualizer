@@ -76,6 +76,16 @@ export const getSustainabilityGoals = async (): Promise<Array<SustainabilityGoal
   }
 };
 
+export const getSustainabilityGoal = async (goalID: string): Promise<Array<SustainabilityGoal>> => {
+  try {
+    const data = await api.GET(`ontologies/sustainabilityGoals/${goalID}`);
+    return data;
+  } catch (e) {
+    console.log(e);
+    return [];
+  }
+};
+
 export const getContributions = async (nodeId: string): Promise<Array<Node>> => {
   try {
     const data: Array<Node> = await api.GET(
