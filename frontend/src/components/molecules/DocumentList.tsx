@@ -1,4 +1,5 @@
-import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
+import { ArrowUpIcon } from '@chakra-ui/icons';
+import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getDocumentsForSubgoal } from '../../api/ontologies';
@@ -27,23 +28,31 @@ const DocumentList: React.FC = () => {
   }, [selectedSubgoal]);
 
   if (!docList || docList.length === 0) {
-    return <Box height="200px" />;
+    return (
+      <Box align="center" px="10">
+        <Heading size="lg" mb="10" color="cyan.700">
+          Laster dokumenter...
+        </Heading>
+      </Box>
+    );
   }
 
   return (
     <Stack align="center" spacing="7">
       <Box align="center" px="10">
-        <Heading size="lg" mb="10" color="cyan.700">
+        <Heading size="lg" color="cyan.700">
           Dokumenter
         </Heading>
       </Box>
       {docList.map((commonCelexDocuments) => (
         <DocumentBox commonCelexDocuments={commonCelexDocuments} />
       ))}
-      <Flex justifyContent="space-around">
-        Side &nbsp;
-        {pageNum}
-      </Flex>
+      <Button onClick={() => (window.scrollTo(0, 0))}>
+        <Flex justifyContent="space-around">
+          Til toppen &nbsp;
+          <ArrowUpIcon />
+        </Flex>
+      </Button>
     </Stack>
   );
 };
