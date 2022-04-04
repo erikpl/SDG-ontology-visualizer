@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../state/store';
 import { MotionBox } from '../../types/react/componentTypes';
-// import SearchBar from '../atoms/SearchBar';
 import DocumentList from '../molecules/DocumentList';
 
 const Documents: React.FC = () => {
