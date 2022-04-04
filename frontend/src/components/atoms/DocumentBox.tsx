@@ -45,6 +45,15 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
 
   const getGoalLabelFromSubgoal = (subgoal: SubGoal) => subgoal.SubjectLabel.slice(0, subgoal.SubjectLabel.indexOf('.'));
   
+  const formatTitle = (title: string) => {
+    const tokens = title.split(" ");
+    if (tokens.length > 50) {
+      return tokens.slice(0, 50).join(" ") + "...";
+    } else {
+      return title;
+    }
+  }
+
   const onClickSubGoal = async (subgoal: SubGoal) => {
     const goal = await getSustainabilityGoal(getGoalLabelFromSubgoal(subgoal));
     dispatch(selectSDG(goal[0]));
@@ -56,7 +65,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
       <AccordionItem boxShadow="lg" borderWidth="2px" borderRadius="md" borderColor="cyan.700">
         <AccordionButton borderRadius="md" _hover={{ opacity: '75%' }}>
           <Heading as="h3" size="sm">
-            {commonCelexDocuments[0][0].title}
+            {formatTitle(commonCelexDocuments[0][0].title)}
           </Heading>
           <Badge>{commonCelexDocuments[0][0].language}</Badge>
           <AccordionIcon />

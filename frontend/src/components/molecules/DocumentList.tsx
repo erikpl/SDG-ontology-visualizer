@@ -99,8 +99,8 @@ const DocumentList: React.FC = () => {
 
   return (
     <Flex direction="row" align="flex-start">
-      <Stack align="center" spacing="7" margin="0" width="300%">
-        <Box align="center" px="10">
+      <Stack align="end" spacing="7" margin="0" width="300%" paddingRight="20">
+        <Box align="center" px="10" marginRight="30%">
           <Heading size="lg" color="cyan.700">
             Dokumenter
           </Heading>
@@ -123,7 +123,7 @@ const DocumentList: React.FC = () => {
           </Button>
         </Flex>
       </Stack>
-      <InputGroup>
+      <InputGroup marginRight="10" width="70%">
         <InputLeftAddon>
           <SearchIcon />
         </InputLeftAddon>
