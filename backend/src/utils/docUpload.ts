@@ -28,7 +28,6 @@ Promise.all([
                     goals,
                     targets
                 }
-                //console.log(relation);
                 relationsList.push(relation);
             })
         })
@@ -60,9 +59,6 @@ Promise.all([
                 })
             })
             resolve();
-            //console.log(docList);
-            
-            // TODO: Pass into queries
             
         })
     })

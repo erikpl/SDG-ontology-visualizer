@@ -1,5 +1,5 @@
 import { Flex, Heading, Stack, Text, Image } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../../state/store';
@@ -11,14 +11,6 @@ const Documents: React.FC = () => {
   const history = useHistory();
   const selectedSDG = useSelector((state: RootState) => state.ontology.selectedSDG);
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
-
-  useEffect(() => {
-    console.log(selectedSDG);
-  }, [selectedSDG]);
-
-  useEffect(() => {
-    console.log(selectedSubgoal);
-  }, [selectedSubgoal]);
 
   return (
     <Stack spacing="10">

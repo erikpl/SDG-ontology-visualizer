@@ -165,7 +165,6 @@ const getRelatedSubgoalsForDocumentByClassId = async (req: Request, res: NodeArr
 
 const getSustainabilityGoalByClassId = async (req: Request, res: NodeArrayResponse) => {
   try {
-    console.log(req.params.classId);
     const nodes = await getSustainabilityGoal(req.params.classId);
     res.json(nodes);
   } catch (e) {

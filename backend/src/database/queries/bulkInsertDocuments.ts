@@ -17,7 +17,6 @@ export default (documents: Document[], relations: DocumentSDGRelation[]): string
         const langUri = `<${PREFIXES.EULANG.iri}${doc.language}>`;
         const relatedSDGs = relations.filter(rel => rel.celexID == doc.celexID);
         
-        console.log(doc.celexID);
         insertStatements = insertStatements.concat(
             `
             ${docUri} SDG:celexID "${doc.celexID}".

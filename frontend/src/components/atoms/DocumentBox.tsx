@@ -47,7 +47,6 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
   
   const onClickSubGoal = async (subgoal: SubGoal) => {
     const goal = await getSustainabilityGoal(getGoalLabelFromSubgoal(subgoal));
-    console.log(goal[0]);
     dispatch(selectSDG(goal[0]));
     dispatch(selectSubgoal(subgoal));
   };

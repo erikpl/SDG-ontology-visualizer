@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from '@chakra-ui/icons';
+import { AddIcon, ArrowUpIcon } from '@chakra-ui/icons';
 import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -11,13 +11,19 @@ const DocumentList: React.FC = () => {
   const [docList, setDocList] = useState<Array<Array<Array<Document>>>>([]);
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
   const langList = ['ENG', 'DAN', 'NLD', 'ITA', 'DEU'];
-  const pageNum = 1;
+  let pageNum = 1;
   
   const loadDocuments = async () => {
     if (!selectedSubgoal) return;
+    if (docList.length > 0) {
+      pageNum += 1;
+      const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
+      setDocList(docList.concat(data));
+    } else {
       setDocList([]);
       const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
       setDocList(data);
+    }
   };
 
   useEffect(() => {
@@ -47,12 +53,20 @@ const DocumentList: React.FC = () => {
       {docList.map((commonCelexDocuments) => (
         <DocumentBox commonCelexDocuments={commonCelexDocuments} />
       ))}
-      <Button onClick={() => (window.scrollTo(0, 0))}>
-        <Flex justifyContent="space-around">
-          Til toppen &nbsp;
-          <ArrowUpIcon />
-        </Flex>
-      </Button>
+      <Flex direction="row">
+        <Button onClick={() => (window.scrollTo(0, 0))} marginRight="5">
+          <Flex justifyContent="space-around">
+            Til toppen &nbsp;
+            <ArrowUpIcon />
+          </Flex>
+        </Button>
+        <Button onClick={loadDocuments} marginLeft="5">
+          <Flex justifyContent="space-around">
+            Se flere &nbsp;
+            <AddIcon />
+          </Flex>
+        </Button>
+      </Flex>
     </Stack>
   );
 };
