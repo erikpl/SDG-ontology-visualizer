@@ -59,7 +59,6 @@ const App: React.FC = () => {
                 <Route path="/about" exact component={About} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/documents" exact component={Documents} />
-
                 <Route
                   exact
                   path="/gdc/compare/:municipality/:otherMunicipality"

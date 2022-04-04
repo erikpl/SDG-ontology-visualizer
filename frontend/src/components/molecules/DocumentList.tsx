@@ -1,5 +1,5 @@
 import { AddIcon, ArrowUpIcon, SearchIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, Input, InputGroup, InputLeftAddon, Stack } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getDocumentsForSubgoal } from '../../api/ontologies';
@@ -13,7 +13,9 @@ const DocumentList: React.FC = () => {
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
   const langList = ['ENG', 'DAN', 'NLD', 'ITA', 'DEU'];
   const [pageNum, setPageNum] = useState<number>(1);
+  const [searchResultsText, setSearchResultsText] = useState<string>('');
   
+  // You have to reset the lists before setting them because react :)
   const resetDocumentLists = () => {
     setFilteredDocList([]);
     setDocList([]);
@@ -36,16 +38,16 @@ const DocumentList: React.FC = () => {
       const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
    
       setDocList(data);
+      // Deep cloning just in case 
       setFilteredDocList(JSON.parse(JSON.stringify(data)));
     }
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(`searching for ${e.target.value}`);
     if (e.target.value === '') {
-      console.log('reset doc list');
       setFilteredDocList([]);
       setFilteredDocList(docList);
+      setSearchResultsText('');
       return;
     }
 
@@ -54,15 +56,15 @@ const DocumentList: React.FC = () => {
       const langArrays = docList[i];
       langArrays.forEach(langArray => {
         langArray.forEach(langDoc => {
-          if (langDoc.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+          if (langDoc.title.toLowerCase().includes(e.target.value.toLowerCase()) && !filteredDocs.includes(langArrays)) {
             filteredDocs.push(langArrays);
           }
         });
       });
     }
-    console.log(`found ${filteredDocs.length} 'docs`);
     setFilteredDocList([]);
     setFilteredDocList(filteredDocs);
+    setSearchResultsText(`Søket ditt ga ${filteredDocList.length} resultater.`);
   };
 
   const updatePaging = () => {
@@ -123,12 +125,17 @@ const DocumentList: React.FC = () => {
           </Button>
         </Flex>
       </Stack>
-      <InputGroup marginRight="10" width="70%">
-        <InputLeftAddon>
-          <SearchIcon />
-        </InputLeftAddon>
-        <Input placeholder='søk i dokumenter' onChange={handleSearch} />
-      </InputGroup>
+      <Stack marginRight="10" width="70%" direction="column">
+        <InputGroup>
+          <InputLeftElement>
+            <SearchIcon />
+          </InputLeftElement>
+          <Input placeholder='søk i dokumenter' onChange={handleSearch} />
+        </InputGroup>
+        <Box>
+          {searchResultsText}
+        </Box>
+      </Stack>
     </Flex>
   );
 };

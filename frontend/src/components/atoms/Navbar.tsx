@@ -1,13 +1,29 @@
 import { InfoIcon } from '@chakra-ui/icons';
 import { Box, Button, Flex, Link, Spacer } from '@chakra-ui/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link as RouteLink, useHistory } from 'react-router-dom';
+import { getLanguages } from '../../api/ontologies';
 import { RootState } from '../../state/store';
+import { LanguageItem } from '../../types/ontologyTypes';
+import LanguagePicker from './LanguagePicker';
 
 const Navbar = () => {
   const history = useHistory();
+  const [languagesList, setLanguagesList] = useState<Array<LanguageItem>>([]);
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+
+  const loadLanguages = async() => {
+    const languages = await getLanguages();
+    setLanguagesList(languages);
+  };
+
+  useEffect(() => {
+    (async () => {
+      await loadLanguages();
+    } 
+    )();
+  }, ([]));
 
   if (isFullscreen) return <></>;
 
@@ -50,8 +66,11 @@ const Navbar = () => {
       >
         Om
       </Button>
+      <LanguagePicker languages={languagesList}/>
     </Flex>
   );
 };
 
 export default Navbar;
+
+

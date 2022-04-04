@@ -76,3 +76,14 @@ export type Document = {
   format: string;
   url: string;
 };
+
+export type Language = {
+  ISO_639_2T: string,
+  ISO_639_1: string,
+  names: Map<string, string>
+}
+
+export type LanguageItem = {
+  id: number;
+  language: Language;
+}

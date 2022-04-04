@@ -140,3 +140,16 @@ export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;
 
 export const isNotNull = <T>(obj: T): boolean => obj !== null && obj !== undefined;
+
+export const getLanguageFilterString = (languages: string[]) => {
+  let query = 'FILTER ((';
+  for (let i = 0; i < languages.length; i++) {
+    const language = languages[i];
+    query += `(?ISO_639_2T == eulang:${language})`
+    if (i == languages.length - 1) return;
+    else query += ' || ';
+  }
+
+  query += ') && datatype(?ISO_639_1) = euvoc:ISO_639_1))';
+
+};
