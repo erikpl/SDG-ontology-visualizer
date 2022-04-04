@@ -32,6 +32,7 @@ import getRelatedSubgoalsForDocument from '../database/getRelatedSubgoalsForDocu
 import { Node, SubGoal } from 'types/ontologyTypes';
 import getSustainabilityGoal from '../database/getSustainabilityGoal';
 
+
 const router = Router();
 
 const getRelationsFromClass = async (req: ClassIdRequest, res: OntologyArrayResponse) => {

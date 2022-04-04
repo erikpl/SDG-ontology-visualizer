@@ -1,4 +1,4 @@
-import { Annotation, SustainabilityGoal, Node, Ontology, SubGoal, Document, Language, LanguageItem } from '../types/ontologyTypes';
+import { Annotation, SustainabilityGoal, Node, Ontology, SubGoal, Document, Language, LanguageItem, RawLanguage } from '../types/ontologyTypes';
 import api from './api';
 
 export const getRelations = async (nodeId: string): Promise<Array<Ontology>> => {
@@ -144,12 +144,3 @@ export const getSubGoals = async (nodeId: string): Promise<Array<SubGoal>> => {
   }
 };
 
-export const getLanguages = async (): Promise<Array<LanguageItem>> => {
-  try {
-    const data: Array<LanguageItem> = await api.GET(`ontologies/languages`);
-    return data;
-  } catch (e) {
-    console.log(e);
-    return [];
-  }
-}

@@ -7,8 +7,8 @@ export const PREFIXES = {
   RDFS: EnapsoGraphDBClient.PREFIX_RDFS,
   XSD: EnapsoGraphDBClient.PREFIX_XSD,
   PROTONS: EnapsoGraphDBClient.PREFIX_PROTONS,
-  EURVOC: {
-    prefix: 'eurvoc',
+  EUVOC: {
+    prefix: 'euvoc',
     iri: 'http://publications.europa.eu/ontology/euvoc#'
   },
   SKOS: {

@@ -61,3 +61,4 @@ export type AnnotationResponse = Response<Annotation>;
 export type DataPointRequest = Request<DataPoint>;
 
 export type SetResponse = Response<string>;
+

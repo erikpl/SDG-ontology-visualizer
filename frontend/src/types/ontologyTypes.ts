@@ -77,13 +77,35 @@ export type Document = {
   url: string;
 };
 
-export type Language = {
-  ISO_639_2T: string,
-  ISO_639_1: string,
-  names: Map<string, string>
-}
-
 export type LanguageItem = {
   id: number;
-  language: Language;
+  label: string;
+  ISO_639_2T: Language;
+}
+
+enum Language {
+  HRV,
+  FIN,
+  CES,
+  SPA,
+  DAN,
+  EST,
+  POL,
+  DEU,
+  ELL,
+  POR,
+  SLV,
+  LAV,
+  LIT,
+  BUL,
+  ITA,
+  GLE,
+  RON,
+  HUN,
+  SWE,
+  MLT,
+  ENG,
+  SLK,
+  FRA,
+  NLD
 }
