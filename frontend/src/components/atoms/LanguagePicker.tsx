@@ -12,6 +12,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   const [languagesList, setLanguagesList] = useState<Array<LanguageItem>>([]);
 
   useEffect(() => {
+    console.log(languagesList);
     setLanguagesList(languages);
   }, []);
 
