@@ -1,4 +1,4 @@
-import { Annotation, SustainabilityGoal, Node, Ontology, SubGoal, Document, Language, LanguageItem, RawLanguage } from '../types/ontologyTypes';
+import { Annotation, SustainabilityGoal, Node, Ontology, SubGoal, Document } from '../types/ontologyTypes';
 import api from './api';
 
 export const getRelations = async (nodeId: string): Promise<Array<Ontology>> => {

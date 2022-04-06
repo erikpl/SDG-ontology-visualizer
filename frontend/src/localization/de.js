@@ -23,5 +23,5 @@ export default {
     sk: 'slowakisch',
     sl: 'slowenisch',
     es: 'spanisch',
-    sv: 'schwedisch'
-}
+    sv: 'schwedisch',
+};

@@ -79,11 +79,15 @@ export type Document = {
 
 export type LanguageItem = {
   id: number;
-  label: string;
-  ISO_639_2T: Language;
+  ISO_639_1: ISO6391Code;
+  ISO_639_2T: ISO6392TCode;
+};
+
+export enum ISO6391Code {
+  bg, cs, da, de, el, en, es, et, fi, fr, ga, hr, hu, it, lt, lv, mt, nl, no, pl, pt, ro, sk, sl, sv,
 }
 
-enum Language {
+export enum ISO6392TCode {
   HRV,
   FIN,
   CES,
@@ -107,5 +111,5 @@ enum Language {
   ENG,
   SLK,
   FRA,
-  NLD
+  NLD,
 }

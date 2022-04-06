@@ -23,5 +23,5 @@ export default {
     sk: 'slovāku valoda',
     sl: 'slovēņu valoda',
     es: 'spāņu valoda',
-    sv: 'zviedru valoda'
-}
+    sv: 'zviedru valoda',
+};

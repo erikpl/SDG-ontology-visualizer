@@ -23,5 +23,5 @@ export default {
     sk: 'slóvaicis',
     sl: 'slóivéinis',
     es: 'spáinnis',
-    sv: 'sualainnis'
-}
+    sv: 'sualainnis',
+};

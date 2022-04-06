@@ -23,5 +23,5 @@ export default {
     sk: 'slovakų kalba',
     sl: 'slovėnų kalba',
     es: 'ispanų kalba',
-    sv: 'švedų kalba'
-}
+    sv: 'švedų kalba',
+};

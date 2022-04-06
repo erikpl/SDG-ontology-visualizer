@@ -23,5 +23,5 @@ export default {
     sk: 'slowaaks',
     sl: 'sloveens',
     es: 'spaans',
-    sv: 'zweeds'
-}
+    sv: 'zweeds',
+};

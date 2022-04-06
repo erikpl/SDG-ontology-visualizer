@@ -23,5 +23,5 @@ export default {
     sk: 'ski keel',
     sl: 'sloveenia keel',
     es: 'hispaania keel',
-    sv: 'rootsi keel'
-}
+    sv: 'rootsi keel',
+};
