@@ -84,7 +84,8 @@ export type LanguageItem = {
 };
 
 export enum ISO6391Code {
-  bg, cs, da, de, el, en, es, et, fi, fr, ga, hr, hu, it, lt, lv, mt, nl, no, pl, pt, ro, sk, sl, sv,
+  bg, cs, da, de, el, en, es, et, fi, fr, ga, 
+  hr, hu, it, lt, lv, mt, nl, no, pl, pt, ro, sk, sl, sv, null,
 }
 
 export enum ISO6392TCode {
@@ -111,5 +112,7 @@ export enum ISO6392TCode {
   ENG,
   SLK,
   FRA,
+  NOR,
   NLD,
+  null,
 }
