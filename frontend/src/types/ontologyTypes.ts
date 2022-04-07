@@ -81,6 +81,7 @@ export type LanguageItem = {
   id: number;
   ISO_639_1: ISO6391Code;
   ISO_639_2T: ISO6392TCode;
+  ISO_3166_1: string;
 };
 
 export enum ISO6391Code {

@@ -22,7 +22,6 @@ import GDCCompareMunicipalities from './components/pages/GDCCompareMunicipalitie
 import GDCDataEntry from './components/pages/GDCDataEntry';
 import Documents from './components/pages/Documents';
 
-
 const App: React.FC = () => {
   // Better to do this in a global scope so that it's easily visible!
   // Massive hack, please fix in future:
@@ -32,7 +31,6 @@ const App: React.FC = () => {
   // This happens ~117 times per page render, causing a massive flood of warnings,
   // slowing down the page loading times. The ResponsiveContainer has minHeight
   // and minWidth props set, but does not seem to use them in size calculations.
-
   const originalWarn = console.warn.bind(console.warn);
 
   console.warn = (msg: any) => {
