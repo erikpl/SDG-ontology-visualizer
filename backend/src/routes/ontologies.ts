@@ -148,6 +148,7 @@ const getDocumentsForSubgoalByClassId = async (req: Request, res: DocumentArrayA
     
     let data = await getDocumentsForSubgoal(req.params.classId, langCodes, +req.params.offset);
     const response = documentDataTo3DResponse(data, langCodes);
+    console.log(response);
     res.json(response);
     
   } catch (e: any) {

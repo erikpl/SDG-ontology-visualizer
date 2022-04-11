@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable */
 import { DragDropContext, Droppable, Draggable, DropResult, DraggingStyle, NotDraggingStyle, DraggableLocation } from 'react-beautiful-dnd';
-import { Box, Stack, Tag, TagCloseButton, TagLeftIcon } from '@chakra-ui/react';
+import { Box, Stack, Tag, TagCloseButton, TagLeftIcon, Tooltip } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import React, { Component, useEffect, useState } from 'react';
 import Flags from 'country-flag-icons/react/3x2';
@@ -11,6 +11,9 @@ import useTranslation from '../../hooks/translations';
 import { CUIAutoComplete, Item } from 'chakra-ui-autocomplete';
 import flagComponents from '../../utils/localizationUtils';
 import { useLanguageContext } from '../../contexts/LanguageContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../state/store';
+import { setLanguagePriorities } from '../../state/reducers/languageReducer';
 
 type LanguagePickerProps = {
   languages: Array<LanguageItem>;
@@ -19,9 +22,10 @@ type LanguagePickerProps = {
 const LanguagePicker: React.FC<LanguagePickerProps> = ({
   languages,
 }: LanguagePickerProps) => {
-  // const [languagesList] = useState<Array<LanguageItem>>(languages);
   // Default language is english
-  const [languagePrioritizer, setlanguagePrioritizer] = useState<Array<LanguageItem>>([languages[5]]);
+  const { languagePriorities } = useSelector((state: RootState) => state.languages);
+  const dispatch = useDispatch();
+  // const [languagePrioritizer, setlanguagePrioritizer] = useState<Array<LanguageItem>>([languages[5]]);
   const [selectedLanguageSearchItems, setSelectedLanguageSearchItems] = useState<Item[]>([]);
   const [languageSearchItems, setLanguageSearchItems] = useState<Item[]>([]);
   const { language, changeLanguage } = useLanguageContext();
@@ -56,11 +60,10 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
     if (!result.destination) {
       return;
     }
-      const languages = reorder(languagePrioritizer, result.source.index, result.destination.index);
+      const languages = reorder(languagePriorities, result.source.index, result.destination.index);
       const newLanguages = [...languages];
       changeLanguage(ISO6391Code[newLanguages[0].ISO_639_1]);
-      //translations.setLanguage(ISO6391Code[newLanguages[0].ISO_639_1]);
-      setlanguagePrioritizer(newLanguages);
+      dispatch(setLanguagePriorities(newLanguages));
   };
 
   const convertToItems = (objects: LanguageItem[]) => {
@@ -78,22 +81,23 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
       const newItem = selectedItems.filter(language => !selectedLanguageSearchItems.includes(language))[0];
       const newLanguage = languages.find(language =>  ISO6391Code[language.ISO_639_1] == newItem.value);
       if (newLanguage !== undefined)
-        setlanguagePrioritizer(languagePrioritizer.concat(newLanguage));
+      dispatch(setLanguagePriorities(languagePriorities.concat(newLanguage)));
       setLanguageSearchItems([]);
       setLanguageSearchItems(languageSearchItems.filter(item => item.value !== newItem.value));
     } 
   };
 
+  const removeLanguage = (language: LanguageItem) => {
+    return (event: React.MouseEvent) => {
+      dispatch(setLanguagePriorities(languagePriorities.filter(l => l.id != language.id)));
+      setLanguageSearchItems(languageSearchItems.concat(convertToItems([language])));
+    }
+  };
+  
   useEffect(() => {
-
     setLanguageSearchItems(convertToItems(languages));
   }, []);
 
-/*   useEffect(() => {
-    translations.setLanguage(ISO6391Code[languagePrioritizer[0].ISO_639_1]);
-    console.log(translations.getInterfaceLanguage());
-  }, [languagePrioritizer])
- */
   const Flag = (l: LanguageItem) => {
     const CountryFlag = flagComponents[l.ISO_3166_1]
     return <CountryFlag />
@@ -101,7 +105,9 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
 
   return (
     <Box padding='5'>
-      <Box fontWeight='medium'>Language priority</Box>
+      <Tooltip label='The language for the site and policy documents' placement='top'>
+        <Box fontWeight='medium'>Language priority</Box>
+      </Tooltip>
       <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="languageContainer">
             {(provided, snapshot) => (
@@ -110,7 +116,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
                 ref={provided.innerRef}
                 style={getListStyle(snapshot.isDraggingOver)}
               >
-                {languagePrioritizer.map((language, index) => (
+                {languagePriorities.map((language, index) => (
                   <Draggable key={language.id} draggableId={`${ISO6391Code[language.ISO_639_1]}`} index={index}>
                     {(providedInner, snapshotInner) => (
                       <div
@@ -122,10 +128,10 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
                       >
                         <Stack direction="row">
                           <Box fontWeight='medium'>{index + 1}</Box>
-                          <Tag width='250'>
+                          <Tag width='250' backgroundColor='cyan.100'>
                             <TagLeftIcon><Flag {...language} /></TagLeftIcon>
                             {translations.getString(ISO6391Code[language.ISO_639_1])}
-                            <TagCloseButton />
+                            <TagCloseButton onClick={removeLanguage(language)} />
                           </Tag>  
                         </Stack>
                       </div>
@@ -145,6 +151,12 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
         listStyleProps={{
           overflow: 'auto',
           maxHeight: '100'
+        }}
+        toggleButtonStyleProps={{
+          backgroundColor: 'cyan.600'
+        }}
+        labelStyleProps={{
+          marginBottom: '-3'
         }}
         label="Multilingual?"
         placeholder="Search for a language"

@@ -58,9 +58,12 @@ const Navbar = () => {
       >
         Om
       </Button>
-      <Popover>
+      <Popover
+        closeOnEsc
+        defaultIsOpen
+        >
         <PopoverTrigger>
-          <Button  
+          <Button
           size="sm" 
           backgroundColor='cyan.700'
           justify="center"
@@ -69,7 +72,7 @@ const Navbar = () => {
             <FaGlobeEurope />&nbsp;Change language  
           </Button>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent marginRight='10'>
           <PopoverArrow />
           <PopoverCloseButton />
           <LanguagePicker languages={languagesList}/>

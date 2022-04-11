@@ -1,19 +1,20 @@
 import { AddIcon, ArrowUpIcon, SearchIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, Input, InputGroup, InputLeftElement, Stack } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Input, InputGroup, InputLeftElement, Spinner, Stack } from '@chakra-ui/react';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getDocumentsForSubgoal } from '../../api/ontologies';
 import { RootState } from '../../state/store';
-import { Document } from '../../types/ontologyTypes';
+import { Document, ISO6392TCode } from '../../types/ontologyTypes';
 import DocumentBox from '../atoms/DocumentBox';
 
 const DocumentList: React.FC = () => {
+  const { languagePriorities } = useSelector((state: RootState) => state.languages);
   const [docList, setDocList] = useState<Array<Array<Array<Document>>>>([]);
   const [filteredDocList, setFilteredDocList] = useState<Array<Array<Array<Document>>>>([]);
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
-  const langList = ['ENG', 'DAN', 'NLD', 'ITA', 'DEU'];
   const [pageNum, setPageNum] = useState<number>(1);
   const [searchResultsText, setSearchResultsText] = useState<string>('');
+  const [noMoreDocuments, setNoMoreDocuments] = useState<boolean>(false);
   
   // You have to reset the lists before setting them because react :)
   const resetDocumentLists = () => {
@@ -21,21 +22,29 @@ const DocumentList: React.FC = () => {
     setDocList([]);
   };
 
+  const formatLanguages = () => {
+    const languages: string[] = languagePriorities.map(language => ISO6392TCode[language.ISO_639_2T]);
+    return languages;
+  };
 
   const loadDocuments = async (loadMore: boolean) => {
     if (!selectedSubgoal) return;
     if (loadMore) {
 
       const oldDocs = docList;
-      const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
+      const numberOfDocuments = docList.length;
+      const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, formatLanguages(), pageNum);
       resetDocumentLists();
-
+      
+      
       setDocList(oldDocs.concat(data));
       setFilteredDocList(oldDocs.concat(data));
 
+      setNoMoreDocuments(numberOfDocuments <= docList.length);
+
     } else {
       resetDocumentLists();
-      const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, langList, pageNum);
+      const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, formatLanguages(), pageNum);
    
       setDocList(data);
       // Deep cloning just in case 
@@ -78,7 +87,7 @@ const DocumentList: React.FC = () => {
       await loadDocuments(false);
     } 
     )();
-  }, [selectedSubgoal]);
+  }, [selectedSubgoal, languagePriorities]);
 
   useEffect(() => {
     if (pageNum > 1) {
@@ -94,6 +103,7 @@ const DocumentList: React.FC = () => {
       <Box align="center" px="10">
         <Heading size="lg" mb="10" color="cyan.700">
           Laster dokumenter...
+          <Spinner />
         </Heading>
       </Box>
     );
@@ -117,7 +127,7 @@ const DocumentList: React.FC = () => {
               <ArrowUpIcon />
             </Flex>
           </Button>
-          <Button onClick={updatePaging} marginLeft="5">
+          <Button onClick={updatePaging} marginLeft="5" isDisabled={noMoreDocuments}>
             <Flex justifyContent="space-around">
               Se flere &nbsp;
               <AddIcon />
