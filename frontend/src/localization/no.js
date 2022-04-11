@@ -24,4 +24,18 @@ export default {
     sl: 'slovensk',
     es: 'spansk',
     sv: 'svensk',
+    about: 'Om',
+    changeLanguage: 'Bytt språk',
+    dataUpload: 'Data opplasting',
+    goalDistanceComputation: 'Beregn måldistanse',
+    searchDocuments: 'Søk etter dokumenter',
+    languagePriority: 'Språk prioritering',
+    searchLanguages: 'Søk etter språk',
+    multilingual: 'Flerspråklig?',
+    openFMX4: 'Åpne som Formex',
+    openHTML: 'Åpne som nettside',
+    openPDF: 'Åpne som PDF',
+    active: 'Aktiv',
+    seeRelatedGoals: 'Se relaterte mål',
+
 };

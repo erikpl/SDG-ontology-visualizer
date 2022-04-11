@@ -13,6 +13,7 @@ export type SustainabilityGoal = {
 };
 
 export interface SubGoal extends Node {
+  Subject: string;
   SubjectLabel: string;
   description: string;
 }

@@ -49,7 +49,9 @@ export const getDocumentsForSubgoal = async (subgoalname: string, langList: Arra
 export const getRelatedSubgoalsForDocument = async (documentURL: string): Promise<Array<Array<SubGoal>>> => {
   try {
     const docID = documentURL.slice(documentURL.indexOf('cellar/') + 7, documentURL.lastIndexOf('/'));
-    const data: Array<Node> = await api.GET(`ontologies/relatedSubgoalsForDocument/http%3A%2F%2Fwww.semanticweb.org%2Faga%2Fontologies%2F2017%2F9%2FSDG%23documents.${docID}`);
+    let data: Array<Node> = await api.GET(`ontologies/relatedSubgoalsForDocument/http%3A%2F%2Fwww.semanticweb.org%2Faga%2Fontologies%2F2017%2F9%2FSDG%23documents.${docID}`);
+    
+    data = data.filter(node => !(node as SubGoal).Subject.startsWith('http://metadata.un.org/sdg/'));
     
     const subgoalArrays: Array<Array<SubGoal>> = [];
 

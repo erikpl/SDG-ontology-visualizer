@@ -38,7 +38,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
 
   const onClickSeeRelatedGoals = async (document: Document) => {
     if (relatedGoals.length === 0){
-      const goals = await getRelatedSubgoalsForDocument(document.url);
+      let goals = await getRelatedSubgoalsForDocument(document.url);
       setRelatedGoals(goals);
     }
   };
@@ -101,7 +101,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
                           onClick={() => {
                             window.scrollTo(0, 0);
                             onClickSubGoal(subgoal);
-                            history.replace('/documents');
+                            history.push('/documents');
                           }}>{subgoal.SubjectLabel}</Button>
                           ))}
                       </HStack>

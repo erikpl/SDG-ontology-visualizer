@@ -24,6 +24,7 @@ export default async (classId: string): Promise<Array<Ontology>> => {
     throw new ApiError(400, 'Could not parse node from the given class ID');
   }
   const query = getRelations(classId);
+  console.log(query);
   return DB.query(query, { transform: 'toJSON' }).then((resp) => {
     const records = resp.records as Array<Record>;
     const ontologies = records
