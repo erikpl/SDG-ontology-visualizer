@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with no items 1`] = `
+<div
+  align="center"
+  className="css-tthxno"
+>
+  <h2
+    className="chakra-heading css-1qtlgnn"
+  >
+    Laster dokumenter...
+    <div
+      className="chakra-spinner css-1y7joxr"
+    >
+      <span
+        className="css-f8n5zr"
+      >
+        Loading...
+      </span>
+    </div>
+  </h2>
+</div>
+`;
