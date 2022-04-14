@@ -138,7 +138,9 @@ export const getDevelopmentArea = async (nodeId: string): Promise<Array<Node>> =
 
 export const getSubGoals = async (nodeId: string): Promise<Array<SubGoal>> => {
   try {
-    const data: Array<SubGoal> = await api.GET(`ontologies/subgoals/${encodeURIComponent(nodeId)}`);
+    let data: Array<SubGoal> = await api.GET(`ontologies/subgoals/${encodeURIComponent(nodeId)}`);
+
+    data = data.filter(node => !(node as SubGoal).Subject.startsWith('http://metadata.un.org/sdg/'));
     return data;
   } catch (e) {
     console.log(e);
