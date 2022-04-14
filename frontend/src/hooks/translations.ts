@@ -1,6 +1,6 @@
 import LocalizedStrings from 'react-localization';
 import index from '../localization';
-import { useLanguageContext } from '../contexts/LanguageContext';
+import { useLanguageContext } from '../contexts/LanguageContextProvider';
 
 export default function useTranslation() {
   const { language } = useLanguageContext();

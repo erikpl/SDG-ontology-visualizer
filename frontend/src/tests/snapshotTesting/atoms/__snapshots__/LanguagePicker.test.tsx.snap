@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with a predefined language list 1`] = `
+<div
+  className="css-1g360fb"
+>
+  <div
+    className="css-1xnzs7r"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onMouseDown={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Language priority
+  </div>
+  <div
+    data-rbd-droppable-context-id="0"
+    data-rbd-droppable-id="languageContainer"
+    style={
+      Object {
+        "marginBottom": "10px",
+        "transform": "none",
+        "width": 250,
+      }
+    }
+  >
+    <div
+      aria-describedby="rbd-hidden-text-0-hidden-text-0"
+      data-rbd-drag-handle-context-id="0"
+      data-rbd-drag-handle-draggable-id="en"
+      data-rbd-draggable-context-id="0"
+      data-rbd-draggable-id="en"
+      draggable={false}
+      onDragStart={[Function]}
+      onTransitionEnd={null}
+      role="button"
+      style={
+        Object {
+          "margin": "5px",
+          "position": "static",
+          "transform": null,
+          "transition": null,
+          "userSelect": "none",
+          "width": 250,
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        className="chakra-stack css-1q3uncw"
+      >
+        <div
+          className="css-1xnzs7r"
+        >
+          1
+        </div>
+        <span
+          className="css-yfqdv4"
+        >
+          <svg
+            className="chakra-icon css-1jxv7ty"
+            focusable={false}
+            viewBox="0 0 24 24"
+          >
+            <svg
+              viewBox="0 85.333 512 341.333"
+            >
+              <path
+                d="M0 85.333h512V426.67H0z"
+                fill="#FFF"
+              />
+              <path
+                d="M288 85.33h-64v138.666H0v64h224v138.666h64V287.996h224v-64H288z"
+                fill="#D80027"
+              />
+              <path
+                d="M393.785 315.358L512 381.034v-65.676zm-82.133 0L512 426.662v-31.474l-143.693-79.83zm146.982 111.304l-146.982-81.664v81.664z"
+                fill="#0052B4"
+              />
+              <path
+                d="M311.652 315.358L512 426.662v-31.474l-143.693-79.83z"
+                fill="#FFF"
+              />
+              <path
+                d="M311.652 315.358L512 426.662v-31.474l-143.693-79.83z"
+                fill="#D80027"
+              />
+              <path
+                d="M90.341 315.356L0 365.546v-50.19zm110.007 14.154v97.151H25.491z"
+                fill="#0052B4"
+              />
+              <path
+                d="M143.693 315.358L0 395.188v31.474l200.348-111.304z"
+                fill="#D80027"
+              />
+              <path
+                d="M118.215 196.634L0 130.958v65.676zm82.133 0L0 85.33v31.474l143.693 79.83zM53.366 85.33l146.982 81.664V85.33z"
+                fill="#0052B4"
+              />
+              <path
+                d="M200.348 196.634L0 85.33v31.474l143.693 79.83z"
+                fill="#FFF"
+              />
+              <path
+                d="M200.348 196.634L0 85.33v31.474l143.693 79.83z"
+                fill="#D80027"
+              />
+              <path
+                d="M421.659 196.636L512 146.446v50.19zm-110.007-14.154V85.331h174.857z"
+                fill="#0052B4"
+              />
+              <path
+                d="M368.307 196.634L512 116.804V85.33L311.652 196.634z"
+                fill="#D80027"
+              />
+            </svg>
+          </svg>
+          english
+          <button
+            aria-label="close"
+            className="css-1d2kx9w"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="chakra-icon css-1md6f3y"
+              focusable={false}
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="chakra-stack css-eao00i"
+  >
+    <label
+      className="chakra-form__label css-2iabnl"
+      htmlFor="downshift-0-input"
+      id="downshift-0-label"
+    >
+      Multilingual?
+    </label>
+    <div
+      className="chakra-stack css-r12by3"
+    />
+    <div
+      aria-expanded={false}
+      aria-haspopup="listbox"
+      aria-owns="downshift-0-menu"
+      className="chakra-stack css-1q3uncw"
+      role="combobox"
+    >
+      <input
+        aria-autocomplete="list"
+        aria-controls="downshift-0-menu"
+        aria-labelledby="downshift-0-label"
+        autoComplete="off"
+        className="chakra-input css-0"
+        id="downshift-0-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Search for a language"
+        value=""
+      />
+      <button
+        aria-label="toggle menu"
+        className="chakra-button css-1olpj1x"
+        id="downshift-0-toggle-button"
+        onClick={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <svg
+          className="chakra-icon css-onkibi"
+          focusable={false}
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      className="css-vm1uz1"
+    >
+      <ul
+        aria-labelledby="downshift-0-label"
+        className="css-8xbk0y"
+        id="downshift-0-menu"
+        onMouseLeave={[Function]}
+        role="listbox"
+      />
+    </div>
+  </div>
+</div>
+`;

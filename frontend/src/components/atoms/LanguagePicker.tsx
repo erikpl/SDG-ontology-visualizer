@@ -10,7 +10,7 @@ import useTranslation from '../../hooks/translations';
 
 import { CUIAutoComplete, Item } from 'chakra-ui-autocomplete';
 import flagComponents from '../../utils/localizationUtils';
-import { useLanguageContext } from '../../contexts/LanguageContext';
+import { useLanguageContext } from '../../contexts/LanguageContextProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import { setLanguagePriorities } from '../../state/reducers/languageReducer';
@@ -25,10 +25,9 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   // Default language is english
   const { languagePriorities } = useSelector((state: RootState) => state.languages);
   const dispatch = useDispatch();
-  // const [languagePrioritizer, setlanguagePrioritizer] = useState<Array<LanguageItem>>([languages[5]]);
-  const [selectedLanguageSearchItems, setSelectedLanguageSearchItems] = useState<Item[]>([]);
+  const [selectedLanguageSearchItems] = useState<Item[]>([]);
   const [languageSearchItems, setLanguageSearchItems] = useState<Item[]>([]);
-  const { language, changeLanguage } = useLanguageContext();
+  const { changeLanguage } = useLanguageContext();
   const translations = useTranslation(); 
 
   

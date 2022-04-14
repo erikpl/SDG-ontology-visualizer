@@ -1,7 +1,14 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import App from '../App';
+import LanguageContextProvider from '../contexts/LanguageContextProvider';
 
 test('renders without crashing', () => {
-  render(<App />);
+ 
+    render( 
+    <LanguageContextProvider>
+      <App />
+    </LanguageContextProvider>
+      );
+  
 });
