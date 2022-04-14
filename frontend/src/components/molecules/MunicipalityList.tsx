@@ -2,11 +2,13 @@ import { SimpleGrid, Stack, Flex, Spinner, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 
 import { getAllMunicipalities } from '../../api/municipalities';
+import useTranslation from '../../hooks/translations';
 import { Municipality } from '../../types/municipalityTypes';
 import MunicipalityButton from '../atoms/MunicipalityButton';
 
 const MunicipalityList: React.FC = () => {
   const [municipalities, setMunicipalities] = useState<Array<Municipality>>();
+  const translations = useTranslation(); 
 
   const loadMunicipalities = async () => {
     const data = await getAllMunicipalities();
@@ -28,7 +30,10 @@ const MunicipalityList: React.FC = () => {
       <Flex align="center" justify="center" justifyContent="space-evenly">
         <Stack>
           <Spinner size="xl" thickness="4px" speed="0.65s" emptyColor="gray.200" color="cyan.700" />
-          <Text size="md">Loading...</Text>
+          <Text size="md">
+            {translations.getString('loading')}
+            ...
+          </Text>
         </Stack>
       </Flex>
     );

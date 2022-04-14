@@ -59,9 +59,9 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
 });
 export const changeColorBasedOnType = (type: string) => {
   let nodeColor = '#63B3ED';
-  if (type.includes('Goal') ||  type.includes('SDG')) nodeColor = '#D6BCFA';
+  if (type.includes('Goal') ||  type.includes('SDG') || type.includes('Bærekraftsmål')) nodeColor = '#D6BCFA';
   if (type.includes('Trippel bunnlinje')) nodeColor = '#68D391';
-  if (type.includes('Delmål til bærekraftsmål')) nodeColor = '#FBD38D';
+  if (type.includes('Delmål til bærekraftsmål') || type.includes('Delmål')) nodeColor = '#FBD38D';
   if (type.includes('Utviklingsområde')) nodeColor = '#FC8181';
   return nodeColor;
 };

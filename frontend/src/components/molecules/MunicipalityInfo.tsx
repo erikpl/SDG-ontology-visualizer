@@ -1,5 +1,6 @@
 import { Flex, Heading, Stack, Text, SimpleGrid, Container } from '@chakra-ui/react';
 import React from 'react';
+import useTranslation from '../../hooks/translations';
 
 import { MunicipalityInfo } from '../../types/municipalityTypes';
 
@@ -16,6 +17,7 @@ const MunicipalityInfoDisplay: React.FC<MunicipalityInfoDisplayProps> = (
   props: MunicipalityInfoDisplayProps,
 ) => {
   const { info, compareInfo } = props;
+  const translations = useTranslation(); 
 
   if (info === undefined)
     return (
@@ -29,7 +31,7 @@ const MunicipalityInfoDisplay: React.FC<MunicipalityInfoDisplayProps> = (
       >
         <Stack spacing="10">
           <Heading size="xl" color="white">
-            Unknown municipality
+            {translations.getString('unknownMunicipality')}
           </Heading>
         </Stack>
       </Flex>

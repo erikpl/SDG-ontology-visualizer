@@ -3,7 +3,8 @@ import { LanguageItem } from '../../types/ontologyTypes';
 import { LanguageState, LanguageStateAction, SET_LANGUAGE_PRIORITIES } from '../../types/redux/languageTypes';
 
 export const defaultState: LanguageState = {
-    languagePriorities: [LanguagesList[5]],
+    // Default language is first language
+    languagePriorities: [LanguagesList[0]],
 };
 
 const languageReducer = (state: LanguageState = defaultState, action: LanguageStateAction) : LanguageState => {

@@ -22,10 +22,10 @@ type LanguagePickerProps = {
 const LanguagePicker: React.FC<LanguagePickerProps> = ({
   languages,
 }: LanguagePickerProps) => {
-  // Default language is english
+  // Default language is norwegian
   const { languagePriorities } = useSelector((state: RootState) => state.languages);
   const dispatch = useDispatch();
-  const [selectedLanguageSearchItems] = useState<Item[]>([]);
+  const [selectedLanguageSearchItems, setSelectedLanguageSearchItems] = useState<Item[]>([]);
   const [languageSearchItems, setLanguageSearchItems] = useState<Item[]>([]);
   const { changeLanguage } = useLanguageContext();
   const translations = useTranslation(); 
@@ -94,7 +94,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   };
   
   useEffect(() => {
-    setLanguageSearchItems(convertToItems(languages));
+    setLanguageSearchItems(convertToItems(languages.filter(language => !languagePriorities.includes(language))));
   }, []);
 
   const Flag = (l: LanguageItem) => {
@@ -105,7 +105,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   return (
     <Box padding='5'>
       <Tooltip label='The language for the site and policy documents' placement='top'>
-        <Box fontWeight='medium'>Language priority</Box>
+        <Box fontWeight='medium'>{translations.getString('languagePriority')}</Box>
       </Tooltip>
       <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="languageContainer">
@@ -157,8 +157,8 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
         labelStyleProps={{
           marginBottom: '-3'
         }}
-        label="Multilingual?"
-        placeholder="Search for a language"
+        label={translations.getString('multilingual')}
+        placeholder={translations.getString('searchLanguages')}
         disableCreateItem={true}
         items={languageSearchItems}
         selectedItems={selectedLanguageSearchItems}

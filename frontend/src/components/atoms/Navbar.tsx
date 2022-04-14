@@ -10,11 +10,15 @@ import LanguagePicker from './LanguagePicker';
 import LanguagesList from '../../localization/languages';
 import fs from 'fs';
 import { FaGlobeEurope } from 'react-icons/fa';
+import { useLanguageContext } from '../../contexts/LanguageContextProvider';
+import useTranslation from '../../hooks/translations';
 
 const Navbar = () => {
   const history = useHistory();
-  const [languagesList] = useState<Array<LanguageItem>>(LanguagesList);
+  const [languagesList] = useState<Array<LanguageItem>>(LanguagesList.slice(0,6));
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+  const { language, changeLanguage } = useLanguageContext();
+  const translations = useTranslation(); 
 
   if (isFullscreen) return <></>;
 
@@ -23,7 +27,7 @@ const Navbar = () => {
       <Box>
         <h1>
           <Link fontWeight="bold" color="cyan.700" fontSize="1.5em" as={RouteLink} to="/">
-            sdgqa.trondheim.kommune.no
+            {translations.getString('home')}
           </Link>
         </h1>
       </Box>
@@ -31,7 +35,7 @@ const Navbar = () => {
       <Box>
         <h1>
           <Link fontWeight="bold" color="cyan.700" fontSize="1.5em" as={RouteLink} to="/gdc">
-            Goal Distance Computation
+          {translations.getString('goalDistanceComputation')}
           </Link>
         </h1>
       </Box>
@@ -39,7 +43,7 @@ const Navbar = () => {
       <Box>
         <h1>
           <Link fontWeight="bold" color="cyan.700" fontSize="1.5em" as={RouteLink} to="/gdc/data">
-            Data Upload
+          {translations.getString('dataUpload')}
           </Link>
         </h1>
       </Box>
@@ -56,7 +60,7 @@ const Navbar = () => {
         }}
         marginRight='5'
       >
-        Om
+        {translations.getString('about')}
       </Button>
       <Popover
         closeOnEsc
@@ -69,7 +73,7 @@ const Navbar = () => {
           justify="center"
           color="white"
           _hover={{ backgroundColor: 'cyan.600' }}>
-            <FaGlobeEurope />&nbsp;Change language  
+            <FaGlobeEurope />&nbsp;{translations.getString('changeLanguage')}
           </Button>
         </PopoverTrigger>
         <PopoverContent marginRight='10'>

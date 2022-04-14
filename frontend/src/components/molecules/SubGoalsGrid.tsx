@@ -2,6 +2,7 @@ import { Box, Flex, Heading, Stack } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getSubGoals } from '../../api/ontologies';
+import useTranslation from '../../hooks/translations';
 import { RootState } from '../../state/store';
 import { SubGoal } from '../../types/ontologyTypes';
 import SubGoalContainer from '../atoms/SubGoalContainer';
@@ -10,6 +11,7 @@ import SubGoalContainer from '../atoms/SubGoalContainer';
 const SubGoalsGrid = () => {
   const [subGoals, setSubGoals] = useState<Array<SubGoal>>([]);
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
+  const translations = useTranslation(); 
 
   const loadSubGoal = async () => {
     if (!selectedNode) return;
@@ -28,7 +30,7 @@ const SubGoalsGrid = () => {
   return (
     <Box align="center" px="10">
       <Heading size="lg" mb="10" color="cyan.900">
-        DELMÅL:
+        {translations.getString('subgoals')}
       </Heading>
       <Flex justify="space-evenly">
         <Stack width="45%" spacing="5">
