@@ -31,7 +31,7 @@ Array [
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="Søk..."
+      placeholder="Søk"
       value=""
     />
   </div>,

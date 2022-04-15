@@ -4,6 +4,7 @@ import renderer from 'react-test-renderer';
 import SubGoalContainer from '../../../components/atoms/SubGoalContainer';
 import store from '../../../state/store';
 import { SubGoal } from '../../../types/ontologyTypes';
+import LanguageContextProvider from '../../../contexts/LanguageContextProvider';
 
 const subGoalNode1: SubGoal = {
   id: 't1',
@@ -16,15 +17,17 @@ const subGoalNode1: SubGoal = {
   correlation: 5,
   SubjectLabel: 'eeat',
   description: 'meee',
-  Subject: 'vroom'
+  Subject: 'vroom',
 };
 
 it('renders when there is one item', () => {
   const tree = renderer
     .create(
-      <Provider store={store}>
-        <SubGoalContainer subGoalNode={subGoalNode1} />
-      </Provider>,
+      <LanguageContextProvider>
+        <Provider store={store}>
+          <SubGoalContainer subGoalNode={subGoalNode1} />
+        </Provider>
+      </LanguageContextProvider>,
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

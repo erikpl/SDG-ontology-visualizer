@@ -33,7 +33,7 @@ exports[`renders when there are no items 1`] = `
       onBlur={[Function]}
       onChange={[Function]}
       onFocus={[Function]}
-      placeholder="Søk..."
+      placeholder="Søk"
       value=""
     />
   </div>
@@ -177,7 +177,7 @@ exports[`renders when there are no items 1`] = `
               onMouseDown={[Function]}
               onTouchStart={[Function]}
             >
-              Vis delmål
+              Vis undermål
             </span>
           </label>
         </button>
@@ -314,7 +314,7 @@ exports[`renders when there are no items 1`] = `
         onMouseDown={[Function]}
         onTouchStart={[Function]}
       >
-        Vis delmål
+        Vis undermål
       </span>
     </label>
     <label
