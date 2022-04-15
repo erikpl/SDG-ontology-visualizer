@@ -36,7 +36,8 @@ exports[`renders when there are no items 1`] = `
       <p
         className="chakra-text css-0"
       >
-        Loading...
+        Laster
+        ...
       </p>
     </div>
   </div>

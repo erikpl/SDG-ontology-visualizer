@@ -30,7 +30,7 @@ exports[`renders when there are no items 1`] = `
           <p
             className="chakra-text css-pg6u3z"
           >
-            Dette konseptet er under utvikling 
+            Dette konseptet er under utvikling
           </p>
           
         </div>

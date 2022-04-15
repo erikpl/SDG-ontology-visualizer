@@ -2,6 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import store from '../../../state/store';
+import LanguageContextProvider from '../../../contexts/LanguageContextProvider';
+
 
 import DocumentBox from '../../../components/atoms/DocumentBox';
 import { Document } from '../../../types/ontologyTypes';
@@ -31,9 +33,12 @@ LanguagesList.map((language) => {
 it('renders with a list of dummy docs', () => {
   const tree = renderer
     .create(
-      <Provider store={store}>
-        <DocumentBox commonCelexDocuments={testDocs} />
-      </Provider>,
+      <LanguageContextProvider>
+        <Provider store={store}>
+          <DocumentBox commonCelexDocuments={testDocs} />
+        </Provider>
+      </LanguageContextProvider>
+      ,
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

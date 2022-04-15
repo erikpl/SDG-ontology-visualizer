@@ -54,17 +54,16 @@ exports[`renders when there is one item 1`] = `
       >
         <p
           className="chakra-text css-g5hezf"
-        >
-          meee
-        </p>
+        />
         <p
           className="chakra-text css-1m8iww1"
           onClick={[Function]}
           style={
             Object {
-              "color": "blue",
+              "color": "cornflowerBlue",
               "fontSize": "sm",
-              "textAlign": "right",
+              "marginTop": "10px",
+              "textAlign": "center",
             }
           }
         >

@@ -36,7 +36,7 @@ exports[`renders when there are no items 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
-        placeholder="Søk..."
+        placeholder="Søk"
         value=""
       />
     </div>
@@ -180,7 +180,7 @@ exports[`renders when there are no items 1`] = `
                 onMouseDown={[Function]}
                 onTouchStart={[Function]}
               >
-                Vis delmål
+                Vis undermål
               </span>
             </label>
           </button>
@@ -317,7 +317,7 @@ exports[`renders when there are no items 1`] = `
           onMouseDown={[Function]}
           onTouchStart={[Function]}
         >
-          Vis delmål
+          Vis undermål
         </span>
       </label>
       <label
@@ -1117,7 +1117,7 @@ exports[`renders when there are no items 1`] = `
         <p
           className="chakra-text css-g5hezf"
         >
-          Standardfarge/Startnode
+          Standardfarge/startnode
         </p>
       </div>
       <div
@@ -1147,7 +1147,7 @@ exports[`renders when there are no items 1`] = `
         <p
           className="chakra-text css-g5hezf"
         >
-          SDG (Bærekraftsmål)
+          Bærekraftsmål
         </p>
       </div>
       <div
@@ -1177,7 +1177,7 @@ exports[`renders when there are no items 1`] = `
         <p
           className="chakra-text css-g5hezf"
         >
-          Delmål til bærekraftsmål
+          Delmål
         </p>
       </div>
       <div

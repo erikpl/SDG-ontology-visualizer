@@ -26,7 +26,7 @@ exports[`renders with a list of dummy docs 1`] = `
       <span
         className="chakra-badge css-ifsvay"
       >
-        13
+        23
       </span>
       <svg
         aria-hidden={true}
@@ -73,7 +73,8 @@ exports[`renders with a list of dummy docs 1`] = `
                 fill="currentColor"
               />
             </svg>
-             Aktiv
+             
+            Aktiv
           </p>
           <div
             className="css-102lqhp"
@@ -87,7 +88,8 @@ exports[`renders with a list of dummy docs 1`] = `
                 rel="noreferrer"
                 target="_blank"
               >
-                Åpne som 
+                Åpne som
+                 
                 pdfa2a
               </a>
             </button>
@@ -100,7 +102,8 @@ exports[`renders with a list of dummy docs 1`] = `
                 rel="noreferrer"
                 target="_blank"
               >
-                Åpne som 
+                Åpne som
+                 
                 fmx4
               </a>
             </button>
@@ -113,7 +116,8 @@ exports[`renders with a list of dummy docs 1`] = `
                 rel="noreferrer"
                 target="_blank"
               >
-                Åpne som 
+                Åpne som
+                 
                 xhtml
               </a>
             </button>

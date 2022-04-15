@@ -12,7 +12,7 @@ exports[`renders with a predefined language list 1`] = `
     onMouseDown={[Function]}
     onMouseEnter={[Function]}
   >
-    Language priority
+    Språk prioritering
   </div>
   <div
     data-rbd-droppable-context-id="0"
@@ -28,9 +28,9 @@ exports[`renders with a predefined language list 1`] = `
     <div
       aria-describedby="rbd-hidden-text-0-hidden-text-0"
       data-rbd-drag-handle-context-id="0"
-      data-rbd-drag-handle-draggable-id="en"
+      data-rbd-drag-handle-draggable-id="no"
       data-rbd-draggable-context-id="0"
-      data-rbd-draggable-id="en"
+      data-rbd-draggable-id="no"
       draggable={false}
       onDragStart={[Function]}
       onTransitionEnd={null}
@@ -67,56 +67,20 @@ exports[`renders with a predefined language list 1`] = `
               viewBox="0 85.333 512 341.333"
             >
               <path
-                d="M0 85.333h512V426.67H0z"
+                d="M0 85.334h512v341.337H0z"
+                fill="#D80027"
+              />
+              <path
+                d="M512 295.883H202.195v130.783h-79.76V295.883H0v-79.772h122.435V85.329h79.76v130.782H512v61.218z"
                 fill="#FFF"
               />
               <path
-                d="M288 85.33h-64v138.666H0v64h224v138.666h64V287.996h224v-64H288z"
-                fill="#D80027"
-              />
-              <path
-                d="M393.785 315.358L512 381.034v-65.676zm-82.133 0L512 426.662v-31.474l-143.693-79.83zm146.982 111.304l-146.982-81.664v81.664z"
-                fill="#0052B4"
-              />
-              <path
-                d="M311.652 315.358L512 426.662v-31.474l-143.693-79.83z"
-                fill="#FFF"
-              />
-              <path
-                d="M311.652 315.358L512 426.662v-31.474l-143.693-79.83z"
-                fill="#D80027"
-              />
-              <path
-                d="M90.341 315.356L0 365.546v-50.19zm110.007 14.154v97.151H25.491z"
-                fill="#0052B4"
-              />
-              <path
-                d="M143.693 315.358L0 395.188v31.474l200.348-111.304z"
-                fill="#D80027"
-              />
-              <path
-                d="M118.215 196.634L0 130.958v65.676zm82.133 0L0 85.33v31.474l143.693 79.83zM53.366 85.33l146.982 81.664V85.33z"
-                fill="#0052B4"
-              />
-              <path
-                d="M200.348 196.634L0 85.33v31.474l143.693 79.83z"
-                fill="#FFF"
-              />
-              <path
-                d="M200.348 196.634L0 85.33v31.474l143.693 79.83z"
-                fill="#D80027"
-              />
-              <path
-                d="M421.659 196.636L512 146.446v50.19zm-110.007-14.154V85.331h174.857z"
-                fill="#0052B4"
-              />
-              <path
-                d="M368.307 196.634L512 116.804V85.33L311.652 196.634z"
-                fill="#D80027"
+                d="M512 234.666v42.663H183.652v149.337h-42.674V277.329H0v-42.663h140.978V85.329h42.674v149.337z"
+                fill="#2E52B2"
               />
             </svg>
           </svg>
-          english
+          norsk
           <button
             aria-label="close"
             className="css-1d2kx9w"
@@ -146,7 +110,7 @@ exports[`renders with a predefined language list 1`] = `
       htmlFor="downshift-0-input"
       id="downshift-0-label"
     >
-      Multilingual?
+      Flerspråklig?
     </label>
     <div
       className="chakra-stack css-r12by3"
@@ -170,7 +134,7 @@ exports[`renders with a predefined language list 1`] = `
         onClick={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
-        placeholder="Search for a language"
+        placeholder="Søk etter språk"
         value=""
       />
       <button
