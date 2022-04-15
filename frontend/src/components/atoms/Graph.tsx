@@ -112,7 +112,7 @@ const Graph: React.FC<GraphProps> = ({
   }, [selectedNode, svgRef, simulation]);
 
   useLayoutEffect(() => {
-    setSimulation(undefined);
+    createNewGraphSimulation();
   }, [language]);
 
   useEffect(() => {
