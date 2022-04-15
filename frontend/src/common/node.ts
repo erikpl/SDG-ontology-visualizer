@@ -47,16 +47,30 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
   };
 };
 
+export const parseTypeFromId = (id: string) => {
+  let typeName = '';
+  if (id.match(/#B[1-9]/g)) typeName = 'sdg';
+  else if (id.match(/#[1-9]./g)) typeName = 'target';
+  else if (id.match(/#[a-zA-zøØæÆåÅ]*./g)) typeName = 'devArea';
+  else if (id.includes('Økonomi') || id.includes('Sosialt') || id.includes('Miljø')) typeName = 'tbl';
+
+  return typeName;
+};
+
 export const mapIdToNode = (id: string, correlation?: number, type?: string): Node | null => {
   const prefix = parsePrefixFromClassId(id);
   const name = parseNameFromClassId(id);
+  let parsedType = parseTypeFromId(id);
+  if (parsedType === '' && type !== undefined)
+    parsedType = type;
+
   if (!prefix || !name) return null;
   return {
     prefix,
     name,
     id,
     correlation: correlation || -1,
-    type: type || 'undefined',
+    type: parsedType,
   };
 };
 
@@ -105,7 +119,7 @@ export const mapCorrelationToColor = (correlation: number) => {
   }
 };
 
-export const isSubgoal = (node: GraphNode): boolean => node.type === 'Delmål';
+export const isSubgoal = (node: GraphNode): boolean => node.type === 'target';
 
 export const isWithinCorrelationLimit = (
   edge: D3Edge | GraphEdge,

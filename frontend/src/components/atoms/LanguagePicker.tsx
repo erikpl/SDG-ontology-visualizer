@@ -105,7 +105,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   return (
     <Box padding='5'>
       <Tooltip label='The language for the site and policy documents' placement='top'>
-        <Box fontWeight='medium'>{translations.getString('languagePriority')}</Box>
+        <Box fontWeight='medium'>{translations.getString('LanguagePriority')}</Box>
       </Tooltip>
       <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="languageContainer">
@@ -157,8 +157,8 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
         labelStyleProps={{
           marginBottom: '-3'
         }}
-        label={translations.getString('multilingual')}
-        placeholder={translations.getString('searchLanguages')}
+        label={translations.getString('Multilingual').concat('?')}
+        placeholder={translations.getString('SearchLanguages')}
         disableCreateItem={true}
         items={languageSearchItems}
         selectedItems={selectedLanguageSearchItems}

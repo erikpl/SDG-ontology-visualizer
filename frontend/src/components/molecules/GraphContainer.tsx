@@ -1,7 +1,7 @@
 import { Flex, Stack } from '@chakra-ui/react';
 import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { isSubgoal, isWithinCorrelationLimit } from '../../common/node';
+import { isSubgoal, isWithinCorrelationLimit, parseTypeFromId } from '../../common/node';
 import { RootState } from '../../state/store';
 import { D3Edge } from '../../types/d3/simulation';
 import { GraphEdge, GraphNode } from '../../types/ontologyTypes';
@@ -23,7 +23,10 @@ const GraphContainer: React.FC = () => {
 
   const nodeFilter = useCallback(
     (node: GraphNode): boolean => {
-      if (!showSubgoals && isSubgoal(node)) return false;
+      const nodeCopy = node;
+      if (node.type !== 'target' && node.type !== 'devArea' && node.type !== 'sdg' && node.type !== 'tbl')
+        nodeCopy.type = parseTypeFromId(node.id);
+      if (!showSubgoals && isSubgoal(nodeCopy)) return false;
       return true;
     },
     [showSubgoals],

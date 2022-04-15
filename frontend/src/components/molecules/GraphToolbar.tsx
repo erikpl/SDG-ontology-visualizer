@@ -32,7 +32,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       <ShowDropdown onSubgoalFilter={onSubgoalFilter} onEdgeLabelsVisible={onEdgeLabelsVisible} />
       <HStack spacing="10" d={['none', 'none', 'none', 'none', 'flex']}>
         <Checkbox colorScheme="cyan" color="white" size="md" checked onChange={onSubgoalFilter}>
-          {translations.getString('showSubgoals')}
+          {translations.getString('ShowTargets')}
         </Checkbox>
         <Checkbox
           defaultIsChecked
@@ -41,7 +41,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
           size="md"
           onChange={() => onEdgeLabelsVisible((current) => !current)}
         >
-          {translations.getString('showEdgeLabels')}
+          {translations.getString('ShowEdgeLabels')}
         </Checkbox>
       </HStack>
       <CorrelationDropdown isPositive />
@@ -53,7 +53,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         minW="8em"
         onClick={() => onUnlockNodes((current) => !current)}
       >
-        {translations.getString('unlockNodes')}
+        {translations.getString('UnlockNodes')}
       </Button>
     </HStack>
   );

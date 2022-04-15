@@ -62,7 +62,7 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
               history.push('/documents');
             }}
           >
-            {translations.getString('showDocuments')}
+            {translations.getString('ShowDocuments')}
           </Text>
         </AccordionPanel>
       </AccordionItem>

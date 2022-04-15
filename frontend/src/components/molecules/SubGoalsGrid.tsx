@@ -30,7 +30,7 @@ const SubGoalsGrid = () => {
   return (
     <Box align="center" px="10">
       <Heading size="lg" mb="10" color="cyan.900">
-        {translations.getString('subgoals')}
+        {translations.getString('Targets')}
       </Heading>
       <Flex justify="space-evenly">
         <Stack width="45%" spacing="5">

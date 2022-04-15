@@ -1,6 +1,6 @@
 import { D3Edge, LabelTransform } from '../types/d3/simulation';
 import { GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
-import { mapIdToEdge } from './node';
+import { mapIdToEdge, parseTypeFromId } from './node';
 import { camelCaseToText } from './other';
 
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => {
@@ -59,10 +59,10 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
 });
 export const changeColorBasedOnType = (type: string) => {
   let nodeColor = '#63B3ED';
-  if (type.includes('Goal') ||  type.includes('SDG') || type.includes('Bærekraftsmål')) nodeColor = '#D6BCFA';
-  if (type.includes('Trippel bunnlinje')) nodeColor = '#68D391';
-  if (type.includes('Delmål til bærekraftsmål') || type.includes('Delmål')) nodeColor = '#FBD38D';
-  if (type.includes('Utviklingsområde')) nodeColor = '#FC8181';
+  if (type === 'sdg') nodeColor = '#D6BCFA'; // purple, sdg
+  if (type === 'tbl') nodeColor = '#68D391'; // green, tbl
+  if (type === 'target') nodeColor = '#FBD38D'; // yellow
+  if (type === 'devArea') nodeColor = '#FC8181'; // red, dev area
   return nodeColor;
 };
 export const mapNodeToGraphNodeAtDefaultPosition =
@@ -78,8 +78,11 @@ export const mapNodeToGraphNodeAtDefaultPosition =
 
 export const mapOntologyToNonClickedGraphNode =
   (clickedNode: GraphNode) =>
-  (ontology: Ontology): GraphNode =>
-    ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject;
+  (ontology: Ontology): GraphNode => {
+    const node = ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject;
+    node.type = parseTypeFromId(node.id);
+    return node;
+  };
 
 export const isD3Edge = (edge: GraphEdge | D3Edge) => typeof edge.target === 'string';
 export const isGraphEdge = (edge: GraphEdge | D3Edge) => typeof edge.target !== 'string';

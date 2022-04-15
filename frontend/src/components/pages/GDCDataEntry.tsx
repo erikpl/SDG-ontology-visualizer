@@ -578,7 +578,6 @@ const GDCDataEntry: React.FC = () => {
 
     if (municipalities === undefined) {
       loadMunicipalities();
-      console.log(selectedDataMunicipality);
     }
   });
 

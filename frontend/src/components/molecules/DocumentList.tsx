@@ -3,6 +3,7 @@ import { Box, Button, Flex, Heading, Input, InputGroup, InputLeftElement, Spinne
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getDocumentsForSubgoal } from '../../api/ontologies';
+import useTranslation from '../../hooks/translations';
 import { RootState } from '../../state/store';
 import { Document, ISO6392TCode } from '../../types/ontologyTypes';
 import DocumentBox from '../atoms/DocumentBox';
@@ -15,8 +16,9 @@ const DocumentList: React.FC = () => {
   const [pageNum, setPageNum] = useState<number>(1);
   const [searchResultsText, setSearchResultsText] = useState<string>('');
   const [noMoreDocuments, setNoMoreDocuments] = useState<boolean>(false);
+  const translations = useTranslation(); 
   
-  // You have to reset the lists before setting them because react :)
+  // You have to sometimes reset the lists before setting them because react :)
   const resetDocumentLists = () => {
     setFilteredDocList([]);
     setDocList([]);
@@ -73,7 +75,7 @@ const DocumentList: React.FC = () => {
     }
     setFilteredDocList([]);
     setFilteredDocList(filteredDocs);
-    setSearchResultsText(`Søket ditt ga ${filteredDocList.length} resultater.`);
+    setSearchResultsText(`${translations.getString('YourSearchGave')} ${filteredDocList.length} ${translations.getString('results')}.`);
   };
 
   const updatePaging = () => {
@@ -102,7 +104,7 @@ const DocumentList: React.FC = () => {
     return (
       <Box align="center" px="10">
         <Heading size="lg" mb="10" color="cyan.700">
-          Laster dokumenter...
+          {translations.getString('Loading')}
           <Spinner />
         </Heading>
       </Box>
@@ -114,7 +116,7 @@ const DocumentList: React.FC = () => {
       <Stack align="end" spacing="7" margin="0" width="300%" paddingRight="20">
         <Box align="center" px="10" marginRight="30%">
           <Heading size="lg" color="cyan.700">
-            Dokumenter
+            {translations.getString('Documents')}
           </Heading>
         </Box>
         {filteredDocList.map((commonCelexDocuments) => (
@@ -123,13 +125,15 @@ const DocumentList: React.FC = () => {
         <Flex direction="row">
           <Button onClick={() => (window.scrollTo(0, 0))} marginRight="5">
             <Flex justifyContent="space-around">
-              Til toppen &nbsp;
+              {translations.getString('ToTop')}
+              &nbsp;
               <ArrowUpIcon />
             </Flex>
           </Button>
           <Button onClick={updatePaging} marginLeft="5" isDisabled={noMoreDocuments}>
             <Flex justifyContent="space-around">
-              Se flere &nbsp;
+              {translations.getString('SeeMoreDocuments')}
+              &nbsp;
               <AddIcon />
             </Flex>
           </Button>
@@ -140,7 +144,7 @@ const DocumentList: React.FC = () => {
           <InputLeftElement>
             <SearchIcon />
           </InputLeftElement>
-          <Input placeholder='søk i dokumenter' onChange={handleSearch} />
+          <Input placeholder={translations.getString('SearchDocuments')} onChange={handleSearch} />
         </InputGroup>
         <Box>
           {searchResultsText}

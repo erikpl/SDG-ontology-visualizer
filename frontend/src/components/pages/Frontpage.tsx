@@ -19,7 +19,7 @@ const Frontpage: React.FC = () => {
       >
         <Stack spacing="10">
           <Heading size="lg" color="white">
-            {translations.getString('sdgOntology')}
+            {translations.getString('SdgOntology')}
             :
           </Heading>
           <SearchBar limit={5} />
@@ -28,7 +28,7 @@ const Frontpage: React.FC = () => {
         <Image src="SDG.png" alt="SDG" w="250px" />
       </Flex>
       <Heading size="lg" align="center" color="cyan.700">
-        {translations.getString('sdgs')}
+        {translations.getString('Sdgs')}
         :
       </Heading>
       <SustainabilityGoals />

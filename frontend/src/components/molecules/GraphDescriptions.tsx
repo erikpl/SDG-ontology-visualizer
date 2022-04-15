@@ -19,11 +19,11 @@ const GraphDescriptions: React.FC<GraphDescriptionsProps> = ({ float }: GraphDes
       boxShadow="md"
       rounded="lg"
     >
-      <GraphNodeKey description={translations.getString('standardColor')} />
-      <GraphNodeKey description={translations.getString('sdg')} />
-      <GraphNodeKey description={translations.getString('subgoal')} />
-      <GraphNodeKey description={translations.getString('tbl')} />
-      <GraphNodeKey description={translations.getString('developmentArea')} />
+      <GraphNodeKey description={translations.getString('StandardColor')} hex='#63B3ED' />
+      <GraphNodeKey description={translations.getString('Sdg')} hex='#D6BCFA' />
+      <GraphNodeKey description={translations.getString('Target')} hex='#FBD38D' />
+      <GraphNodeKey description={translations.getString('Tbl')} hex='#68D391' />
+      <GraphNodeKey description={translations.getString('DevelopmentArea')} hex='#FC8181' />
     </Stack>
   );
 };

@@ -24,7 +24,7 @@ const ShowDropdown: React.FC<ShowDropdownProps> = ({
           minW="4em"
           rightIcon={<ChevronDownIcon />}
         >
-          {translations.getString('show')}
+          {translations.getString('Show')}
         </MenuButton>
         <MenuList bg="cyan.700">
           <MenuItem
@@ -41,7 +41,7 @@ const ShowDropdown: React.FC<ShowDropdownProps> = ({
               checked
               onChange={onSubgoalFilter}
             >
-              {translations.getString('showSubgoals')}
+              {translations.getString('ShowTargets')}
             </Checkbox>
           </MenuItem>
           <MenuItem
@@ -58,7 +58,7 @@ const ShowDropdown: React.FC<ShowDropdownProps> = ({
               size="md"
               onChange={() => onEdgeLabelsVisible((current) => !current)}
             >
-              {translations.getString('showEdgeLabels')}
+              {translations.getString('ShowEdgeLabels')}
             </Checkbox>
           </MenuItem>
         </MenuList>

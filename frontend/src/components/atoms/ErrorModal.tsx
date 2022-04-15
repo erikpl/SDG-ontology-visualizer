@@ -49,7 +49,7 @@ const ErrorModal: React.FC = () => {
               history.push('/');
             }}
           >
-            {translations.getString('backToHomePage')}
+            {translations.getString('BackToHomePage')}
           </Button>
         </ModalFooter>
       </ModalContent>

@@ -65,7 +65,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
             onChange={onChange}
             variant="outline"
             bg="white"
-            placeholder={translations.getString('search')}
+            placeholder={translations.getString('Search')}
           />
         </InputGroup>
       </PopoverTrigger>

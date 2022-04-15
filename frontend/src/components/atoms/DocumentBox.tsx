@@ -76,13 +76,13 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
           <Stack spacing="5">
             <Text size="md">
               <CheckCircleIcon color="green.400" />
-              &nbsp;{translations.getString('active')}
+              &nbsp;{translations.getString('Active')}
             </Text>
             <Flex justify="space-evenly">
               {commonCelexDocuments[0].map(document => (
                 <Button bg="cyan.700" color="white" _hover={{ opacity: '75%' }}>
                   <a href={document.url} target="_blank" rel="noreferrer">
-                  {translations.getString('openAs')}&nbsp;
+                  {translations.getString('OpenAs')}&nbsp;
                     {document.format}
                   </a>
                 </Button>
@@ -90,7 +90,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
               </Flex>
                 <AccordionItem>
                   <AccordionButton>
-                      {translations.getString('seeRelatedGoals')}
+                      {translations.getString('SeeRelatedGoals')}
                     <AccordionIcon />
                   </AccordionButton>
                    <AccordionPanel>

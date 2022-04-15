@@ -31,7 +31,7 @@ const MunicipalityList: React.FC = () => {
         <Stack>
           <Spinner size="xl" thickness="4px" speed="0.65s" emptyColor="gray.200" color="cyan.700" />
           <Text size="md">
-            {translations.getString('loading')}
+            {translations.getString('Loading')}
             ...
           </Text>
         </Stack>

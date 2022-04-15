@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
+import { useLanguageContext } from '../../contexts/LanguageContextProvider';
 import GraphSimulation from '../../d3/GraphSimulation';
 import useTranslation from '../../hooks/translations';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
@@ -33,6 +34,7 @@ const Graph: React.FC<GraphProps> = ({
   const [simulation, setSimulation] = useState<GraphSimulation>();
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   const [hasInitialized, setHasInitialized] = useState(false);
+  const { language } = useLanguageContext();
   const translations = useTranslation(); 
 
   const loadData = async (node: GraphNode) => {
@@ -87,6 +89,10 @@ const Graph: React.FC<GraphProps> = ({
   }, [selectedNode, svgRef, simulation]);
 
   useEffect(() => {
+    createNewGraphSimulation();
+  }, [language]);
+
+  useEffect(() => {
     if (simulation) {
       simulation.setNodeFilter(nodeFilter);
       simulation.setEdgeFilter(edgeFilter);
@@ -111,7 +117,7 @@ const Graph: React.FC<GraphProps> = ({
     >
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
       <IconButton
-        aria-label={translations.getString('fullscreen')}
+        aria-label={translations.getString('Fullscreen')}
         color="cyan.700"
         size="lg"
         position="absolute"

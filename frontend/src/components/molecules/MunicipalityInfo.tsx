@@ -31,7 +31,7 @@ const MunicipalityInfoDisplay: React.FC<MunicipalityInfoDisplayProps> = (
       >
         <Stack spacing="10">
           <Heading size="xl" color="white">
-            {translations.getString('unknownMunicipality')}
+            {translations.getString('UnknownMunicipality')}
           </Heading>
         </Stack>
       </Flex>

@@ -27,7 +27,7 @@ const Navbar = () => {
       <Box>
         <h1>
           <Link fontWeight="bold" color="cyan.700" fontSize="1.5em" as={RouteLink} to="/">
-            {translations.getString('home')}
+            {translations.getString('Home')}
           </Link>
         </h1>
       </Box>
@@ -35,7 +35,7 @@ const Navbar = () => {
       <Box>
         <h1>
           <Link fontWeight="bold" color="cyan.700" fontSize="1.5em" as={RouteLink} to="/gdc">
-          {translations.getString('goalDistanceComputation')}
+          {translations.getString('GoalDistanceComputation')}
           </Link>
         </h1>
       </Box>
@@ -43,7 +43,7 @@ const Navbar = () => {
       <Box>
         <h1>
           <Link fontWeight="bold" color="cyan.700" fontSize="1.5em" as={RouteLink} to="/gdc/data">
-          {translations.getString('dataUpload')}
+          {translations.getString('DataUpload')}
           </Link>
         </h1>
       </Box>
@@ -60,7 +60,7 @@ const Navbar = () => {
         }}
         marginRight='5'
       >
-        {translations.getString('about')}
+        {translations.getString('About')}
       </Button>
       <Popover
         closeOnEsc
@@ -73,7 +73,7 @@ const Navbar = () => {
           justify="center"
           color="white"
           _hover={{ backgroundColor: 'cyan.600' }}>
-            <FaGlobeEurope />&nbsp;{translations.getString('changeLanguage')}
+            <FaGlobeEurope />&nbsp;{translations.getString('ChangeLanguage')}
           </Button>
         </PopoverTrigger>
         <PopoverContent marginRight='10'>

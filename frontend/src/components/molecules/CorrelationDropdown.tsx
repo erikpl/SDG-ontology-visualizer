@@ -21,7 +21,7 @@ const CorrelationDropdown: React.FC<Props> = ({ isPositive }: Props) => {
         minW="13.5em"
         rightIcon={<ChevronDownIcon />}
       >
-        {isPositive ? translations.getString('positivePlural').concat(' ') : translations.getString('negativePlural').concat(' ')}
+        {isPositive ? translations.getString('PositivePlural').concat(' ') : translations.getString('NegativePlural').concat(' ')}
         {translations.getString('effects')}
       </MenuButton>
       <MenuList bg="cyan.700">
