@@ -23,6 +23,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getRelatedSubgoalsForDocument, getSustainabilityGoal } from '../../api/ontologies';
 import { mapSustainabilityGoalToNode } from '../../common/node';
+import useTranslation from '../../hooks/translations';
 import { setError } from '../../state/reducers/apiErrorReducer';
 import { selectNode, selectSDG, selectSubgoal } from '../../state/reducers/ontologyReducer';
 import { Document, SubGoal, SustainabilityGoal } from '../../types/ontologyTypes';
@@ -35,6 +36,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
   const [relatedGoals, setRelatedGoals] = useState<Array<Array<SubGoal>>>([]);
   const history = useHistory();
   const dispatch = useDispatch();
+  const translations = useTranslation(); 
 
   const onClickSeeRelatedGoals = async (document: Document) => {
     if (relatedGoals.length === 0){
@@ -74,13 +76,13 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
           <Stack spacing="5">
             <Text size="md">
               <CheckCircleIcon color="green.400" />
-              &nbsp;Aktiv
+              &nbsp;{translations.getString('active')}
             </Text>
             <Flex justify="space-evenly">
               {commonCelexDocuments[0].map(document => (
                 <Button bg="cyan.700" color="white" _hover={{ opacity: '75%' }}>
                   <a href={document.url} target="_blank" rel="noreferrer">
-                    Åpne som&nbsp;
+                  {translations.getString('openAs')}&nbsp;
                     {document.format}
                   </a>
                 </Button>
@@ -88,7 +90,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
               </Flex>
                 <AccordionItem>
                   <AccordionButton>
-                    Se relaterte mål
+                      {translations.getString('seeRelatedGoals')}
                     <AccordionIcon />
                   </AccordionButton>
                    <AccordionPanel>

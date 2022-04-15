@@ -5,7 +5,7 @@ import LanguageContext from './LanguageContext';
 export const useLanguageContext = () => useContext(LanguageContext);
 
 export default function LanguageContextProvider({ children }) {
-  const [language, changeLanguage] = useState('en');
+  const [language, changeLanguage] = useState('no');
   return (
     <LanguageContext.Provider value={{ language, changeLanguage }}>
       {children}

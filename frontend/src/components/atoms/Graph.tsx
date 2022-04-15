@@ -4,6 +4,7 @@ import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
 import GraphSimulation from '../../d3/GraphSimulation';
+import useTranslation from '../../hooks/translations';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
 import { toggleFullscreen } from '../../state/reducers/fullscreenReducer';
@@ -32,6 +33,7 @@ const Graph: React.FC<GraphProps> = ({
   const [simulation, setSimulation] = useState<GraphSimulation>();
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   const [hasInitialized, setHasInitialized] = useState(false);
+  const translations = useTranslation(); 
 
   const loadData = async (node: GraphNode) => {
     if (!simulation) return;
@@ -109,7 +111,7 @@ const Graph: React.FC<GraphProps> = ({
     >
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
       <IconButton
-        aria-label="Fullskjerm"
+        aria-label={translations.getString('fullscreen')}
         color="cyan.700"
         size="lg"
         position="absolute"

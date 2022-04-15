@@ -82,11 +82,11 @@ export const mapIdToEdge = (id: string, correlation: number): Edge | null => {
 export const mapCorrelationToName = (correlation: number) => {
   switch (correlation) {
     case 3:
-      return 'høy';
+      return 'high';
     case 2:
-      return 'moderat';
+      return 'moderate';
     case 1:
-      return 'lav';
+      return 'low';
     default:
       return '';
   }
