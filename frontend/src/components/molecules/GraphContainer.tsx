@@ -9,6 +9,7 @@ import Graph from '../atoms/Graph';
 import GraphToolBar from './GraphToolbar';
 import GraphDescriptions from './GraphDescriptions';
 
+
 // component wrapping the Graph, Graphtoolbar and GraphDescriptions. Also creates nodeFilter and edgeFilter callbacks
 const GraphContainer: React.FC = () => {
   const [showSubgoals, setShowSubgoals] = useState<boolean>(false);

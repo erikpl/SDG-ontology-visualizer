@@ -65,6 +65,7 @@ export default class {
   private readonly edgeSvg: SubSvgSelection;
   private onExpandNode: (node: GraphNode) => void;
   private onSelectNode: (node: GraphNode) => void;
+  private getNodeName: (node: GraphNode) => string;
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
@@ -88,6 +89,7 @@ export default class {
     onSelectNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
     edgeFilter: GraphEdgeFilter,
+    getNodeName: (node: GraphNode) => string,
   ) {
     this.svg = d3.select(svg).on('click', this.hideNodeMenu);
     this.edgeSvg = this.svg.append('g');
@@ -100,6 +102,7 @@ export default class {
     this.unfilteredEdges = [];
     this.onExpandNode = onExpandNode;
     this.onSelectNode = onSelectNode;
+    this.getNodeName = getNodeName;
     this.nodeFilter = nodeFilter;
     this.edgeFilter = edgeFilter;
     this.initZoom();
@@ -400,7 +403,7 @@ export default class {
           .style('opacity', (node) => (node.isLocked ? 0.7 : 0))
           .attr('fill', '#f00');
         g.append('text')
-          .text((node) => node.name)
+          .text((node) => this.getNodeName(node))
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
           .attr('fill', nodeLabelColor)
@@ -524,7 +527,7 @@ export default class {
       .attr('pointer-events', 'none');
   };
 
-  private redrawGraphWithFilter = () => {
+  public redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.edges = this.unfilteredEdges.filter(this.edgeFilter);
     this.removeDisconnectedNodes();

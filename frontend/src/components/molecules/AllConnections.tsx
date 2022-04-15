@@ -44,7 +44,7 @@ const AllConnections: React.FC<AllConnectionsProps> = ({
       />
       <Connections
         connections={developmentAreas}
-        titles={[`${translations.getString('HasDevelopmentAreaTo')}:`, translations.getString('HasNoDevelopmentAreas')]}
+        titles={[`${translations.getString('HasDevelopmentAreasFor')}:`, translations.getString('HasNoDevelopmentAreas')]}
         color="blue"
         predicate={[
           'utviklingsområde',

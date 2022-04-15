@@ -1,3 +1,4 @@
+
 import { D3Edge, LabelTransform } from '../types/d3/simulation';
 import { GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
 import { mapIdToEdge, parseTypeFromId } from './node';
@@ -57,6 +58,7 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
     id: ontology.Predicate.id + ontology.Subject.id + ontology.Object.id,
   },
 });
+
 export const changeColorBasedOnType = (type: string) => {
   let nodeColor = '#63B3ED';
   if (type === 'sdg') nodeColor = '#D6BCFA'; // purple, sdg
@@ -65,6 +67,7 @@ export const changeColorBasedOnType = (type: string) => {
   if (type === 'devArea') nodeColor = '#FC8181'; // red, dev area
   return nodeColor;
 };
+
 export const mapNodeToGraphNodeAtDefaultPosition =
   (x?: number, y?: number) => (node: GraphNode) => {
     if (node.x) return node; // if node is already a GraphNode, just return it

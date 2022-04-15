@@ -21,7 +21,7 @@ export default (classId: string): string => {
       OPTIONAL {?Object rdfs:label ?ObjectLabel}
       OPTIONAL { ?Object sesame:directType ?Type.
                      ?Type rdfs:label ?TypeLabel}
-      FILTER (?Predicate != SDG:goalHasDocument && ?Predicate != SDG:isAboutSDG).
+      FILTER (?Predicate != SDG:goalHasDocument && ?Predicate != SDG:isAboutSDG && ?Predicate != SDG:aboutSDG).
     }
     UNION
     {
@@ -29,7 +29,7 @@ export default (classId: string): string => {
       OPTIONAL {?Subject rdfs:label ?SubjectLabel}
       OPTIONAL { ?Subject sesame:directType ?Type.
                       ?Type rdfs:label ?TypeLabel}
-      FILTER (?Predicate != SDG:goalHasDocument && ?Predicate != SDG:isAboutSDG).
+      FILTER (?Predicate != SDG:goalHasDocument && ?Predicate != SDG:isAboutSDG && ?Predicate != SDG:aboutSDG).
     }
   }`;
 };

@@ -114,7 +114,7 @@ const DetailView: React.FC = () => {
         break;
     }
 
-    text += translations.getString('to').concat(' ');
+    text += translations.getString('on').concat(' ');
 
     return text;
   };

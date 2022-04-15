@@ -1,5 +1,5 @@
 import { Box, IconButton } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
@@ -43,6 +43,28 @@ const Graph: React.FC<GraphProps> = ({
     simulation.addData(ontologies, node);
   };
 
+  const getNodeName = (node: GraphNode) => {
+    console.log('getting');
+    let name = '';
+    switch (node.type) {
+      case 'sdg':
+        name = translations.getString(node.id.slice(node.id.indexOf('B') + 1).toString());
+        break;
+      case 'target':
+        name = translations.getString('target'.concat(node.id.slice(node.id.indexOf('B') + 1).replace('.', '_')));
+        break;
+      case 'tbl':
+        name = node.name;
+        break;
+      case 'devArea':
+        name = node.name;
+        break;
+      default:
+        break;
+    }
+    return name;
+  };
+
   // callback triggered when expand button is clicked in node menu
   const onExpandNode = (node: GraphNode): void => {
     loadData(node);
@@ -65,6 +87,7 @@ const Graph: React.FC<GraphProps> = ({
         onSelectNode,
         nodeFilter,
         edgeFilter,
+        getNodeName,
       ),
     );
   };
@@ -88,8 +111,8 @@ const Graph: React.FC<GraphProps> = ({
     }
   }, [selectedNode, svgRef, simulation]);
 
-  useEffect(() => {
-    createNewGraphSimulation();
+  useLayoutEffect(() => {
+    setSimulation(undefined);
   }, [language]);
 
   useEffect(() => {
