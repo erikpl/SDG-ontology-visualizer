@@ -21,9 +21,9 @@ const Connections: React.FC<ConnectionsProps> = ({
   const translations = useTranslation(); 
 
   const getConnectionTitle = (connection: Node) => {
-    if (connection.id.includes('B'))
-      return translations.getString(connection.id.slice(connection.id.indexOf('B') + 1).toString());
-    return connection.name;
+    if (connection.id.match(/#B[1-9]/g))
+      return translations.getString(connection.id.slice(connection.id.indexOf('B') + 1));
+    return translations.getString(connection.id.slice(connection.id.indexOf('#') + 1));
   };
 
   return (

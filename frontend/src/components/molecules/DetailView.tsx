@@ -44,9 +44,13 @@ const DetailView: React.FC = () => {
     Promise wrappers for API calls. To use Promise.allSettled (in order to get parallel API calls) in promises with function parameters, the function calls had to be wrapped in an async function. While this clutters the code a bit, the alternative would be to make sequential API calls, effectively quadrupling the time API delay for the DetailView. 
   */
   const setAnnotationsPromise = async (node: Node): Promise<void> => {
+    let labelContent = '';
+    if (node.id.match(/#B[1-9]/g))
+      labelContent = translations.getString(node.id.slice(node.id.indexOf('B') + 1));
+    else labelContent = translations.getString(node.id.slice(node.id.indexOf('#') + 1));
     const annotation: Annotation = {
-      label: translations.getString(node.id.slice(node.id.indexOf('B') + 1).toString()),
-      description: translations.getString('desc'.concat(node.id.slice(node.id.indexOf('B') + 1).toString())),
+      label: labelContent,
+      description: node.id.match(/#B[1-9]/g) ? translations.getString('desc'.concat(node.id.slice(node.id.indexOf('B') + 1).toString())) : '',
       moreInformation: '',
     };
     setAnnotations(annotation);
@@ -163,7 +167,7 @@ const DetailView: React.FC = () => {
 
   return (
     <Box id="detailView" bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
-      <Heading as="h2" size="lg" pb="2">
+      <Heading as="h3" size="lg" pb="2">
         {isLoading
           ? translations.getString('Loading')
           : annotations.label.toUpperCase() ||
