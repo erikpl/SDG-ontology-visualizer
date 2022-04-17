@@ -311,7 +311,7 @@ export default {
     Trygghet_og_beredskap:'',
     Vann_og_søppel:'',
     Økonomisk:'',
-    //TBL:
+    // TBL:
     Miljø:'',
     Sosialt:'',
     Økonomi:'',

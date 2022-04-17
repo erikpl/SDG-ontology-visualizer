@@ -323,7 +323,7 @@ export default {
     Grønn_mobilitet:'Green mobility',
     Indentitet_og_kultur:'Identity and culture',
     Inkluderende_samfunn:'Including society',
-    Lokaldemokratiet: 'Local democracy',
+    Lokaldemokratiet:'Local democracy',
     Nærmiljø_og_stedsutvikling:'Local environment and development',
     Oppvekst_og_læring:'Childhood and learning',
     P1:'P1',
