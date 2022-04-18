@@ -32,22 +32,22 @@ const Documents: React.FC = () => {
           onClick={() => history.push('/ontology')}
         >
           <Image
-            src={selectedSDG?.icon}
+            src={translations.getString('icon_'.concat((selectedSDG!.instancesOf.slice(selectedSDG!.instancesOf.indexOf('B') + 1))))} 
             borderRadius="lg"
             overflow="hidden"
-            alt={selectedSDG?.label}
-            boxSize="100"
+            alt={translations.getString(selectedSDG!.instancesOf.slice(selectedSDG!.instancesOf.indexOf('B') + 1))}
+            boxSize="200"
             marginRight="5"
             object-fit="cover"
-          />
+          /> 
         </MotionBox>
-        <Stack spacing="4" width="90%">
+        <Stack spacing="4" width="90%" marginLeft='20px'>
           <Heading size="lg" color="white">
-            {translations.getString('Target')}
+            {translations.getString('Target').concat(' ')}
             {selectedSubgoal?.SubjectLabel}
           </Heading>
-          <Text fontSize="md" color="white">
-            {selectedSubgoal?.description}
+          <Text fontSize="md" color="white"> 
+            {translations.getString('desc'.concat(selectedSDG!.instancesOf.slice(selectedSDG!.instancesOf.indexOf('B') + 1).toString()))} 
           </Text>
         </Stack>
       </Flex>

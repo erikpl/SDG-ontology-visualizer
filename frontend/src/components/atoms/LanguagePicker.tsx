@@ -27,7 +27,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   const dispatch = useDispatch();
   const [selectedLanguageSearchItems, setSelectedLanguageSearchItems] = useState<Item[]>([]);
   const [languageSearchItems, setLanguageSearchItems] = useState<Item[]>([]);
-  const { changeLanguage } = useLanguageContext();
+  const { language, changeLanguage } = useLanguageContext();
   const translations = useTranslation(); 
 
   
@@ -96,6 +96,11 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   useEffect(() => {
     setLanguageSearchItems(convertToItems(languages.filter(language => !languagePriorities.includes(language))));
   }, []);
+
+  useEffect(() => {
+    setLanguageSearchItems(convertToItems(languages.filter(language => !languagePriorities.includes(language))));
+  }, [language]);
+
 
   const Flag = (l: LanguageItem) => {
     const CountryFlag = flagComponents[l.ISO_3166_1]
