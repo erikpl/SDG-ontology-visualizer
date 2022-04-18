@@ -4,6 +4,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
+import { addDirectionArrowToEdgeLabelText } from '../../common/d3';
 import { useLanguageContext } from '../../contexts/LanguageContextProvider';
 import GraphSimulation from '../../d3/GraphSimulation';
 import useTranslation from '../../hooks/translations';
@@ -13,7 +14,7 @@ import { toggleFullscreen } from '../../state/reducers/fullscreenReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { GraphEdgeFilter, GraphNodeFilter } from '../../types/d3/simulation';
-import { GraphNode } from '../../types/ontologyTypes';
+import { Edge, GraphNode } from '../../types/ontologyTypes';
 
 type GraphProps = {
   nodeFilter: GraphNodeFilter;
@@ -44,8 +45,9 @@ const Graph: React.FC<GraphProps> = ({
     simulation.addData(ontologies, node);
   };
 
-  const getNodeName = (node: GraphNode) => {
+  const getNodeLabel = (node: GraphNode) => {
     let name = '';
+    console.log('correct edge labels');
     switch (node.type) {
       case 'sdg':
         name = translations.getString(node.id.slice(node.id.indexOf('B') + 1).toString());
@@ -54,10 +56,10 @@ const Graph: React.FC<GraphProps> = ({
         name = translations.getString('target'.concat(node.id.slice(node.id.indexOf('B') + 1).replace('.', '_')));
         break;
       case 'tbl':
-        name = node.name;
+        name = translations.getString(node.id.slice(node.id.indexOf('#') + 1));
         break;
       case 'devArea':
-        name = node.name;
+        name = translations.getString(node.id.slice(node.id.indexOf('#') + 1));
         break;
       default:
         break;
@@ -65,6 +67,48 @@ const Graph: React.FC<GraphProps> = ({
     return name;
   };
 
+  const getEdgeLabel = (edge: Edge[], flipDirection: boolean) => {
+    let label = '';
+    console.log(edge);
+    if (edge.length > 0) {
+      if (edge.length > 1) 
+        label = addDirectionArrowToEdgeLabelText(`${edge.length} Predicates`, flipDirection);
+      else {
+        const { name } = edge[0];
+        label = name.includes('har') ? translations.getString('has') : translations.getString('isA').split(' ')[0];
+
+        if (name.includes('UtviklingsOmråde')) {
+          label = label.concat(translations.getString('DevelopmentAreaCamel'));
+          label = name.includes('For') ? translations.getString('For') : label; 
+
+        } else if (name.includes('Bidrag')) {
+          label = label.concat(translations.getString('Contribution')).concat(translations.getString('To'));
+
+        } else {
+
+          if (name.includes('Lav')) {
+            label = label.concat(translations.getString('Low'));
+          } else if (name.includes('Moderat')) {
+            label = label.concat(translations.getString('Moderate'));
+          } else {
+            label = label.concat(translations.getString('High'));
+          }
+
+          if (name.includes('TradeOff')) {
+            label = label.concat(translations.getString('TradeOff')).concat(translations.getString('To'));
+
+          } else if (name.includes('Korrelasjon')) {
+            label = label.concat(translations.getString('Correlation'));
+          }
+        }
+      }
+    }
+
+    label = addDirectionArrowToEdgeLabelText(label, flipDirection);
+    
+    return label;
+  };
+  
   // callback triggered when expand button is clicked in node menu
   const onExpandNode = (node: GraphNode): void => {
     loadData(node);
@@ -87,7 +131,8 @@ const Graph: React.FC<GraphProps> = ({
         onSelectNode,
         nodeFilter,
         edgeFilter,
-        getNodeName,
+        getNodeLabel,
+        getEdgeLabel,
       ),
     );
   };
@@ -160,3 +205,5 @@ const Graph: React.FC<GraphProps> = ({
 };
 
 export default Graph;
+
+

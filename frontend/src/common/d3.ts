@@ -59,8 +59,9 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
   },
 });
 
-export const changeColorBasedOnType = (type: string) => {
+export const changeColorBasedOnType = (type: string, isStartingNode: boolean) => {
   let nodeColor = '#63B3ED';
+  if (isStartingNode) return nodeColor;
   if (type === 'sdg') nodeColor = '#D6BCFA'; // purple, sdg
   if (type === 'tbl') nodeColor = '#68D391'; // green, tbl
   if (type === 'target') nodeColor = '#FBD38D'; // yellow
@@ -118,7 +119,7 @@ export const getRotationAndPosition = (edge: any): LabelTransform => {
   return { x, y, degree, flip };
 };
 
-const addDirectionArrowToEdgeLabelText = (text: string, direction: boolean): string => {
+export const addDirectionArrowToEdgeLabelText = (text: string, direction: boolean): string => {
   if (direction) return `<-- ${text}`;
   return `${text} -->`;
 };
