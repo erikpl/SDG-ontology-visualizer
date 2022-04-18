@@ -331,5 +331,23 @@ export default {
     Samarbeid_og_verdiskapning:'Samarbeid og verdiskapning',
     Samskapt_velferd:'Samskapt velferd',
     Økonomi1:'Økonomi',
+    // Icons:
+    icon_1:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/2/0/7/1/831702-60-nor-NO/M%C3%A5l%201%20RGB.png',
+    icon_2:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/9/1/7/1/831719-77-nor-NO/m%C3%A5l%202-%20bokm%C3%A5l.png',
+    icon_3:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/6/3/7/1/831736-44-nor-NO/M%C3%A5l%203%20RGB@4x.png',
+    icon_4:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/3/5/7/1/831753-34-nor-NO/M%C3%A5l%204%20RGB.png',
+    icon_5:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/0/7/7/1/831770-32-nor-NO/M%C3%A5l%205%20RGB.png',
+    icon_6:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/7/8/7/1/831787-30-nor-NO/M%C3%A5l%206%20RGB.png',
+    icon_7:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/4/0/8/1/831804-32-nor-NO/M%C3%A5l%207%20RGB@4x.png',
+    icon_8:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/1/2/8/1/831821-23-nor-NO/M%C3%A5l%208%20RGB.png',
+    icon_9:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/8/3/8/1/831838-32-nor-NO/M%C3%A5l%209%20RGB@4x.png',
+    icon_10:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/5/5/8/1/831855-30-nor-NO/M%C3%A5l%2010%20RGB.png',
+    icon_11:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/2/7/8/1/831872-28-nor-NO/M%C3%A5l%2011%20RGB@4x.png',
+    icon_12:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/9/8/8/1/831889-22-nor-NO/M%C3%A5l%2012%20RGB.png',
+    icon_13:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/6/0/9/1/831906-31-nor-NO/Alle%20ikoner%20RGB_Norsk_V04_Side_18.png',
+    icon_14:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/3/2/9/1/831923-30-nor-NO/Alle%20ikoner%20RGB_Nynorsk_V04_Side_19.png',
+    icon_15:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/0/4/9/1/831940-22-nor-NO/Alle%20ikoner%20RGB_Nynorsk_V04_Side_20.png',
+    icon_16:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/7/5/9/1/831957-27-nor-NO/M%C3%A5l%2016%20RGB@2x.png',
+    icon_17:'https://www.fn.no/var/globalis/storage/images/_aliases/medium/4/7/9/1/831974-29-nor-NO/M%C3%A5l%2017%20RGB.png',
 
 };

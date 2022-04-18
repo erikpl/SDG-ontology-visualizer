@@ -330,4 +330,23 @@ export default {
     Samarbeid_og_verdiskapning:'Co-operation and economic growth',
     Samskapt_velferd:'Co-created welfare',
     Økonomi1:'Economy',
+    // Icons:
+    icon_1: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf21440450108c3003abd2/previews/5daf21450450108c3003abec/download/E-WEB-Goal-01.png',
+    icon_2: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf2145d48760808cf5818a/previews/5daf2146d48760808cf5819f/download/E-WEB-Goal-02.png',
+    icon_3: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf2147c13e30877c4d3a44/previews/5daf2148c13e30877c4d3a61/download/E-WEB-Goal-03.png',
+    icon_4: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf214808fe423a947dfa67/previews/5daf214908fe423a947dfa6e/download/E-WEB-Goal-04.png',
+    icon_5: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf2149be96367d39c87966/previews/5daf214abe96367d39c87989/download/E-WEB-Goal-05.png',
+    icon_6: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf214a4f65ab6e72d88bf3/previews/5daf214b4f65ab6e72d88d00/download/E-WEB-Goal-06.png',
+    icon_7: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf214c7765bb3bec0c14ee/previews/5daf214c7765bb3bec0c14f6/download/E-WEB-Goal-07.png',
+    icon_8: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf214d81db226fb7d58dd7/previews/5daf214e81db226fb7d58e35/download/E-WEB-Goal-08.png',
+    icon_9: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf214ebd664d1c926d3f11/previews/5daf214fbd664d1c926d3f29/download/E-WEB-Goal-09.png',
+    icon_10: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf214f45014b1f15b2eeff/previews/5daf215045014b1f15b2ef1a/download/E-WEB-Goal-10.png',
+    icon_11: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf2150b7df28199b3fb08e/previews/5daf2151b7df28199b3fb09e/download/E-WEB-Goal-11.png',
+    icon_12: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf2151269e9881834f9a3e/previews/5daf2152269e9881834f9a4b/download/E-WEB-Goal-12.png',
+    icon_13: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf2152367f552ff02ababf/previews/5daf2153367f552ff02abad1/download/E-WEB-Goal-13.png',
+    icon_14: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf2153647b8b0afacd7048/previews/5daf2154647b8b0afacd705f/download/E-WEB-Goal-14.png',
+    icon_15: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf215416d44e4fa64dfe30/previews/5daf215516d44e4fa64dfe9d/download/E-WEB-Goal-15.png',
+    icon_16: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf21440450108c3003abd2/previews/5daf21450450108c3003abec/download/E-WEB-Goal-16.png',
+    icon_17: 'https://trello.com/1/cards/5aeb5fa28d9555986903a122/attachments/5daf21576cf20a5e74f12798/previews/5daf21586cf20a5e74f127b5/download/E-WEB-Goal-17.png',
+
 };

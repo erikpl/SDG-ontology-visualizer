@@ -332,5 +332,23 @@ export default {
     Samarbeid_og_verdiskapning:'Cooperação e criação de valor',
     Samskapt_velferd:'Bem-estar co-criado',
     Økonomi1:'Economia',
+    // Icons:
+    icon_1:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fce3bff89e5f9b138cf5/previews/5e70fce4bff89e5f9b138d0b/download/PT_Braz_Icon_01.png',
+    icon_2:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fce4f4ffbb4284c83275/previews/5e70fce5f4ffbb4284c83281/download/PT_Braz_Icon-02.png',
+    icon_3:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fce573313514ff08be4e/previews/5e70fce673313514ff08be87/download/PT_Braz_Icon-03.png',
+    icon_4:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fce6d7aec2894e7fd5c6/previews/5e70fce7d7aec2894e7fd5e9/download/PT_Braz_Icon-04.png',
+    icon_5:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fce7e1a7ad26482a069c/previews/5e70fce8e1a7ad26482a06b9/download/PT_Braz_Icon-05.png',
+    icon_6:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fce87838754529dc4ee5/previews/5e70fce97838754529dc4ef9/download/PT_Braz_Icon-06.png',
+    icon_7:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcead02aad09c8a3394b/previews/5e70fcead02aad09c8a33ddc/download/PT_Braz_Icon-07.png',
+    icon_8:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fceb8213690b4c860469/previews/5e70fcec8213690b4c860483/download/PT_Braz_Icon-08.png',
+    icon_9:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcec4f64d3427460bd05/previews/5e70fced4f64d3427460bd0f/download/PT_Braz_Icon-09.png',
+    icon_10:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fced80140f6c5a71ced8/previews/5e70fcee80140f6c5a71cef1/download/PT_Braz_Icon-10.png',
+    icon_11:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fceefacc755bc5af32a5/previews/5e70fceffacc755bc5af32b0/download/PT_Braz_Icon-11.png',
+    icon_12:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcefeb164108d5c83b9f/previews/5e70fcf0eb164108d5c83bc1/download/PT_Braz_Icon-12.png',
+    icon_13:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcf0612809790a7d4e43/previews/5e70fcf1612809790a7d4e64/download/PT_Braz_Icon-13.png',
+    icon_14:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcf25168df452a7af580/previews/5e70fcf35168df452a7af5a5/download/PT_Braz_Icon-14.png',
+    icon_15:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcf33e517b103e10ef37/previews/5e70fcf43e517b103e10ef53/download/PT_Braz_Icon-15.png',
+    icon_16:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcf504dd031af4698b92/previews/5e70fcf504dd031af4698b9d/download/PT_Braz_Icon-16.png',
+    icon_17:'https://trello.com/1/cards/5e70fccace320f0e6222c257/attachments/5e70fcf6e4f51e1f7c292418/previews/5e70fcf6e4f51e1f7c292451/download/PT_Braz_Icon-17.png',
 
 };
