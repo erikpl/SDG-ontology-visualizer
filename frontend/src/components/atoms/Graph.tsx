@@ -1,4 +1,5 @@
 import { Box, IconButton } from '@chakra-ui/react';
+import { select } from 'd3';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,7 +45,6 @@ const Graph: React.FC<GraphProps> = ({
   };
 
   const getNodeName = (node: GraphNode) => {
-    console.log('getting');
     let name = '';
     switch (node.type) {
       case 'sdg':
@@ -112,6 +112,10 @@ const Graph: React.FC<GraphProps> = ({
   }, [selectedNode, svgRef, simulation]);
 
   useLayoutEffect(() => {
+    const svg = select(svgRef.current);
+    svg.selectAll('*').remove();
+    setHasInitialized(false);
+
     createNewGraphSimulation();
   }, [language]);
 
