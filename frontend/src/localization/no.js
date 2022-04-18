@@ -1,3 +1,4 @@
+// https://www.fn.no/om-fn/fns-baerekraftsmaal
 export default {
     bg: 'bulgarsk',
     hr: 'kroatisk',
@@ -319,7 +320,7 @@ export default {
     Arealer_og_ressursforvaltning:'Arealer og ressursforvaltning',
     Det_grønne_skiftet:'Det grønne skiftet',
     Digitalisering2:'Digitalisering',
-    Fobruk:'Forbruk',
+    Forbruk:'Forbruk',
     Grønn_mobilitet:'Grønn mobilitet',
     Indentitet_og_kultur:'Identitet og kultur',
     Inkluderende_samfunn:'Inkluderende samfunn',

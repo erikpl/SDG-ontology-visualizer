@@ -319,7 +319,7 @@ export default {
     Arealer_og_ressursforvaltning:'Areas and resource management',
     Det_grønne_skiftet:'The green shift',
     Digitalisering2:'Digitalization',
-    Fobruk:'Consumption',
+    Forbruk:'Consumption',
     Grønn_mobilitet:'Green mobility',
     Indentitet_og_kultur:'Identity and culture',
     Inkluderende_samfunn:'Including society',
