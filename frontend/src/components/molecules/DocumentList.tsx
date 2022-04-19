@@ -44,9 +44,9 @@ const DocumentList: React.FC = () => {
       
       setDocList(oldDocs.concat(data));
       setFilteredDocList(oldDocs.concat(data));
-
+      
       setNoMoreDocuments(numberOfDocuments <= docList.length);
-
+      
     } else {
       resetDocumentLists();
       const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, formatLanguages(), pageNum);

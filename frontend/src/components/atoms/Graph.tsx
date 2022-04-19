@@ -68,7 +68,6 @@ const Graph: React.FC<GraphProps> = ({
 
   const getEdgeLabel = (edge: Edge[], flipDirection: boolean) => {
     let label = '';
-    console.log(edge);
     if (edge.length > 0) {
       if (edge.length > 1) 
         label = addDirectionArrowToEdgeLabelText(`${edge.length} Predicates`, flipDirection);

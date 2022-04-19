@@ -33,6 +33,7 @@ export const documentDataTo3DResponse = (data: Document[], langCodes: string[]) 
   
         // Build up the new array of arrays (of arrays)
         langGroupedArray.push(celexGroup)
+        langGroupedArray.sort((lg1, lg2) => (langCodes.indexOf(lg1[0][0].language) - langCodes.indexOf(lg2[0][0].language)));
     }
     return langGroupedArray;
 };

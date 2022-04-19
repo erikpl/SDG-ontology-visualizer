@@ -64,7 +64,6 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
   };
 
   const Flag = (document: Document) => {
-    console.log(document);
     const CountryFlag = flagComponentsAlt[document.language]
     return <CountryFlag />
   };
@@ -77,7 +76,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
             <Badge width='40px' padding='5px' backgroundColor='cyan.100' marginRight='30px' >
               <Flag {...commonCelexDocuments[0][0]} />
             </Badge>  
-            <Heading as="h3" size="sm" width='90%' textAlign='justify' fontWeight='medium'>
+            <Heading as="h3" size="sm" width='90%' textAlign='justify' fontWeight='medium' marginRight='30px'>
               {formatTitle(commonCelexDocuments[0][0].title)}
             </Heading>
           </HStack>
