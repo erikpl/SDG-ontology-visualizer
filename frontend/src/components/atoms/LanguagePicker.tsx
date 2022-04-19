@@ -9,7 +9,7 @@ import { ISO6391Code, ISO6392TCode, LanguageItem } from '../../types/ontologyTyp
 import useTranslation from '../../hooks/translations';
 
 import { CUIAutoComplete, Item } from 'chakra-ui-autocomplete';
-import flagComponents from '../../utils/localizationUtils';
+import flagComponents from '../../utils/flagUtils';
 import { useLanguageContext } from '../../contexts/LanguageContextProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state/store';

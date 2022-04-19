@@ -15,6 +15,8 @@ import {
   Link,
   Stack,
   Tag,
+  TagLabel,
+  TagLeftIcon,
   Text,
   VStack,
 } from '@chakra-ui/react';
@@ -22,11 +24,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getRelatedSubgoalsForDocument, getSustainabilityGoal } from '../../api/ontologies';
-import { mapSustainabilityGoalToNode } from '../../common/node';
 import useTranslation from '../../hooks/translations';
-import { setError } from '../../state/reducers/apiErrorReducer';
-import { selectNode, selectSDG, selectSubgoal } from '../../state/reducers/ontologyReducer';
-import { Document, SubGoal, SustainabilityGoal } from '../../types/ontologyTypes';
+import { selectSDG, selectSubgoal } from '../../state/reducers/ontologyReducer';
+import { Document, SubGoal } from '../../types/ontologyTypes';
+import flagComponentsAlt from '../../utils/flagUtilsAlt';
 
 type DocumentBoxProps = {
   commonCelexDocuments: Document[][];
@@ -62,14 +63,25 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({ commonCelexDocuments }: Docum
     dispatch(selectSubgoal(subgoal));
   };
 
+  const Flag = (document: Document) => {
+    console.log(document);
+    const CountryFlag = flagComponentsAlt[document.language]
+    return <CountryFlag />
+  };
+
   return (
     <Accordion allowMultiple allowToggle width="80%" onChange={() => onClickSeeRelatedGoals(commonCelexDocuments[0][0])}>
       <AccordionItem boxShadow="lg" borderWidth="2px" borderRadius="md" borderColor="cyan.700">
         <AccordionButton borderRadius="md" _hover={{ opacity: '75%' }}>
-          <Heading as="h3" size="sm">
-            {formatTitle(commonCelexDocuments[0][0].title)}
-          </Heading>
-          <Badge>{commonCelexDocuments[0][0].language}</Badge>
+          <HStack> 
+            <Badge width='40px' padding='5px' backgroundColor='cyan.100' marginRight='30px' >
+              <Flag {...commonCelexDocuments[0][0]} />
+            </Badge>  
+            <Heading as="h3" size="sm" width='90%' textAlign='justify' fontWeight='medium'>
+              {formatTitle(commonCelexDocuments[0][0].title)}
+            </Heading>
+          </HStack>
+        
           <AccordionIcon />
         </AccordionButton>
         <AccordionPanel>

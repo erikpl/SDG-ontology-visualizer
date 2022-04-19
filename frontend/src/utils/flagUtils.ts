@@ -5,6 +5,7 @@ const flagComponents: Record<string, Flags.FlagComponent> = {
     'GB': Flags.GB,
     'BG': Flags.BG,
     'CZ': Flags.CZ,
+    'GA': Flags.GA,
     'DK': Flags.DK,
     'DE': Flags.DE,
     'GR': Flags.GR,

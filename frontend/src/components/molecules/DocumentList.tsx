@@ -79,7 +79,7 @@ const DocumentList: React.FC = () => {
     }
     setFilteredDocList([]);
     setFilteredDocList(filteredDocs);
-    setSearchResultsText(`${translations.getString('YourSearchGave')} ${filteredDocList.length} ${translations.getString('results')}.`);
+    setSearchResultsText(`${translations.getString('YourSearchReturned')} ${filteredDocs.length} ${translations.getString('results')}.`);
   };
 
   const updatePaging = () => {
@@ -154,7 +154,7 @@ const DocumentList: React.FC = () => {
           </Button>
         </Flex>
       </Stack>
-      <Stack marginRight="10" width="70%" direction="column">
+      <Stack marginRight="10" width="50%" direction="column">
         <InputGroup>
           <InputLeftElement>
             <SearchIcon />
