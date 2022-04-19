@@ -24,6 +24,7 @@ export default {
     sl:'',
     es:'',
     sv:'',
+    NoDocuments:'',
     About:'',
     Home:'',
     Close:'',

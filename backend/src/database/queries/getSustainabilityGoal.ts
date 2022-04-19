@@ -6,12 +6,12 @@ export default (goalID: string): string => {
 
   return `
       ${prefixString}
-      SELECT ?instanceOf ?label ?icon
+      SELECT ?instancesOf ?label ?icon
       WHERE { 
-        ?instanceOf rdf:type SDG:SDG.
-        ?instanceOf  rdfs:label  ?label.
-        ?instanceOf  schema:icon  ?icon.
-        FILTER( regex(STR(?instanceOf), "B${goalID}$" )).
+        ?instancesOf rdf:type SDG:SDG.
+        ?instancesOf  rdfs:label  ?label.
+        ?instancesOf  schema:icon  ?icon.
+        FILTER( regex(STR(?instancesOf), "B${goalID}$" )).
       }
    `;
 };

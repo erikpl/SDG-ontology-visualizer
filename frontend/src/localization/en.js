@@ -24,6 +24,7 @@ export default {
     sl: 'slovenian',
     es: 'spanish',
     sv: 'swedish',
+    NoDocuments:'Sorry, there are no documents in any of your selected languages',
     About:'About',
     Home:'Home',
     Close:'Close',

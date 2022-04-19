@@ -26,6 +26,7 @@ export default {
     sl: 'slowenisch',
     es: 'spanisch',
     sv: 'schwedisch',
+    NoDocuments:'Es tut uns leid, es gibt keine Dokumente in einer der von Ihnen ausgewählten Sprachen',
     About:'Über diese Webseite',
     Home:'Startseite',
     Close:'Schließen',

@@ -25,6 +25,7 @@ export default {
     sl: 'sloveens',
     es: 'spaans',
     sv: 'zweeds',
+    NoDocuments:'Sorry, er zijn geen documenten in een van de door u geselecteerde talen',
     About:'Over deze site',
     Home:'Home',
     Close:'Dicht',

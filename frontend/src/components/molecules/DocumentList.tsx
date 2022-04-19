@@ -1,5 +1,6 @@
 import { AddIcon, ArrowUpIcon, SearchIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, Input, InputGroup, InputLeftElement, Spinner, Stack } from '@chakra-ui/react';
+import { FaRegSadTear } from 'react-icons/fa';
+import { Box, Button, Flex, Heading, Icon, Input, InputGroup, InputLeftElement, Spinner, Stack, VStack } from '@chakra-ui/react';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getDocumentsForSubgoal } from '../../api/ontologies';
@@ -16,6 +17,7 @@ const DocumentList: React.FC = () => {
   const [pageNum, setPageNum] = useState<number>(1);
   const [searchResultsText, setSearchResultsText] = useState<string>('');
   const [noMoreDocuments, setNoMoreDocuments] = useState<boolean>(false);
+  const [loadingDocuments, setLoadingDocuments] = useState<boolean>(true);
   const translations = useTranslation(); 
   
   // You have to sometimes reset the lists before setting them because react :)
@@ -31,6 +33,7 @@ const DocumentList: React.FC = () => {
 
   const loadDocuments = async (loadMore: boolean) => {
     if (!selectedSubgoal) return;
+    setLoadingDocuments(true);
     if (loadMore) {
 
       const oldDocs = docList;
@@ -52,6 +55,7 @@ const DocumentList: React.FC = () => {
       // Deep cloning just in case 
       setFilteredDocList(JSON.parse(JSON.stringify(data)));
     }
+    setLoadingDocuments(false);
   };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -100,12 +104,23 @@ const DocumentList: React.FC = () => {
     }
   }, [pageNum]);
 
-  if (!docList || docList.length === 0) {
+  if (docList.length === 0 && !loadingDocuments) {
+    return (
+      <VStack align="center" px="10">
+        <Icon as={FaRegSadTear} w={12} h={12} color="cyan.700" />
+        <Heading size='md' mb="10" color="cyan.700">
+          {translations.getString('NoDocuments')}
+        </Heading>
+      </VStack>
+    );
+  }
+
+  if (loadingDocuments) {
     return (
       <Box align="center" px="10">
         <Heading size="lg" mb="10" color="cyan.700">
-          {translations.getString('Loading')}
-          <Spinner />
+          <Spinner marginRight='5' />
+          {translations.getString('Loading').concat('...')}
         </Heading>
       </Box>
     );

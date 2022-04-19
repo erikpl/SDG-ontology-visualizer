@@ -24,6 +24,7 @@ export default {
     sl: 'slovène',
     es: 'espagnol',
     sv: 'suédois',
+    NoDocuments:'Désolé, il n`y a aucun document dans aucune des langues sélectionnées',
     About:'Pas de pauvreté',
     Home:'Page d`accueil',
     Close:'Proche',
