@@ -47,7 +47,6 @@ const Graph: React.FC<GraphProps> = ({
 
   const getNodeLabel = (node: GraphNode) => {
     let name = '';
-    console.log('correct edge labels');
     switch (node.type) {
       case 'sdg':
         name = translations.getString(node.id.slice(node.id.indexOf('B') + 1).toString());
