@@ -88,8 +88,11 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
 
   const removeLanguage = (language: LanguageItem) => {
     return (event: React.MouseEvent) => {
-      dispatch(setLanguagePriorities(languagePriorities.filter(l => l.id != language.id)));
+      const newLanguagePriorities = languagePriorities.filter(l => l.id != language.id);
+      dispatch(setLanguagePriorities(newLanguagePriorities));
       setLanguageSearchItems(languageSearchItems.concat(convertToItems([language])));
+      console.log(newLanguagePriorities[0].ISO_639_1);
+      changeLanguage(ISO6391Code[newLanguagePriorities[0].ISO_639_1]);
     }
   };
   
