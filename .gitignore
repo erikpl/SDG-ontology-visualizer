@@ -2,3 +2,4 @@ graphdb.license
 *.pyc
 .vscode
 deployment/.env
+cellar_documents.json
