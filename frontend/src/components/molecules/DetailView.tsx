@@ -43,11 +43,18 @@ const DetailView: React.FC = () => {
   /*
     Promise wrappers for API calls. To use Promise.allSettled (in order to get parallel API calls) in promises with function parameters, the function calls had to be wrapped in an async function. While this clutters the code a bit, the alternative would be to make sequential API calls, effectively quadrupling the time API delay for the DetailView. 
   */
-  const setAnnotationsPromise = async (node: Node): Promise<void> => {
+
+  const getNodeName = (node: Node) => {
     let labelContent = '';
     if (node.id.match(/#B[1-9]/g))
       labelContent = translations.getString(node.id.slice(node.id.indexOf('B') + 1));
     else labelContent = translations.getString(node.id.slice(node.id.indexOf('#') + 1));
+
+    return labelContent;
+  };
+  
+  const setAnnotationsPromise = async (node: Node): Promise<void> => {
+    const labelContent = getNodeName(node);
     const annotation: Annotation = {
       label: labelContent,
       description: node.id.match(/#B[1-9]/g) ? translations.getString('desc'.concat(node.id.slice(node.id.indexOf('B') + 1).toString())) : '',
@@ -212,7 +219,7 @@ const DetailView: React.FC = () => {
               <Heading size="lg" color="cyan.200">
                 {getCorrelationTitle()}
               </Heading>
-              {selectedConnection && selectedConnection.name}
+              {selectedConnection && getNodeName(selectedConnection)}
             </Heading>
             <Text fontSize="md" mt="2">
               {getCorrelationText()}
@@ -225,7 +232,7 @@ const DetailView: React.FC = () => {
                 onClick={() => onClickConnections(selectedConnection!)}
               >
                 {`${translations.getString('GoTo')} 
-              ${selectedConnection && selectedConnection.name}`}
+              ${selectedConnection && getNodeName(selectedConnection)}`}
               </Button>
               <Button
                 aria-label={translations.getString('Close')} 
@@ -235,7 +242,7 @@ const DetailView: React.FC = () => {
                 color="cyan.700"
                 rightIcon={<ArrowForwardIcon />}
               >
-                Lukk
+                {translations.getString('Close')} 
               </Button>
             </ButtonGroup>
           </Stack>
