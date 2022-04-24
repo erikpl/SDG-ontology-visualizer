@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { InfoIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Link, Popover, PopoverArrow, PopoverCloseButton, PopoverContent, PopoverTrigger, Spacer } from '@chakra-ui/react';
+import { Box, Button, Flex, Icon, Link, Popover, PopoverArrow, PopoverCloseButton, PopoverContent, PopoverTrigger, Spacer } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link as RouteLink, useHistory } from 'react-router-dom';
@@ -78,7 +78,7 @@ const Navbar = () => {
         </PopoverTrigger>
         <PopoverContent marginRight='10'>
           <PopoverArrow />
-          <PopoverCloseButton />
+          <PopoverCloseButton color='cyan.700'/>
           <LanguagePicker languages={languagesList}/>
         </PopoverContent>
       </Popover>

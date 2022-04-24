@@ -1,11 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable */
-import { DragDropContext, Droppable, Draggable, DropResult, DraggingStyle, NotDraggingStyle, DraggableLocation } from 'react-beautiful-dnd';
-import { Box, Stack, Tag, TagCloseButton, TagLeftIcon, Tooltip } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
-import React, { Component, useEffect, useState } from 'react';
-import Flags from 'country-flag-icons/react/3x2';
-import { ISO6391Code, ISO6392TCode, LanguageItem } from '../../types/ontologyTypes';
+import { DragDropContext, Droppable, Draggable, DropResult, DraggingStyle, NotDraggingStyle } from 'react-beautiful-dnd';
+import { Box, HStack, IconButton, Stack, Tag, TagCloseButton, TagLeftIcon, Tooltip } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { ISO6391Code, LanguageItem } from '../../types/ontologyTypes';
 import useTranslation from '../../hooks/translations';
 
 import { CUIAutoComplete, Item } from 'chakra-ui-autocomplete';
@@ -14,6 +12,7 @@ import { useLanguageContext } from '../../contexts/LanguageContextProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import { setLanguagePriorities } from '../../state/reducers/languageReducer';
+import { QuestionOutlineIcon } from '@chakra-ui/icons';
 
 type LanguagePickerProps = {
   languages: Array<LanguageItem>;
@@ -112,9 +111,13 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
 
   return (
     <Box padding='5'>
-      <Tooltip label='The language for the site and policy documents' placement='top'>
+      <HStack spacing='0px'>
         <Box fontWeight='medium'>{translations.getString('LanguagePriority')}</Box>
-      </Tooltip>
+        <Tooltip label={translations.getString('LanguagePriorityInfo')}>
+          <IconButton boxSize='30px' icon={<QuestionOutlineIcon color='cyan.700' />} padding='0' marginLeft='210px' backgroundColor='transparent' aria-label={'?'} />
+        </Tooltip> 
+     </HStack>
+      
       <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="languageContainer">
             {(provided, snapshot) => (

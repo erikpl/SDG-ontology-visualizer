@@ -25,6 +25,7 @@ export default {
     sl: 'slovensk',
     es: 'spansk',
     sv: 'svensk',
+    LanguagePriorityInfo:'Denne prioriteringen vil bestemme språket på dokumenter og selve nettsiden',
     NoDocuments:'Beklager, det finnes ingen dokumenter på noen av dine valgte språk',
     About: 'Om',
     Home: 'Hjem',
