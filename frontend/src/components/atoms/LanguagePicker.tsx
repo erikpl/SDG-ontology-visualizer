@@ -82,6 +82,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   const removeLanguage = (languageItem: LanguageItem) => {
     return (event: React.MouseEvent) => {
       event.preventDefault();
+      if (languagePriorities.length === 1) return;
       const newLanguagePriorities = languagePriorities.filter(l => l.id !== languageItem.id);
       dispatch(setLanguagePriorities(newLanguagePriorities));
       setLanguageSearchItems(languageSearchItems.concat(convertToItems([languageItem])));
