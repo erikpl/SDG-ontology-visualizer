@@ -47,8 +47,9 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({
   
   const formatTitle = (title: string) => {
     const tokens = title.split(' ');
+    console.log(title);
     if (tokens.length > 50) {
-      return tokens.slice(0, 50).join('...');
+      return tokens.slice(0, 50).join(' ').concat('...');
     }
     return title;
   };
