@@ -25,6 +25,7 @@ export default {
     sl: 'sloveens',
     es: 'spaans',
     sv: 'zweeds',
+    LanguagePriorityInfo:'Hier kunt u de talen prioriteren op basis waarvan u resultaten wilt. Wat u bovenaan plaatst, is de taal waarin de pagina wordt weergegeven. U krijgt beleidsdocumenten in de taal met de hoogste prioriteit die de documenten beschikbaar hebben.',
     NoDocuments:'Sorry, er zijn geen documenten in een van de door u geselecteerde talen',
     About:'Over deze site',
     Home:'Home',

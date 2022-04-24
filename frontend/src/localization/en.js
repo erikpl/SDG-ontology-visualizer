@@ -24,6 +24,7 @@ export default {
     sl: 'slovenian',
     es: 'spanish',
     sv: 'swedish',
+    LanguagePriorityInfo:'Here you can prioritize languages ​according to which ones you want results in. What you put at the top is the language the page is displayed in. You will receive policy documents in the highest priority language that the document is available in.',
     NoDocuments:'Sorry, there are no documents in any of your selected languages',
     About:'About',
     Home:'Home',

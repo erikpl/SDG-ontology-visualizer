@@ -15,7 +15,7 @@ import useTranslation from '../../hooks/translations';
 
 const Navbar = () => {
   const history = useHistory();
-  const [languagesList] = useState<Array<LanguageItem>>(LanguagesList.slice(0,6));
+  const [languagesList] = useState<Array<LanguageItem>>(LanguagesList.slice(0,7));
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   const { language, changeLanguage } = useLanguageContext();
   const translations = useTranslation(); 

@@ -26,6 +26,7 @@ export default {
     sl: 'slowenisch',
     es: 'spanisch',
     sv: 'schwedisch',
+    LanguagePriorityInfo:'Hier können Sie Sprachen priorisieren, in denen Sie Ergebnisse erzielen möchten. Was Sie ganz oben eingeben, ist die Sprache, in der die Seite angezeigt wird. Sie erhalten Richtliniendokumente in der Sprache mit der höchsten Priorität, die für die Dokumente verfügbar ist.',
     NoDocuments:'Es tut uns leid, es gibt keine Dokumente in einer der von Ihnen ausgewählten Sprachen',
     About:'Über diese Webseite',
     Home:'Startseite',

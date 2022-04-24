@@ -25,7 +25,7 @@ export default {
     sl: 'slovensk',
     es: 'spansk',
     sv: 'svensk',
-    LanguagePriorityInfo:'Denne prioriteringen vil bestemme språket på dokumenter og selve nettsiden',
+    LanguagePriorityInfo:'Her kan du prioritere språk etter hvilke du helst ønsker resultater på. Det du setter øverst er språket siden blir vist i. Du vil få policy dokumenter i det høyest prioriterte språket som har dokumentene tilgjengelig.',
     NoDocuments:'Beklager, det finnes ingen dokumenter på noen av dine valgte språk',
     About: 'Om',
     Home: 'Hjem',

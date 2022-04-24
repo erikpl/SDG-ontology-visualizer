@@ -24,6 +24,7 @@ export default {
     sl: 'slovène',
     es: 'espagnol',
     sv: 'suédois',
+    LanguagePriorityInfo:'Ici, vous pouvez hiérarchiser les langues en fonction desquelles vous souhaitez obtenir des résultats. Ce que vous mettez en haut est la langue dans laquelle la page est affichée. Vous obtiendrez des documents de politique dans la langue de priorité la plus élevée disponible pour les documents.',
     NoDocuments:'Désolé, il n`y a aucun document dans aucune des langues sélectionnées',
     About:'Pas de pauvreté',
     Home:'Page d`accueil',

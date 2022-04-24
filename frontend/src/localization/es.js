@@ -24,6 +24,7 @@ export default {
     sl: 'esloveno',
     es: 'español',
     sv: 'sueco',
+    LanguagePriorityInfo:'Aquí puede priorizar los idiomas según los resultados que desee. Lo que pone en la parte superior es el idioma en el que se muestra la página. Recibirá los documentos de la póliza en el idioma de mayor prioridad que tenga los documentos disponibles.',
     NoDocuments:'Lo sentimos, no hay documentos en ninguno de los idiomas seleccionados',
     About:'Sobre el proyecto',
     Home:'Inicio',
