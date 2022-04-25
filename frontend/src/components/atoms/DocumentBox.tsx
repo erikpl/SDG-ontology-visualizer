@@ -67,7 +67,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({
   };
 
   return (
-    <Accordion allowMultiple allowToggle width='80%' onChange={() => onClickSeeRelatedGoals(commonCelexDocuments[0][0])}>
+    <Accordion allowMultiple allowToggle width='80%' onChange={() => onClickSeeRelatedGoals(commonCelexDocuments[0][0])} backgroundColor='white'>
       <AccordionItem boxShadow='lg' borderWidth='2px' borderRadius='md' borderColor='cyan.700'>
         <AccordionButton borderRadius='md' _hover={{ opacity: '75%' }}>
           <HStack> 

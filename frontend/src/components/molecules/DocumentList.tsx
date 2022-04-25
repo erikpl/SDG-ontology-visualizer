@@ -159,7 +159,7 @@ const DocumentList: React.FC = () => {
           <InputLeftElement>
             <SearchIcon />
           </InputLeftElement>
-          <Input placeholder={translations.getString('SearchDocuments')} onChange={handleSearch} />
+          <Input backgroundColor='white' placeholder={translations.getString('SearchDocuments')} onChange={handleSearch} />
         </InputGroup>
         <Box>
           {searchResultsText}
