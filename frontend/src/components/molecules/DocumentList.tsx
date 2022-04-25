@@ -128,7 +128,7 @@ const DocumentList: React.FC = () => {
 
   return (
     <Flex direction="row" align="flex-start">
-      <Stack align="end" spacing="7" margin="0" width="300%" paddingRight="20">
+      <Stack align="end" spacing="7" margin="0" width="250%" paddingRight="20">
         <Box align="center" px="10" marginRight="30%">
           <Heading size="lg" color="cyan.700">
             {translations.getString('Documents')}
