@@ -49,6 +49,7 @@ const DocumentList: React.FC = () => {
       
     } else {
       resetDocumentLists();
+      setNoMoreDocuments(false);
       const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, formatLanguages(), 1);
    
       setDocList(data);
