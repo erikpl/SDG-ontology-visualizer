@@ -28,6 +28,8 @@ export default {
     sv: 'schwedisch',
     LanguagePriorityInfo:'Hier können Sie Sprachen priorisieren, in denen Sie Ergebnisse erzielen möchten. Was Sie ganz oben eingeben, ist die Sprache, in der die Seite angezeigt wird. Sie erhalten Richtliniendokumente in der Sprache mit der höchsten Priorität, die für die Dokumente verfügbar ist.',
     NoDocuments:'Es tut uns leid, es gibt keine Dokumente in einer der von Ihnen ausgewählten Sprachen',
+    AboutProject:'Über das Projekt',
+    AboutText:'Dies ist eine Weiterentwicklung eines Prototyps, der für die Gemeinde Trondheim hergestellt wurde. Die Arbeit erfolgt im Zusammenhang mit dem Fach IT2901 Informatik Projektarbeit II. Die Weiterentwicklung realisiert eine mehrsprachige Benutzeroberfläche sowie eine Dokumentenseite, um Dokumente zu den verschiedenen Teilzielen anzuzeigen. Die Weiterentwicklung erfolgte auf einem bestehenden Prototypen, der im Rahmen einer Masterarbeit in Informatik entwickelt wurde.',
     About:'Über diese Webseite',
     Home:'Startseite',
     Close:'Schließen',

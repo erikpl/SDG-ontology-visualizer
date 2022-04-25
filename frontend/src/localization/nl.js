@@ -27,6 +27,8 @@ export default {
     sv: 'zweeds',
     LanguagePriorityInfo:'Hier kunt u de talen prioriteren op basis waarvan u resultaten wilt. Wat u bovenaan plaatst, is de taal waarin de pagina wordt weergegeven. U krijgt beleidsdocumenten in de taal met de hoogste prioriteit die de documenten beschikbaar hebben.',
     NoDocuments:'Sorry, er zijn geen documenten in een van de door u geselecteerde talen',
+    AboutProject:'Over het project',
+    AboutText:'Dit is een doorontwikkeling van een prototype gemaakt voor de gemeente Trondheim. Het werk wordt gedaan in het kader van het vak IT2901 Informatica Projectwerk II. De verdere ontwikkeling realiseert een meertalige gebruikersinterface, evenals een documentpagina om documenten te zien die verband houden met de verschillende doelen. De doorontwikkeling heeft plaatsgevonden bovenop een bestaand prototype dat is ontwikkeld als onderdeel van een masterscriptie in de informatica.',
     About:'Over deze site',
     Home:'Home',
     Close:'Dicht',

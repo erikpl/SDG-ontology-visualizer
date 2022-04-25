@@ -26,6 +26,8 @@ export default {
     sv: 'sueco',
     LanguagePriorityInfo:'Aquí puede priorizar los idiomas según los resultados que desee. Lo que pone en la parte superior es el idioma en el que se muestra la página. Recibirá los documentos de la póliza en el idioma de mayor prioridad que tenga los documentos disponibles.',
     NoDocuments:'Lo sentimos, no hay documentos en ninguno de los idiomas seleccionados',
+    AboutProject:'Sobre el proyecto',
+    AboutText:'Este es un desarrollo posterior de un prototipo hecho para el municipio de Trondheim. El trabajo se realiza en relación con la asignatura Proyecto de Informática IT2901 trabajo II. El desarrollo posterior realiza una interfaz de usuario multilingüe, así como una página de documentos para ver documentos relacionados con los diversos metas. El desarrollo posterior ha tenido lugar sobre un prototipo existente desarrollado como parte de una tesis de maestría en informática.',
     About:'Sobre el proyecto',
     Home:'Inicio',
     Close:'Cerrar',

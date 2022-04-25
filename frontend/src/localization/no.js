@@ -27,6 +27,8 @@ export default {
     sv: 'svensk',
     LanguagePriorityInfo:'Her kan du prioritere språk etter hvilke du helst ønsker resultater på. Det du setter øverst er språket siden blir vist i. Du vil få policy dokumenter i det høyest prioriterte språket som har dokumentene tilgjengelig.',
     NoDocuments:'Beklager, det finnes ingen dokumenter på noen av dine valgte språk',
+    AboutProject:'Om prosjektet',
+    AboutText:'Dette er en videreutvikling av en prototype laget for Trondheim kommune. Arbeidet er gjort i forbindelse med faget IT2901 Informatikk Prosjektarbeid II. Videreutviklingen realiserer et flerspråklig brukergrensesnitt, samt en dokumentside for å se dokumenter relatert til de ulike delmålene. Videreutviklingen har funnet sted på toppen av en eksisterende prototype utviklet som del av en masteroppgave i informatikk.',
     About: 'Om',
     Home: 'Hjem',
     Close: 'Lukk',

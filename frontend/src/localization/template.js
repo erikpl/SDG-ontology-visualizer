@@ -26,6 +26,8 @@ export default {
     sv:'',
     LanguagePriorityInfo:'',
     NoDocuments:'',
+    AboutProject:'',
+    AboutText:'',
     About:'',
     Home:'',
     Close:'',
