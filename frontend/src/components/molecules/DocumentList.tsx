@@ -49,7 +49,7 @@ const DocumentList: React.FC = () => {
       
     } else {
       resetDocumentLists();
-      const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, formatLanguages(), pageNum);
+      const data = await getDocumentsForSubgoal(selectedSubgoal.SubjectLabel, formatLanguages(), 1);
    
       setDocList(data);
       // Deep cloning just in case 
