@@ -146,7 +146,7 @@ exports[`renders when there are no items 1`] = `
         </div>
         <button
           aria-label="Close"
-          className="css-y3dsx3"
+          className="css-1a4qnv6"
           onClick={[Function]}
           type="button"
         >
@@ -166,14 +166,53 @@ exports[`renders when there are no items 1`] = `
           className="css-r4358i"
         >
           <div
-            className="css-1bsgmhw"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseDown={[Function]}
-            onMouseEnter={[Function]}
+            className="chakra-stack css-1w6dz2p"
           >
-            Språk prioritering
+            <div
+              className="css-1bsgmhw"
+            >
+              Språk prioritering
+            </div>
+            <button
+              aria-label="?"
+              className="chakra-button css-8vwngr"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden={true}
+                className="chakra-icon css-1y50h1y"
+                focusable={false}
+                viewBox="0 0 24 24"
+              >
+                <g
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path
+                    d="M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    fill="none"
+                    r="11.25"
+                    strokeMiterlimit="10"
+                  />
+                </g>
+              </svg>
+            </button>
           </div>
           <div
             data-rbd-droppable-context-id="0"

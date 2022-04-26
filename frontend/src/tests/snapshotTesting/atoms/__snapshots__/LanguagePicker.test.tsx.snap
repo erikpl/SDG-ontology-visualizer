@@ -5,14 +5,53 @@ exports[`renders with a predefined language list 1`] = `
   className="css-1g360fb"
 >
   <div
-    className="css-1xnzs7r"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onMouseDown={[Function]}
-    onMouseEnter={[Function]}
+    className="chakra-stack css-1dn9va6"
   >
-    Språk prioritering
+    <div
+      className="css-1xnzs7r"
+    >
+      Språk prioritering
+    </div>
+    <button
+      aria-label="?"
+      className="chakra-button css-1eyj0er"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        className="chakra-icon css-1bzsbu4"
+        focusable={false}
+        viewBox="0 0 24 24"
+      >
+        <g
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path
+            d="M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path
+            d="M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            fill="none"
+            r="11.25"
+            strokeMiterlimit="10"
+          />
+        </g>
+      </svg>
+    </button>
   </div>
   <div
     data-rbd-droppable-context-id="0"

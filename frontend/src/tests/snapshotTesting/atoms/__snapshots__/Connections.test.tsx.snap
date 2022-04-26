@@ -32,16 +32,12 @@ Array [
         className="chakra-button css-ovkaj3"
         onClick={[Function]}
         type="button"
-      >
-        he11i
-      </button>
+      />
       <button
         className="chakra-button css-12ybw9u"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
     </ul>
   </div>,
 ]
@@ -64,9 +60,7 @@ Array [
         className="chakra-button css-12ybw9u"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
     </ul>
   </div>,
 ]

@@ -7,7 +7,7 @@ exports[`renders when there are no items 1`] = `
   style={Object {}}
 >
   <img
-    alt="hei"
+    alt={null}
     className="chakra-image__placeholder css-1v14er2"
     object-fit="cover"
   />

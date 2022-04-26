@@ -1250,11 +1250,11 @@ exports[`renders when there are no items 1`] = `
     className="css-147u3m9"
     id="detailView"
   >
-    <h2
+    <h3
       className="chakra-heading css-1drbkg9"
     >
       Laster
-    </h2>
+    </h3>
     <div
       className="css-8v55bk"
     >

@@ -50,7 +50,7 @@ exports[`renders when there are one item 1`] = `
   <b
     className="chakra-text css-1ezsviu"
   >
-    Har positiv virkning til:
+    Har en positiv virkning på:
   </b>
   <div
     className="chakra-wrap css-0"
@@ -62,15 +62,13 @@ exports[`renders when there are one item 1`] = `
         className="chakra-button css-12ybw9u"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
     </ul>
   </div>
   <b
     className="chakra-text css-1ezsviu"
   >
-    Har negativ virkning til:
+    Har en negativ virkning på:
   </b>
   <div
     className="chakra-wrap css-0"
@@ -82,15 +80,13 @@ exports[`renders when there are one item 1`] = `
         className="chakra-button css-mmukis"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
     </ul>
   </div>
   <b
     className="chakra-text css-1ezsviu"
   >
-    Har utviklingsområde til:
+    Har utviklingsområder for:
   </b>
   <div
     className="chakra-wrap css-0"
@@ -102,9 +98,7 @@ exports[`renders when there are one item 1`] = `
         className="chakra-button css-17izuiz"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
     </ul>
   </div>
 </div>
@@ -117,7 +111,7 @@ exports[`renders when there are two items 1`] = `
   <b
     className="chakra-text css-1ezsviu"
   >
-    Har positiv virkning til:
+    Har en positiv virkning på:
   </b>
   <div
     className="chakra-wrap css-0"
@@ -129,22 +123,18 @@ exports[`renders when there are two items 1`] = `
         className="chakra-button css-12ybw9u"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
       <button
         className="chakra-button css-aqssaa"
         onClick={[Function]}
         type="button"
-      >
-        heihei
-      </button>
+      />
     </ul>
   </div>
   <b
     className="chakra-text css-1ezsviu"
   >
-    Har negativ virkning til:
+    Har en negativ virkning på:
   </b>
   <div
     className="chakra-wrap css-0"
@@ -156,22 +146,18 @@ exports[`renders when there are two items 1`] = `
         className="chakra-button css-mmukis"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
       <button
         className="chakra-button css-yxu8t1"
         onClick={[Function]}
         type="button"
-      >
-        heihei
-      </button>
+      />
     </ul>
   </div>
   <b
     className="chakra-text css-1ezsviu"
   >
-    Har utviklingsområde til:
+    Har utviklingsområder for:
   </b>
   <div
     className="chakra-wrap css-0"
@@ -183,16 +169,12 @@ exports[`renders when there are two items 1`] = `
         className="chakra-button css-17izuiz"
         onClick={[Function]}
         type="button"
-      >
-        hei
-      </button>
+      />
       <button
         className="chakra-button css-1qjqcqn"
         onClick={[Function]}
         type="button"
-      >
-        heihei
-      </button>
+      />
     </ul>
   </div>
 </div>
