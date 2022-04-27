@@ -1,0 +1,6 @@
+{$DOMAIN:localhost} { 
+    reverse_proxy frontend:{$FRONTEND_PORT:3000}
+    # Send API requests to the backend container
+    reverse_proxy /api/* backend:{$BACKEND_PORT:3001}
+
+}
