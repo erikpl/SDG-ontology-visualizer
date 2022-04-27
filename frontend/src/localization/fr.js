@@ -27,7 +27,7 @@ export default {
     LanguagePriorityInfo:'Ici, vous pouvez hiérarchiser les langues en fonction desquelles vous souhaitez obtenir des résultats. Ce que vous mettez en haut est la langue dans laquelle la page est affichée. Vous obtiendrez des documents de politique dans la langue de priorité la plus élevée disponible pour les documents.',
     NoDocuments:'Désolé, il n`y a aucun document dans aucune des langues sélectionnées',
     AboutProject:'À propos du projet',
-    AboutText:'Il s`agit d`un développement ultérieur d`un prototype réalisé pour la municipalité de Trondheim. Le travail est effectué en relation avec le sujet IT2901 Travaux de projet informatique II. Le développement ultérieur réalise une interface utilisateur multilingue, ainsi qu`une page de document pour visualiser les documents liés aux différents cibles. La poursuite du développement a eu lieu en plus d`un prototype existant développé dans le cadre d`une thèse de maîtrise en informatique.',
+    AboutText:'Il s`agit d`un développement ultérieur d`un prototype réalisé pour la municipalité de Trondheim. Le travail est effectué en relation avec le sujet IT2901 Travaux de projet informatique II. Le développement ultérieur réalise une interface utilisateur multilingue, ainsi qu`une page de document pour visualiser les documents liés aux différents cibles. La poursuite du développement a eu lieu en plus d`un prototype existant développé dans le cadre d`une thèse de licence en informatique et d`un sujet de projet au niveau de la maîtrise.',
     About:'Pas de pauvreté',
     Home:'Page d`accueil',
     Close:'Proche',

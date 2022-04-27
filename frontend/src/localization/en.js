@@ -27,7 +27,7 @@ export default {
     LanguagePriorityInfo:'Here you can prioritize languages ​according to which ones you want results in. What you put at the top is the language the page is displayed in. You will receive policy documents in the highest priority language that the document is available in.',
     NoDocuments:'Sorry, there are no documents in any of your selected languages',
     AboutProject:'About the project',
-    AboutText:'This is a further development of a prototype made for Trondheim municipality. The work is done in connection with the subject IT2901 Informatics Project work II. The further development realizes a multilingual user interface, as well as a document page for viewing documents related to the various targets. The further development has taken place on top of an existing prototype developed as part of a master`s thesis in informatics.',
+    AboutText:'This is a further development of a prototype made for Trondheim municipality. The work is done in connection with the subject IT2901 Informatics Project work II. The further development realizes a multilingual user interface, as well as a document page for viewing documents related to the various targets. The further development has taken place on top of an existing prototype developed as part of a bachelor`s thesis in informatics and a project subject at master`s level.',
     About:'About',
     Home:'Home',
     Close:'Close',

@@ -64,7 +64,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
   };
 
   const convertToItems = (objects: LanguageItem[]) => {
-    const languageItems: Item[] = objects.map(languageItem => ( { value: ISO6391Code[languageItem.ISO_639_1], label: translations.getString(ISO6391Code[languageItem.ISO_639_1]) }));
+    const languageItems: Item[] = objects.map(languageItem => ( { value: ISO6391Code[languageItem.ISO_639_1], label: translations.getString(ISO6391Code[languageItem.ISO_639_1]), ISO_3166_1: languageItem.ISO_3166_1 }));
     return languageItems;
   };
 
@@ -98,10 +98,20 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
     setLanguageSearchItems(convertToItems(languages.filter(languageItem => !languagePriorities.includes(languageItem))));
   }, [language]);
 
-  const Flag = (l: LanguageItem) => {
-    const { ISO_3166_1 } = l;
+  const Flag = (item: Item) => {
+    const { ISO_3166_1 } = item;
     const CountryFlag = flagComponents[ISO_3166_1];
     return <CountryFlag />;
+  };
+
+  const customItemRender = (selected: Item) => {
+    return (
+      <Tag width='max' backgroundColor='transparent' textAlign='center'>
+        <TagLeftIcon><Flag {...selected} /></TagLeftIcon>
+        {selected.label}         
+      </Tag>  
+
+    );
   };
 
   return (
@@ -133,9 +143,9 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
                       <Stack direction='row'>
                         <Box fontWeight='medium'>{index + 1}</Box>
                         <Tag width='250' backgroundColor='cyan.100'>
-                          <TagLeftIcon><Flag {...languageItem} /></TagLeftIcon>
+                          <TagLeftIcon><Flag {...convertToItems([languageItem])[0]} /></TagLeftIcon>
                           {translations.getString(ISO6391Code[languageItem.ISO_639_1])}
-                          <TagCloseButton onClick={removeLanguage(languageItem)} />
+                          <TagCloseButton onClick={removeLanguage(languageItem)} hidden={languagePriorities.length < 2} />
                         </Tag>  
                       </Stack>
                     </div>
@@ -166,6 +176,7 @@ const LanguagePicker: React.FC<LanguagePickerProps> = ({
         placeholder={translations.getString('SearchLanguages')}
         disableCreateItem
         items={languageSearchItems}
+        itemRenderer={customItemRender}
         selectedItems={selectedLanguageSearchItems}
         onSelectedItemsChange={(changes) => handleSelectedItemsChange(changes.selectedItems)}
       />

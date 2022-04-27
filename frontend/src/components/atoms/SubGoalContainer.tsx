@@ -35,7 +35,7 @@ const SubGoalContainer: React.FC<SubGoalContainerProps> = ({
   const getSubgoalDescription = () => translations.getString('target'.concat(subGoalNode.SubjectLabel.replace('.', '_')));
 
   return (
-    <Accordion allowToggle>
+    <Accordion allowToggle backgroundColor='white'>
       <AccordionItem boxShadow="lg" borderRadius="md">
         <AccordionButton
           _expanded={{ borderBottomRadius: '0' }}

@@ -28,7 +28,7 @@ export default {
     LanguagePriorityInfo:'Aqui você pode priorizar os idiomas de acordo com os quais deseja resultados. O que você coloca no topo é o idioma em que a página é exibida. Você obterá documentos de política no idioma de prioridade mais alta que os documentos têm disponível.',
     NoDocuments:'Desculpe, não há documentos em nenhum dos idiomas selecionados',
     AboutProject:'Sobre o projeto',
-    AboutText:'Este é mais um desenvolvimento de um protótipo feito para o município de Trondheim. O trabalho é feito em conexão com o assunto Trabalho de Projeto de Informática IT2901 II. O desenvolvimento posterior realiza uma interface de usuário multilíngue, bem como uma página de documento para ver documentos relacionados aos vários alvos. O desenvolvimento posterior ocorreu em cima de um protótipo existente desenvolvido como parte de uma tese de mestrado em informática.',
+    AboutText:'Este é mais um desenvolvimento de um protótipo feito para o município de Trondheim. O trabalho é feito em conexão com o assunto Trabalho de Projeto de Informática IT2901 II. O desenvolvimento posterior realiza uma interface de usuário multilíngue, bem como uma página de documento para ver documentos relacionados aos vários alvos. O desenvolvimento posterior ocorreu em cima de um protótipo existente desenvolvido como parte de uma tese de bacharelado em informática e uma disciplina de projeto em nível de mestrado.',
     About:'Sobre',
     Home:'Pagina inicial',
     Close:'Fechar',
