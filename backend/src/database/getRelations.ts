@@ -24,6 +24,8 @@ export default async (classId: string): Promise<Array<Ontology>> => {
     throw new ApiError(400, 'Could not parse node from the given class ID');
   }
   const query = getRelations(classId);
+
+  // There is a bug here that doesn't include targets
   return DB.query(query, { transform: 'toJSON' }).then((resp) => {
     const records = resp.records as Array<Record>;
     const ontologies = records
@@ -32,7 +34,6 @@ export default async (classId: string): Promise<Array<Ontology>> => {
       .filter(isRelevantOntology)
       .filter(isNotLoopOntology)
       .filter(filterDuplicatePredicates);
-
     return ontologies;
   });
 };

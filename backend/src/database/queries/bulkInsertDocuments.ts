@@ -42,6 +42,7 @@ export default (documents: Document[], relations: DocumentSDGRelation[]): string
             ${docUri} SDG:docLanguage ${langUri}.
             ${docUri} SDG:docFormat ${formatUri}.
             ${docUri} SDG:docSource <${doc.url}>.
+            ${docUri} SDG:docTitle <${doc.title}>.
             `
         )
             

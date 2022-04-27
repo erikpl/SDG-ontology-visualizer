@@ -14,7 +14,8 @@ exports[`renders when there are no items 1`] = `
       <h2
         className="chakra-heading css-kbn7if"
       >
-        Bærekraftsontologien:
+        Bærekraftsontologien
+        :
       </h2>
       <div
         aria-controls="popover-content-2"
@@ -45,7 +46,7 @@ exports[`renders when there are no items 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder="Søk..."
+          placeholder="Søk"
           value=""
         />
       </div>
@@ -90,7 +91,8 @@ exports[`renders when there are no items 1`] = `
     align="center"
     className="chakra-heading css-ownuki"
   >
-    Bærekraftsmålene:
+    Bærekraftsmålene
+    :
   </h2>
   <div
     className="chakra-stack css-2n1jg2"

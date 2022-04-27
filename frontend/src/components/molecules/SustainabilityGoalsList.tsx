@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { getSustainabilityGoals } from '../../api/ontologies';
 import { mapSustainabilityGoalToNode } from '../../common/node';
 import { setError } from '../../state/reducers/apiErrorReducer';
-import { selectNode } from '../../state/reducers/ontologyReducer';
+import { selectNode, selectSDG } from '../../state/reducers/ontologyReducer';
 import { SustainabilityGoal } from '../../types/ontologyTypes';
 import IconContainer from '../atoms/IconContainer';
 
@@ -30,6 +30,7 @@ const SustainabilityGoalsList: React.FC = () => {
       return;
     }
     dispatch(selectNode(node));
+    dispatch(selectSDG(sdg));
   };
 
   return (

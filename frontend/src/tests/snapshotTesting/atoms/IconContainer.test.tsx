@@ -1,5 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import LanguageContextProvider from '../../../contexts/LanguageContextProvider';
 
 import IconContainer from '../../../components/atoms/IconContainer';
 
@@ -11,7 +12,11 @@ const goal1 = {
 
 it('renders when there are no items', () => {
   const tree = renderer
-    .create(<IconContainer sustainabilityNode={goal1} onClick={() => {}} />)
+    .create(
+      <LanguageContextProvider>
+        <IconContainer sustainabilityNode={goal1} onClick={() => {}} />
+      </LanguageContextProvider>,
+    )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import AllConnections from '../../../components/molecules/AllConnections';
+import LanguageContextProvider from '../../../contexts/LanguageContextProvider';
 
 const node1 = {
   id: 't1',
@@ -27,7 +28,14 @@ const node2 = {
 it('renders when there are no items', () => {
   const tree = renderer
     .create(
-      <AllConnections contributions={[]} tradeOffs={[]} developmentAreas={[]} onClick={() => {}} />,
+      <LanguageContextProvider>
+        <AllConnections
+          contributions={[]}
+          tradeOffs={[]}
+          developmentAreas={[]}
+          onClick={() => {}}
+        />
+      </LanguageContextProvider>,
     )
     .toJSON();
   expect(tree).toMatchSnapshot();
@@ -36,12 +44,14 @@ it('renders when there are no items', () => {
 it('renders when there are one item', () => {
   const tree = renderer
     .create(
-      <AllConnections
-        contributions={[node2]}
-        tradeOffs={[node2]}
-        developmentAreas={[node2]}
-        onClick={() => {}}
-      />,
+      <LanguageContextProvider>
+        <AllConnections
+          contributions={[node2]}
+          tradeOffs={[node2]}
+          developmentAreas={[node2]}
+          onClick={() => {}}
+        />
+      </LanguageContextProvider>,
     )
     .toJSON();
   expect(tree).toMatchSnapshot();
@@ -50,12 +60,14 @@ it('renders when there are one item', () => {
 it('renders when there are two items', () => {
   const tree = renderer
     .create(
-      <AllConnections
-        contributions={[node1, node2]}
-        tradeOffs={[node1, node2]}
-        developmentAreas={[node1, node2]}
-        onClick={() => {}}
-      />,
+      <LanguageContextProvider>
+        <AllConnections
+          contributions={[node1, node2]}
+          tradeOffs={[node1, node2]}
+          developmentAreas={[node1, node2]}
+          onClick={() => {}}
+        />
+      </LanguageContextProvider>,
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

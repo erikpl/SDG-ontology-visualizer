@@ -11,6 +11,8 @@ import {
 import { mapCorrelationToName } from '../../common/node';
 import { isUrl } from '../../common/regex';
 import setBrowserPosition from '../../common/setBrowserPositionToDetailView';
+import { useLanguageContext } from '../../contexts/LanguageContextProvider';
+import useTranslation from '../../hooks/translations';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { Annotation, Node } from '../../types/ontologyTypes';
@@ -35,12 +37,30 @@ const DetailView: React.FC = () => {
   const selectedNode = useSelector((state: RootState) => state.ontology.selectedNode);
   const [isLoading, setIsLoading] = useState(false);
   const [hasInitialized, setHasInitialized] = useState(false);
+  const translations = useTranslation(); 
+  const { language } = useLanguageContext();
 
   /*
     Promise wrappers for API calls. To use Promise.allSettled (in order to get parallel API calls) in promises with function parameters, the function calls had to be wrapped in an async function. While this clutters the code a bit, the alternative would be to make sequential API calls, effectively quadrupling the time API delay for the DetailView. 
   */
+
+  const getNodeName = (node: Node) => {
+    let labelContent = '';
+    if (node.id.match(/#B[1-9]/g))
+      labelContent = translations.getString(node.id.slice(node.id.indexOf('B') + 1));
+    else labelContent = translations.getString(node.id.slice(node.id.indexOf('#') + 1));
+
+    return labelContent;
+  };
+  
   const setAnnotationsPromise = async (node: Node): Promise<void> => {
-    setAnnotations(await getAnnotations(node.id));
+    const labelContent = getNodeName(node);
+    const annotation: Annotation = {
+      label: labelContent,
+      description: node.id.match(/#B[1-9]/g) ? translations.getString('desc'.concat(node.id.slice(node.id.indexOf('B') + 1).toString())) : '',
+      moreInformation: '',
+    };
+    setAnnotations(annotation);
   };
   const setContributionsPromise = async (node: Node): Promise<void> => {
     setContributions(await getContributions(node.id));
@@ -90,6 +110,51 @@ const DetailView: React.FC = () => {
     }
   };
 
+  const getCorrelationTitle = () => {
+    if (selectedConnection == null || selectedPredicate == null) return translations.getString('Loading');
+    let text = translations.getString('has').concat(' ');
+    const correlationStrength = mapCorrelationToName(selectedConnection.correlation);
+    if (correlationStrength !== '')
+      text += translations.getString(correlationStrength).concat(' ');
+    switch (selectedPredicate[0]) {
+      case 'positiv virkning': text += translations.getString('positiveEffect').concat(' ');
+        break;
+      case 'negative virkning': text += translations.getString('negativeEffect').concat(' ');
+        break;
+      default:
+        break;
+    }
+
+    text += translations.getString('on').concat(' ');
+
+    return text;
+  };
+
+  const getCorrelationText = () => {
+    if (objectAnnotations == null) return translations.getString('Loading');
+    let text = translations.getString('TheRelation').concat(' "');
+
+    switch (objectAnnotations.label) {
+      case 'harTradeOffTil': text += translations.getString('hasTradeoffTo');
+        break;
+      case 'harUtviklingsområde': text += translations.getString('hasDevelopmentArea');
+        break;
+      case 'harBidragTil': text += translations.getString('hasContributionTo');
+        break;
+      default:
+        break;
+    }
+
+    text += '" ';
+    text += translations.getString('isA').concat(' ');
+    
+    if (objectAnnotations.description.includes('utviklingsområder')) text += translations.getString('developmentAreaRelation');
+    else if (objectAnnotations.description.includes('positiv påvirkning')) text += translations.getString('binaryPositiveRelation');
+    else if (objectAnnotations.description.includes('negativ påvirkning')) text += translations.getString('binaryNegativeRelation');
+
+    return text;
+  };
+
   useEffect(() => {
     loadData();
     onClickConnections(selectedNode!);
@@ -103,14 +168,18 @@ const DetailView: React.FC = () => {
     setHasInitialized(false);
   }, []);
 
+  useEffect(() => {
+    loadData();
+  }, [language]);
+
   return (
     <Box id="detailView" bg="cyan.700" py={8} px={[4, null, null, 8]} color="white" rounded="lg">
-      <Heading as="h2" size="lg" pb="2">
+      <Heading as="h3" size="lg" pb="2">
         {isLoading
-          ? 'Laster...'
+          ? translations.getString('Loading')
           : annotations.label.toUpperCase() ||
             (selectedNode && selectedNode.name) ||
-            'Mangler navn'}
+            translations.getString('NameMissing')}
       </Heading>
       <Flex visibility={isLoading ? 'hidden' : 'visible'} justify="space-between">
         <SlideInDrawer expanded={!expanded} width="40vw">
@@ -118,11 +187,11 @@ const DetailView: React.FC = () => {
             <Text fontSize="lg" mt="2">
               {annotations.description
                 ? annotations.description
-                : 'Dette konseptet er under utvikling '}
+                : translations.getString('ConceptUnderDevelopment')}
             </Text>
             {annotations.moreInformation && (
               <Text fontSize="base" mt="2">
-                Mer informasjon finnes her:
+                {translations.getString('MoreInfo')}
                 {'  '}
                 {isUrl(annotations.moreInformation) ? (
                   <Link href={annotations.moreInformation} isExternal fontWeight="bold">
@@ -148,19 +217,12 @@ const DetailView: React.FC = () => {
             <Heading as="h2" size="lg">
               {annotations.label}
               <Heading size="lg" color="cyan.200">
-                {selectedPredicate &&
-                  selectedPredicate[0] &&
-                  `har ${
-                    selectedConnection && mapCorrelationToName(selectedConnection.correlation)
-                  } ${selectedPredicate[0]} til`}
+                {getCorrelationTitle()}
               </Heading>
-              {selectedConnection && selectedConnection.name}
+              {selectedConnection && getNodeName(selectedConnection)}
             </Heading>
             <Text fontSize="md" mt="2">
-              {objectAnnotations && objectAnnotations.description
-                ? `Relasjonen "${objectAnnotations && objectAnnotations.label}" er en
-                ${objectAnnotations && objectAnnotations.description} `
-                : 'Laster...'}
+              {getCorrelationText()}
             </Text>
             <ButtonGroup>
               <Button
@@ -169,18 +231,18 @@ const DetailView: React.FC = () => {
                 size="sm"
                 onClick={() => onClickConnections(selectedConnection!)}
               >
-                {`Gå til 
-              ${selectedConnection && selectedConnection.name}`}
+                {`${translations.getString('GoTo')} 
+              ${selectedConnection && getNodeName(selectedConnection)}`}
               </Button>
               <Button
-                aria-label="Lukk korrelasjonsvisning"
+                aria-label={translations.getString('Close')} 
                 size="sm"
                 onClick={() => setExpanded(false)}
                 bg="white"
                 color="cyan.700"
                 rightIcon={<ArrowForwardIcon />}
               >
-                Lukk
+                {translations.getString('Close')} 
               </Button>
             </ButtonGroup>
           </Stack>

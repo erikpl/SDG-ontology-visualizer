@@ -1,16 +1,20 @@
 import { Box, IconButton } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { select } from 'd3';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { GiContract, GiExpand } from 'react-icons/gi';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRelations } from '../../api/ontologies';
+import { addDirectionArrowToEdgeLabelText } from '../../common/d3';
+import { useLanguageContext } from '../../contexts/LanguageContextProvider';
 import GraphSimulation from '../../d3/GraphSimulation';
+import useTranslation from '../../hooks/translations';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import { setError } from '../../state/reducers/apiErrorReducer';
 import { toggleFullscreen } from '../../state/reducers/fullscreenReducer';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { RootState } from '../../state/store';
 import { GraphEdgeFilter, GraphNodeFilter } from '../../types/d3/simulation';
-import { GraphNode } from '../../types/ontologyTypes';
+import { Edge, GraphNode } from '../../types/ontologyTypes';
 
 type GraphProps = {
   nodeFilter: GraphNodeFilter;
@@ -32,6 +36,8 @@ const Graph: React.FC<GraphProps> = ({
   const [simulation, setSimulation] = useState<GraphSimulation>();
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
   const [hasInitialized, setHasInitialized] = useState(false);
+  const { language } = useLanguageContext();
+  const translations = useTranslation(); 
 
   const loadData = async (node: GraphNode) => {
     if (!simulation) return;
@@ -39,6 +45,68 @@ const Graph: React.FC<GraphProps> = ({
     simulation.addData(ontologies, node);
   };
 
+  const getNodeLabel = (node: GraphNode) => {
+    let name = '';
+    switch (node.type) {
+      case 'sdg':
+        name = translations.getString(node.id.slice(node.id.indexOf('B') + 1).toString());
+        break;
+      case 'target':
+        name = translations.getString('target'.concat(node.id.slice(node.id.indexOf('B') + 1).replace('.', '_')));
+        break;
+      case 'tbl':
+        name = translations.getString(node.id.slice(node.id.indexOf('#') + 1));
+        break;
+      case 'devArea':
+        name = translations.getString(node.id.slice(node.id.indexOf('#') + 1));
+        break;
+      default:
+        break;
+    }
+    return name;
+  };
+
+  const getEdgeLabel = (edge: Edge[], flipDirection: boolean) => {
+    let label = '';
+    if (edge.length > 0) {
+      if (edge.length > 1) 
+        label = addDirectionArrowToEdgeLabelText(`${edge.length} Predicates`, flipDirection);
+      else {
+        const { name } = edge[0];
+        label = name.includes('har') ? translations.getString('has') : translations.getString('isA').split(' ')[0];
+
+        if (name.includes('UtviklingsOmråde')) {
+          label = label.concat(translations.getString('DevelopmentAreaCamel'));
+          label = name.includes('For') ? translations.getString('For') : label; 
+
+        } else if (name.includes('Bidrag')) {
+          label = label.concat(translations.getString('Contribution')).concat(translations.getString('To'));
+
+        } else {
+
+          if (name.includes('Lav')) {
+            label = label.concat(translations.getString('Low'));
+          } else if (name.includes('Moderat')) {
+            label = label.concat(translations.getString('Moderate'));
+          } else {
+            label = label.concat(translations.getString('High'));
+          }
+
+          if (name.includes('TradeOff')) {
+            label = label.concat(translations.getString('TradeOff')).concat(translations.getString('To'));
+
+          } else if (name.includes('Korrelasjon')) {
+            label = label.concat(translations.getString('Correlation'));
+          }
+        }
+      }
+    }
+
+    label = addDirectionArrowToEdgeLabelText(label, flipDirection);
+    
+    return label;
+  };
+  
   // callback triggered when expand button is clicked in node menu
   const onExpandNode = (node: GraphNode): void => {
     loadData(node);
@@ -61,6 +129,8 @@ const Graph: React.FC<GraphProps> = ({
         onSelectNode,
         nodeFilter,
         edgeFilter,
+        getNodeLabel,
+        getEdgeLabel,
       ),
     );
   };
@@ -83,6 +153,14 @@ const Graph: React.FC<GraphProps> = ({
       loadData(selectedNode);
     }
   }, [selectedNode, svgRef, simulation]);
+
+  useLayoutEffect(() => {
+    const svg = select(svgRef.current);
+    svg.selectAll('*').remove();
+    setHasInitialized(false);
+
+    createNewGraphSimulation();
+  }, [language]);
 
   useEffect(() => {
     if (simulation) {
@@ -109,7 +187,7 @@ const Graph: React.FC<GraphProps> = ({
     >
       <svg id="svgGraph" height="100%" width="100%" ref={svgRef} />
       <IconButton
-        aria-label="Fullskjerm"
+        aria-label={translations.getString('Fullscreen')}
         color="cyan.700"
         size="lg"
         position="absolute"
@@ -125,3 +203,5 @@ const Graph: React.FC<GraphProps> = ({
 };
 
 export default Graph;
+
+

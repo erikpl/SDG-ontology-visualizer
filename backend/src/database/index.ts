@@ -7,6 +7,14 @@ export const PREFIXES = {
   RDFS: EnapsoGraphDBClient.PREFIX_RDFS,
   XSD: EnapsoGraphDBClient.PREFIX_XSD,
   PROTONS: EnapsoGraphDBClient.PREFIX_PROTONS,
+  EUVOC: {
+    prefix: 'euvoc',
+    iri: 'http://publications.europa.eu/ontology/euvoc#'
+  },
+  SKOS: {
+    prefix: 'skos',
+    iri:'http://www.w3.org/2004/02/skos/core#'
+  },
   SDG: {
     prefix: 'SDG',
     iri: 'http://www.semanticweb.org/aga/ontologies/2017/9/SDG#',

@@ -140,3 +140,4 @@ export const isNotLoopOntology = (ontology: Ontology): boolean =>
   ontology.Subject !== ontology.Object;
 
 export const isNotNull = <T>(obj: T): boolean => obj !== null && obj !== undefined;
+

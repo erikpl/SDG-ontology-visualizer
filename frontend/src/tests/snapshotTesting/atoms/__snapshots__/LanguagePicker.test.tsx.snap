@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders with a predefined language list 1`] = `
+<div
+  className="css-1g360fb"
+>
+  <div
+    className="chakra-stack css-1dn9va6"
+  >
+    <div
+      className="css-1xnzs7r"
+    >
+      Språk prioritering
+    </div>
+    <button
+      aria-label="?"
+      className="chakra-button css-1eyj0er"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseDown={[Function]}
+      onMouseEnter={[Function]}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        className="chakra-icon css-1bzsbu4"
+        focusable={false}
+        viewBox="0 0 24 24"
+      >
+        <g
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path
+            d="M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <path
+            d="M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
+            fill="none"
+            strokeLinecap="round"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            fill="none"
+            r="11.25"
+            strokeMiterlimit="10"
+          />
+        </g>
+      </svg>
+    </button>
+  </div>
+  <div
+    data-rbd-droppable-context-id="0"
+    data-rbd-droppable-id="languageContainer"
+    style={
+      Object {
+        "marginBottom": "10px",
+        "transform": "none",
+        "width": 250,
+      }
+    }
+  >
+    <div
+      aria-describedby="rbd-hidden-text-0-hidden-text-0"
+      data-rbd-drag-handle-context-id="0"
+      data-rbd-drag-handle-draggable-id="no"
+      data-rbd-draggable-context-id="0"
+      data-rbd-draggable-id="no"
+      draggable={false}
+      onDragStart={[Function]}
+      onTransitionEnd={null}
+      role="button"
+      style={
+        Object {
+          "margin": "5px",
+          "position": "static",
+          "transform": null,
+          "transition": null,
+          "userSelect": "none",
+          "width": 250,
+        }
+      }
+      tabIndex={0}
+    >
+      <div
+        className="chakra-stack css-1q3uncw"
+      >
+        <div
+          className="css-1xnzs7r"
+        >
+          1
+        </div>
+        <span
+          className="css-yfqdv4"
+        >
+          <svg
+            className="chakra-icon css-1jxv7ty"
+            focusable={false}
+            viewBox="0 0 24 24"
+          >
+            <svg
+              viewBox="0 85.333 512 341.333"
+            >
+              <path
+                d="M0 85.334h512v341.337H0z"
+                fill="#D80027"
+              />
+              <path
+                d="M512 295.883H202.195v130.783h-79.76V295.883H0v-79.772h122.435V85.329h79.76v130.782H512v61.218z"
+                fill="#FFF"
+              />
+              <path
+                d="M512 234.666v42.663H183.652v149.337h-42.674V277.329H0v-42.663h140.978V85.329h42.674v149.337z"
+                fill="#2E52B2"
+              />
+            </svg>
+          </svg>
+          norsk
+          <button
+            aria-label="close"
+            className="css-1d2kx9w"
+            onClick={[Function]}
+            type="button"
+          >
+            <svg
+              className="chakra-icon css-1md6f3y"
+              focusable={false}
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="chakra-stack css-eao00i"
+  >
+    <label
+      className="chakra-form__label css-2iabnl"
+      htmlFor="downshift-0-input"
+      id="downshift-0-label"
+    >
+      Flerspråklig?
+    </label>
+    <div
+      className="chakra-stack css-r12by3"
+    />
+    <div
+      aria-expanded={false}
+      aria-haspopup="listbox"
+      aria-owns="downshift-0-menu"
+      className="chakra-stack css-1q3uncw"
+      role="combobox"
+    >
+      <input
+        aria-autocomplete="list"
+        aria-controls="downshift-0-menu"
+        aria-labelledby="downshift-0-label"
+        autoComplete="off"
+        className="chakra-input css-0"
+        id="downshift-0-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        placeholder="Søk etter språk"
+        value=""
+      />
+      <button
+        aria-label="toggle menu"
+        className="chakra-button css-1olpj1x"
+        id="downshift-0-toggle-button"
+        onClick={[Function]}
+        tabIndex={-1}
+        type="button"
+      >
+        <svg
+          className="chakra-icon css-onkibi"
+          focusable={false}
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      className="css-vm1uz1"
+    >
+      <ul
+        aria-labelledby="downshift-0-label"
+        className="css-8xbk0y"
+        id="downshift-0-menu"
+        onMouseLeave={[Function]}
+        role="listbox"
+      />
+    </div>
+  </div>
+</div>
+`;

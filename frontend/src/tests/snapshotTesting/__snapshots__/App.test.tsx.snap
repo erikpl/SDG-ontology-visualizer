@@ -16,7 +16,7 @@ exports[`renders when there are no items 1`] = `
           href="/"
           onClick={[Function]}
         >
-          sdgqa.trondheim.kommune.no
+          Hjem
         </a>
       </h1>
     </div>
@@ -32,7 +32,7 @@ exports[`renders when there are no items 1`] = `
           href="/gdc"
           onClick={[Function]}
         >
-          Goal Distance Computation
+          Beregn måldistanse
         </a>
       </h1>
     </div>
@@ -48,7 +48,7 @@ exports[`renders when there are no items 1`] = `
           href="/gdc/data"
           onClick={[Function]}
         >
-          Data Upload
+          Data opplasting
         </a>
       </h1>
     </div>
@@ -56,7 +56,7 @@ exports[`renders when there are no items 1`] = `
       className="css-17xejub"
     />
     <button
-      className="chakra-button css-1jgj6x0"
+      className="chakra-button css-dwlnus"
       justify="center"
       onClick={[Function]}
       type="button"
@@ -78,6 +78,300 @@ exports[`renders when there are no items 1`] = `
       </span>
       Om
     </button>
+    <button
+      aria-controls="popover-content-5"
+      aria-expanded={true}
+      aria-haspopup="dialog"
+      className="chakra-button css-1puylvj"
+      id="popover-trigger-5"
+      justify="center"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 496 512"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm200 248c0 22.5-3.9 44.2-10.8 64.4h-20.3c-4.3 0-8.4-1.7-11.4-4.8l-32-32.6c-4.5-4.6-4.5-12.1.1-16.7l12.5-12.5v-8.7c0-3-1.2-5.9-3.3-8l-9.4-9.4c-2.1-2.1-5-3.3-8-3.3h-16c-6.2 0-11.3-5.1-11.3-11.3 0-3 1.2-5.9 3.3-8l9.4-9.4c2.1-2.1 5-3.3 8-3.3h32c6.2 0 11.3-5.1 11.3-11.3v-9.4c0-6.2-5.1-11.3-11.3-11.3h-36.7c-8.8 0-16 7.2-16 16v4.5c0 6.9-4.4 13-10.9 15.2l-31.6 10.5c-3.3 1.1-5.5 4.1-5.5 7.6v2.2c0 4.4-3.6 8-8 8h-16c-4.4 0-8-3.6-8-8s-3.6-8-8-8H247c-3 0-5.8 1.7-7.2 4.4l-9.4 18.7c-2.7 5.4-8.2 8.8-14.3 8.8H194c-8.8 0-16-7.2-16-16V199c0-4.2 1.7-8.3 4.7-11.3l20.1-20.1c4.6-4.6 7.2-10.9 7.2-17.5 0-3.4 2.2-6.5 5.5-7.6l40-13.3c1.7-.6 3.2-1.5 4.4-2.7l26.8-26.8c2.1-2.1 3.3-5 3.3-8 0-6.2-5.1-11.3-11.3-11.3H258l-16 16v8c0 4.4-3.6 8-8 8h-16c-4.4 0-8-3.6-8-8v-20c0-2.5 1.2-4.9 3.2-6.4l28.9-21.7c1.9-.1 3.8-.3 5.7-.3C358.3 56 448 145.7 448 256zM130.1 149.1c0-3 1.2-5.9 3.3-8l25.4-25.4c2.1-2.1 5-3.3 8-3.3 6.2 0 11.3 5.1 11.3 11.3v16c0 3-1.2 5.9-3.3 8l-9.4 9.4c-2.1 2.1-5 3.3-8 3.3h-16c-6.2 0-11.3-5.1-11.3-11.3zm128 306.4v-7.1c0-8.8-7.2-16-16-16h-20.2c-10.8 0-26.7-5.3-35.4-11.8l-22.2-16.7c-11.5-8.6-18.2-22.1-18.2-36.4v-23.9c0-16 8.4-30.8 22.1-39l42.9-25.7c7.1-4.2 15.2-6.5 23.4-6.5h31.2c10.9 0 21.4 3.9 29.6 10.9l43.2 37.1h18.3c8.5 0 16.6 3.4 22.6 9.4l17.3 17.3c3.4 3.4 8.1 5.3 12.9 5.3H423c-32.4 58.9-93.8 99.5-164.9 103.1z"
+        />
+      </svg>
+       
+      Bytt språk
+    </button>
+    <div
+      className="css-11r8ny"
+      style={
+        Object {
+          "--popper-arrow-shadow-color": "#E2E8F0",
+          "--popper-arrow-size": undefined,
+          "visibility": "visible",
+        }
+      }
+    >
+      <section
+        className="chakra-popover__content css-6ydlyu"
+        id="popover-content-5"
+        onBlur={[Function]}
+        onKeyDown={[Function]}
+        role="dialog"
+        style={
+          Object {
+            "opacity": 1,
+            "transform": "none",
+            "transformOrigin": "var(--popper-transform-origin)",
+            "visibility": "visible",
+          }
+        }
+        tabIndex={-1}
+      >
+        <div
+          className="chakra-popover__arrow-positioner css-0"
+          data-popper-arrow={true}
+        >
+          <div
+            className="chakra-popover__arrow css-1vz2rsl"
+            data-popper-arrow-inner={true}
+          />
+        </div>
+        <button
+          aria-label="Close"
+          className="css-1a4qnv6"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden={true}
+            className="chakra-icon css-onkibi"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+        <div
+          className="css-r4358i"
+        >
+          <div
+            className="chakra-stack css-1w6dz2p"
+          >
+            <div
+              className="css-1bsgmhw"
+            >
+              Språk prioritering
+            </div>
+            <button
+              aria-label="?"
+              className="chakra-button css-8vwngr"
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseDown={[Function]}
+              onMouseEnter={[Function]}
+              type="button"
+            >
+              <svg
+                aria-hidden={true}
+                className="chakra-icon css-1y50h1y"
+                focusable={false}
+                viewBox="0 0 24 24"
+              >
+                <g
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path
+                    d="M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    fill="none"
+                    r="11.25"
+                    strokeMiterlimit="10"
+                  />
+                </g>
+              </svg>
+            </button>
+          </div>
+          <div
+            data-rbd-droppable-context-id="0"
+            data-rbd-droppable-id="languageContainer"
+            style={
+              Object {
+                "marginBottom": "10px",
+                "transform": "none",
+                "width": 250,
+              }
+            }
+          >
+            <div
+              aria-describedby="rbd-hidden-text-0-hidden-text-0"
+              data-rbd-drag-handle-context-id="0"
+              data-rbd-drag-handle-draggable-id="no"
+              data-rbd-draggable-context-id="0"
+              data-rbd-draggable-id="no"
+              draggable={false}
+              onDragStart={[Function]}
+              onTransitionEnd={null}
+              role="button"
+              style={
+                Object {
+                  "margin": "5px",
+                  "position": "static",
+                  "transform": null,
+                  "transition": null,
+                  "userSelect": "none",
+                  "width": 250,
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="chakra-stack css-1v1rk8g"
+              >
+                <div
+                  className="css-1bsgmhw"
+                >
+                  1
+                </div>
+                <span
+                  className="css-10ydawo"
+                >
+                  <svg
+                    className="chakra-icon css-1jxv7ty"
+                    focusable={false}
+                    viewBox="0 0 24 24"
+                  >
+                    <svg
+                      viewBox="0 85.333 512 341.333"
+                    >
+                      <path
+                        d="M0 85.334h512v341.337H0z"
+                        fill="#D80027"
+                      />
+                      <path
+                        d="M512 295.883H202.195v130.783h-79.76V295.883H0v-79.772h122.435V85.329h79.76v130.782H512v61.218z"
+                        fill="#FFF"
+                      />
+                      <path
+                        d="M512 234.666v42.663H183.652v149.337h-42.674V277.329H0v-42.663h140.978V85.329h42.674v149.337z"
+                        fill="#2E52B2"
+                      />
+                    </svg>
+                  </svg>
+                  norsk
+                  <button
+                    aria-label="close"
+                    className="css-jqw19c"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <svg
+                      className="chakra-icon css-1md6f3y"
+                      focusable={false}
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            className="chakra-stack css-1barlnb"
+          >
+            <label
+              className="chakra-form__label css-1llw1f8"
+              htmlFor="downshift-0-input"
+              id="downshift-0-label"
+            >
+              Flerspråklig?
+            </label>
+            <div
+              className="chakra-stack css-1kexd9b"
+            />
+            <div
+              aria-expanded={false}
+              aria-haspopup="listbox"
+              aria-owns="downshift-0-menu"
+              className="chakra-stack css-1v1rk8g"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                aria-controls="downshift-0-menu"
+                aria-labelledby="downshift-0-label"
+                autoComplete="off"
+                className="chakra-input css-1b73kmm"
+                id="downshift-0-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Søk etter språk"
+                value=""
+              />
+              <button
+                aria-label="toggle menu"
+                className="chakra-button css-tvj31k"
+                id="downshift-0-toggle-button"
+                onClick={[Function]}
+                tabIndex={-1}
+                type="button"
+              >
+                <svg
+                  className="chakra-icon css-onkibi"
+                  focusable={false}
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              className="css-efk3t2"
+            >
+              <ul
+                aria-labelledby="downshift-0-label"
+                className="css-3rifh5"
+                id="downshift-0-menu"
+                onMouseLeave={[Function]}
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </nav>
   <div
     className="css-1rr4qq7"
@@ -95,14 +389,15 @@ exports[`renders when there are no items 1`] = `
           <h2
             className="chakra-heading css-gb762p"
           >
-            Bærekraftsontologien:
+            Bærekraftsontologien
+            :
           </h2>
           <div
-            aria-controls="popover-content-3"
+            aria-controls="popover-content-7"
             aria-expanded={false}
             aria-haspopup="dialog"
             className="chakra-input__group css-5wbz56"
-            id="popover-trigger-3"
+            id="popover-trigger-7"
             onClick={[Function]}
           >
             <div
@@ -126,7 +421,7 @@ exports[`renders when there are no items 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="Søk..."
+              placeholder="Søk"
               value=""
             />
           </div>
@@ -142,7 +437,7 @@ exports[`renders when there are no items 1`] = `
           >
             <section
               className="chakra-popover__content css-zfzoez"
-              id="popover-content-3"
+              id="popover-content-7"
               onBlur={[Function]}
               onKeyDown={[Function]}
               role="dialog"
@@ -171,7 +466,8 @@ exports[`renders when there are no items 1`] = `
         align="center"
         className="chakra-heading css-15hx0nm"
       >
-        Bærekraftsmålene:
+        Bærekraftsmålene
+        :
       </h2>
       <div
         className="chakra-stack css-38c8fs"

@@ -12,6 +12,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import useTranslation from '../../hooks/translations';
 import { clearError } from '../../state/reducers/apiErrorReducer';
 import { RootState } from '../../state/store';
 import { ApiError } from '../../types/redux/errorTypes';
@@ -21,6 +22,7 @@ const ErrorModal: React.FC = () => {
   const apiError = useSelector((state: RootState) => state.apiError.error);
   const dispatch = useDispatch();
   const history = useHistory();
+  const translations = useTranslation(); 
 
   const onClose = () => dispatch(clearError());
 
@@ -47,7 +49,7 @@ const ErrorModal: React.FC = () => {
               history.push('/');
             }}
           >
-            Tilbake til forsiden
+            {translations.getString('BackToHomePage')}
           </Button>
         </ModalFooter>
       </ModalContent>

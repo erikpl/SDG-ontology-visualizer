@@ -22,6 +22,8 @@ module.exports = {
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
     // 'prettier/prettier': 'error',
     'no-console': 'off',
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
+    'import/no-extraneous-dependencies': ['error', {'devDependencies': false, 'optionalDependencies': false, "packageDir": "./", 'peerDependencies': false}],
     'jsx-a11y/anchor-is-valid': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',

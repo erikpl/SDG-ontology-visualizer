@@ -1,6 +1,7 @@
 import { Button, Checkbox, HStack } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import useTranslation from '../../hooks/translations';
 import { RootState } from '../../state/store';
 import SearchBar from '../atoms/SearchBar';
 import ShowDropdown from '../atoms/ShowDropdown';
@@ -18,6 +19,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
   onEdgeLabelsVisible,
 }: GraphToolBarProps) => {
   const { isFullscreen } = useSelector((state: RootState) => state.fullscreenStatus);
+  const translations = useTranslation(); 
 
   return (
     <HStack
@@ -30,7 +32,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
       <ShowDropdown onSubgoalFilter={onSubgoalFilter} onEdgeLabelsVisible={onEdgeLabelsVisible} />
       <HStack spacing="10" d={['none', 'none', 'none', 'none', 'flex']}>
         <Checkbox colorScheme="cyan" color="white" size="md" checked onChange={onSubgoalFilter}>
-          Vis delmål
+          {translations.getString('ShowTargets')}
         </Checkbox>
         <Checkbox
           defaultIsChecked
@@ -39,7 +41,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
           size="md"
           onChange={() => onEdgeLabelsVisible((current) => !current)}
         >
-          Vis kanttekst
+          {translations.getString('ShowEdgeLabels')}
         </Checkbox>
       </HStack>
       <CorrelationDropdown isPositive />
@@ -51,7 +53,7 @@ const GraphToolBar: React.FC<GraphToolBarProps> = ({
         minW="8em"
         onClick={() => onUnlockNodes((current) => !current)}
       >
-        Lås opp noder
+        {translations.getString('UnlockNodes')}
       </Button>
     </HStack>
   );

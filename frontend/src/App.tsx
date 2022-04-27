@@ -20,6 +20,8 @@ import GDCSelectMunicipality from './components/pages/GDCSelectMunicipality';
 import GDCViewMunicipality from './components/pages/GDCViewMunicipality';
 import GDCCompareMunicipalities from './components/pages/GDCCompareMunicipalities';
 import GDCDataEntry from './components/pages/GDCDataEntry';
+import Documents from './components/pages/Documents';
+import LanguageContextProvider from './contexts/LanguageContextProvider';
 
 const App: React.FC = () => {
   // Better to do this in a global scope so that it's easily visible!
@@ -30,50 +32,53 @@ const App: React.FC = () => {
   // This happens ~117 times per page render, causing a massive flood of warnings,
   // slowing down the page loading times. The ResponsiveContainer has minHeight
   // and minWidth props set, but does not seem to use them in size calculations.
-
   const originalWarn = console.warn.bind(console.warn);
+
   console.warn = (msg: any) => {
     if (!msg.toString().startsWith('The width(0) and height(0) of chart should be greater than 0'))
       originalWarn(msg);
   };
 
   return (
-    <ChakraProvider>
-      <Provider store={store}>
-        <Flex
-          bg="gray.50"
-          m={0}
-          minHeight="100vh"
-          direction="column"
-          overflow="hidden"
-          color="gray.800"
-        >
-          <Router>
-            <ErrorModal />
-            <Navbar />
-            <Box flex="1">
-              <Switch>
-                <Route path="/" exact component={Frontpage} />
-                <Route path="/ontology" exact component={OntologyPage} />
-                <Route path="/about" exact component={About} />
-                <Route path="/login" exact component={Login} />
-                <Route
-                  exact
-                  path="/gdc/compare/:municipality/:otherMunicipality"
-                  component={GDCCompareMunicipalities}
-                />
-                <Route exact path="/gdc/view/:municipality" component={GDCViewMunicipality} />
-                <Route exact path="/gdc/data" component={GDCDataEntry} />
-                <Route exact path="/gdc" component={GDCSelectMunicipality} />
-                <Route component={NotFoundPage} />
-              </Switch>
-            </Box>
-            <Footer />
-            <CookieNotice />
-          </Router>
-        </Flex>
-      </Provider>
-    </ChakraProvider>
+    <LanguageContextProvider>
+      <ChakraProvider>
+        <Provider store={store}>
+          <Flex
+            bg="gray.50"
+            m={0}
+            minHeight="100vh"
+            direction="column"
+            overflow="hidden"
+            color="gray.800"
+          >
+            <Router>
+              <ErrorModal />
+              <Navbar />
+              <Box flex="1">
+                <Switch>
+                  <Route path="/" exact component={Frontpage} />
+                  <Route path="/ontology" exact component={OntologyPage} />
+                  <Route path="/about" exact component={About} />
+                  <Route path="/login" exact component={Login} />
+                  <Route path="/documents" exact component={Documents} />
+                  <Route
+                    exact
+                    path="/gdc/compare/:municipality/:otherMunicipality"
+                    component={GDCCompareMunicipalities}
+                  />
+                  <Route exact path="/gdc/view/:municipality" component={GDCViewMunicipality} />
+                  <Route exact path="/gdc/data" component={GDCDataEntry} />
+                  <Route exact path="/gdc" component={GDCSelectMunicipality} />
+                  <Route component={NotFoundPage} />
+                </Switch>
+              </Box>
+              <Footer />
+              <CookieNotice />
+            </Router>
+          </Flex>
+        </Provider>
+      </ChakraProvider>
+    </LanguageContextProvider>
   );
 };
 

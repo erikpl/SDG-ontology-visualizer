@@ -21,7 +21,7 @@ import { setError } from '../state/reducers/apiErrorReducer';
 import reduxStore from '../state/store';
 import FpsCounter from '../utils/FpsCounter';
 import { MainSvgSelection, SubSvgSelection } from '../types/d3/svg';
-import { GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
+import { Edge, GraphEdge, GraphNode, Ontology } from '../types/ontologyTypes';
 import {
   CenterForce,
   D3Edge,
@@ -65,6 +65,8 @@ export default class {
   private readonly edgeSvg: SubSvgSelection;
   private onExpandNode: (node: GraphNode) => void;
   private onSelectNode: (node: GraphNode) => void;
+  private getNodeLabel: (node: GraphNode) => string;
+  private getEdgeLabel: (edge: Edge[], flipDirection: boolean) => string;
   private width: number;
   private height: number;
   private nodes: Array<GraphNode>;
@@ -88,6 +90,8 @@ export default class {
     onSelectNode: (node: GraphNode) => void,
     nodeFilter: GraphNodeFilter,
     edgeFilter: GraphEdgeFilter,
+    getNodeLabel: (node: GraphNode) => string,
+    getEdgeLabel: (edge: Edge[], flipDirection: boolean) => string,
   ) {
     this.svg = d3.select(svg).on('click', this.hideNodeMenu);
     this.edgeSvg = this.svg.append('g');
@@ -100,6 +104,8 @@ export default class {
     this.unfilteredEdges = [];
     this.onExpandNode = onExpandNode;
     this.onSelectNode = onSelectNode;
+    this.getNodeLabel = getNodeLabel;
+    this.getEdgeLabel = getEdgeLabel;
     this.nodeFilter = nodeFilter;
     this.edgeFilter = edgeFilter;
     this.initZoom();
@@ -254,14 +260,14 @@ export default class {
           .attr('stroke-width', edgeWidth);
         // Label from node A to node B
         g.append('text')
-          .text((edge) => common.createEdgeLabelText(edge.sourceToTarget, false))
+          .text((edge) => this.getEdgeLabel(edge.sourceToTarget, false))
           .attr('text-anchor', 'middle')
           .attr('dominant-baseline', 'text-after-edge')
           .attr('pointer-events', 'none')
           .attr('fill', edgeLabelColor);
         // Label from node B to node A
         g.append('text')
-          .text((edge) => common.createEdgeLabelText(edge.targetToSource, true))
+          .text((edge) => this.getEdgeLabel(edge.targetToSource, true))
           .attr('text-anchor', 'middle')
           .attr('dominant-baseline', 'text-before-edge')
           .attr('pointer-events', 'none')
@@ -382,7 +388,7 @@ export default class {
         const g = enter.append('g');
         g.append('circle')
           .attr('r', nodeRadius)
-          .attr('fill', (node) => common.changeColorBasedOnType(node.type))
+          .attr('fill', (node) => common.changeColorBasedOnType(node.type, this.nodes.indexOf(node) === 0))
           .attr('stroke', '#aaa')
           .on('click', (event: PointerEvent, node) => {
             if (!event.target) return;
@@ -400,7 +406,7 @@ export default class {
           .style('opacity', (node) => (node.isLocked ? 0.7 : 0))
           .attr('fill', '#f00');
         g.append('text')
-          .text((node) => node.name)
+          .text((node) => this.getNodeLabel(node))
           .attr('text-anchor', 'middle')
           .attr('pointer-events', 'none')
           .attr('fill', nodeLabelColor)
@@ -455,34 +461,6 @@ export default class {
       .attr('x2', (edge: any) => edge.target.x - (edge.source.x + edge.target.x) / 2)
       .attr('y2', (edge: any) => edge.target.y - (edge.source.y + edge.target.y) / 2);
 
-    // If FPS is low, skip some frames for edge label translations, as these are by far the most demanding
-    const { fps } = this.fpsCounter;
-    if (fps < 60 && !helper.shouldRenderEdgeLabel(fps, this.frameIndex)) return;
-    this.frameIndex = 0;
-    g.selectChild(helper.selectEdgeLabel1).each(function (edge) {
-      const position = common.getRotationAndPosition(edge);
-      const thisEdge = d3.select(this);
-      thisEdge.attr(
-        'transform',
-        `translate(${[position.x, position.y]}), rotate(${position.degree})`,
-      );
-      const text = common.createEdgeLabelText(edge.sourceToTarget, position.flip);
-      if (thisEdge.text() !== text) {
-        thisEdge.text(text);
-      }
-    });
-    g.selectChild(helper.selectEdgeLabel2).each(function (edge) {
-      const position = common.getRotationAndPosition(edge);
-      const thisEdge = d3.select(this);
-      thisEdge.attr(
-        'transform',
-        `translate(${[position.x, position.y]}), rotate(${position.degree})`,
-      );
-      const text = common.createEdgeLabelText(edge.targetToSource, !position.flip);
-      if (thisEdge.text() !== text) {
-        thisEdge.text(text);
-      }
-    });
   };
 
   private updateNodePositions = () => {
@@ -524,7 +502,7 @@ export default class {
       .attr('pointer-events', 'none');
   };
 
-  private redrawGraphWithFilter = () => {
+  public redrawGraphWithFilter = () => {
     this.nodes = this.unfilteredNodes.filter(this.nodeFilter);
     this.edges = this.unfilteredEdges.filter(this.edgeFilter);
     this.removeDisconnectedNodes();

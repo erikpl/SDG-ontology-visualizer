@@ -14,6 +14,7 @@
 
 import { Request, Response } from 'express';
 import { Annotation, Node, Ontology, DataPoint } from './ontologyTypes';
+import { Document } from './documentTypes';
 
 type RegexQueryParams = {
   search?: string;
@@ -43,6 +44,14 @@ export type DataSeriesRequest = Request<DataSeriesParams>;
 
 export type NodeArrayResponse = Response<Array<Node>>;
 
+export type StringResponse = Response<string>;
+
+export type NodeArrayMapResponse = Response<Map<number, Array<Node>>>;
+
+export type DocumentArrayResponse = Response<Array<Array<Document>>>;
+
+export type DocumentArrayArrayResponse = Response<Array<Array<Array<Document>>>>;
+
 export type OntologyArrayResponse = Response<Array<Ontology>>;
 
 export type SingleOntologyResponse = Response<Ontology>;
@@ -52,3 +61,4 @@ export type AnnotationResponse = Response<Annotation>;
 export type DataPointRequest = Request<DataPoint>;
 
 export type SetResponse = Response<string>;
+

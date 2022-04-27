@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { search } from '../../api/ontologies';
+import useTranslation from '../../hooks/translations';
 import useDebounce from '../../hooks/useDebounce';
 import { selectNode } from '../../state/reducers/ontologyReducer';
 import { Node } from '../../types/ontologyTypes';
@@ -27,6 +28,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
   const [results, setResults] = useState<Array<Node>>();
   const dispatch = useDispatch();
   const history = useHistory();
+  const translations = useTranslation(); 
 
   const loadResults = async (query: string) => {
     if (!query || query.length === 0) {
@@ -63,7 +65,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ limit }: SearchBarProps) => {
             onChange={onChange}
             variant="outline"
             bg="white"
-            placeholder="Søk..."
+            placeholder={translations.getString('Search')}
           />
         </InputGroup>
       </PopoverTrigger>

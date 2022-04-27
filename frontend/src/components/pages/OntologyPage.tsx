@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import DetailView from '../molecules/DetailView';
 import GraphContainer from '../molecules/GraphContainer';
+// import GraphContainer from '../molecules/GraphContainer';
 import SubGoalsGrid from '../molecules/SubGoalsGrid';
 
 const OntologyPage: React.FC = () => {

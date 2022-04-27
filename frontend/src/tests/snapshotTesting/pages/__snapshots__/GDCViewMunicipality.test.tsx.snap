@@ -13,9 +13,7 @@ exports[`renders when there are no items 1`] = `
     >
       <h2
         className="chakra-heading css-kbn7if"
-      >
-        Unknown municipality
-      </h2>
+      />
     </div>
   </div>
   <div

@@ -1,6 +1,7 @@
+
 import { D3Edge, LabelTransform } from '../types/d3/simulation';
 import { GraphEdge, GraphNode, Ontology, UniqueObject, Edge } from '../types/ontologyTypes';
-import { mapIdToEdge } from './node';
+import { mapIdToEdge, parseTypeFromId } from './node';
 import { camelCaseToText } from './other';
 
 export const mapOntologyToGraphEdge = (ontology: Ontology): GraphEdge => {
@@ -57,14 +58,17 @@ export const makePredicateUnique = (ontology: Ontology): Ontology => ({
     id: ontology.Predicate.id + ontology.Subject.id + ontology.Object.id,
   },
 });
-export const changeColorBasedOnType = (type: string) => {
+
+export const changeColorBasedOnType = (type: string, isStartingNode: boolean) => {
   let nodeColor = '#63B3ED';
-  if (type.includes('SDG')) nodeColor = '#D6BCFA';
-  if (type.includes('Trippel bunnlinje')) nodeColor = '#68D391';
-  if (type.includes('Delmål')) nodeColor = '#FBD38D';
-  if (type.includes('Utviklingsområde')) nodeColor = '#FC8181';
+  if (isStartingNode) return nodeColor;
+  if (type === 'sdg') nodeColor = '#D6BCFA'; // purple, sdg
+  if (type === 'tbl') nodeColor = '#68D391'; // green, tbl
+  if (type === 'target') nodeColor = '#FBD38D'; // yellow
+  if (type === 'devArea') nodeColor = '#FC8181'; // red, dev area
   return nodeColor;
 };
+
 export const mapNodeToGraphNodeAtDefaultPosition =
   (x?: number, y?: number) => (node: GraphNode) => {
     if (node.x) return node; // if node is already a GraphNode, just return it
@@ -78,8 +82,11 @@ export const mapNodeToGraphNodeAtDefaultPosition =
 
 export const mapOntologyToNonClickedGraphNode =
   (clickedNode: GraphNode) =>
-  (ontology: Ontology): GraphNode =>
-    ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject;
+  (ontology: Ontology): GraphNode => {
+    const node = ontology.Subject.id === clickedNode.id ? ontology.Object : ontology.Subject;
+    node.type = parseTypeFromId(node.id);
+    return node;
+  };
 
 export const isD3Edge = (edge: GraphEdge | D3Edge) => typeof edge.target === 'string';
 export const isGraphEdge = (edge: GraphEdge | D3Edge) => typeof edge.target !== 'string';
@@ -112,7 +119,7 @@ export const getRotationAndPosition = (edge: any): LabelTransform => {
   return { x, y, degree, flip };
 };
 
-const addDirectionArrowToEdgeLabelText = (text: string, direction: boolean): string => {
+export const addDirectionArrowToEdgeLabelText = (text: string, direction: boolean): string => {
   if (direction) return `<-- ${text}`;
   return `${text} -->`;
 };

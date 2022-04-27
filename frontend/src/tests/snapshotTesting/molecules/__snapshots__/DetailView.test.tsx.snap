@@ -5,11 +5,11 @@ exports[`renders when there are no items 1`] = `
   className="css-147u3m9"
   id="detailView"
 >
-  <h2
+  <h3
     className="chakra-heading css-1drbkg9"
   >
     Mangler navn
-  </h2>
+  </h3>
   <div
     className="css-1yedjnd"
   >
@@ -30,7 +30,7 @@ exports[`renders when there are no items 1`] = `
           <p
             className="chakra-text css-pg6u3z"
           >
-            Dette konseptet er under utvikling 
+            Dette konseptet er under utvikling
           </p>
           
         </div>

@@ -50,12 +50,12 @@ type ValueType = number | string | Array<number | string>;
 type NameType = number | string;
 
 type CustomLegendProps = any & {
-  municipality: string;
-  compareMunicipality?: string;
+  // municipality: string;
+  // compareMunicipality?: string;
 };
 
 const customLegendDefaults = {
-  compareMunicipality: undefined,
+  // compareMunicipality: undefined,
 };
 
 const CustomLegend: React.FC<CustomLegendProps> = (arg: CustomLegendProps) => {

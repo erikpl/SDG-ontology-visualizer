@@ -14,13 +14,24 @@ import {
   AnnotationResponse,
   AnyResponse,
   ClassIdRequest,
+  DocumentArrayArrayResponse,
   EmptyRequest,
+  NodeArrayMapResponse,
   NodeArrayResponse,
   OntologyArrayResponse,
   RegexRequest,
+  StringResponse,
 } from '../types/routerTypes';
 import onError from './middleware/onError';
 import verifyDatabaseAccess from './middleware/verifyDatabaseAccess';
+import getDocumentsForSubgoal from '../database/getDocumentsForSubgoal';
+import { Document } from 'types/documentTypes';
+
+import {documentDataTo3DResponse} from '../utils/docUtils';
+import getRelatedSubgoalsForDocument from '../database/getRelatedSubgoalsForDocument';
+import { Node, SubGoal } from 'types/ontologyTypes';
+import getSustainabilityGoal from '../database/getSustainabilityGoal';
+
 
 const router = Router();
 
@@ -117,6 +128,51 @@ const checkMunicipalityByCode = async (req: Request, res: AnyResponse) => {
   }
 };
 
+// TODO: error handling?
+// TODO: move into its own function
+/*
+Returns an array that's grouped by celexIDs, and then by language, in the prioritized order.
+The format order within each group-of-groups is not changed.
+
+Access the array using array[celexIdIndex][languageIndex][formatInstance], where 0 denotes the 
+highest prioritized language, 1 the second highest, and so on. 
+Note that languages which do not exist for the specified celexIds are ommited, so the index is 
+simply an ordering of the ones which are available.
+*/
+const getDocumentsForSubgoalByClassId = async (req: Request, res: DocumentArrayArrayResponse) => {
+  try {
+    const langCodes = req.params.langCodes.split(',');
+    // unary + converts to number
+    // Assuming languageCodes will be sent as a part of the request body. Change if necessary
+    // const data = await getDocumentsForSubgoal(req.params.classId, req.body.languageCodes, +req.params.pageNumber);
+    
+    let data = await getDocumentsForSubgoal(req.params.classId, langCodes, +req.params.offset);
+    const response = documentDataTo3DResponse(data, langCodes);
+    res.json(response);
+    
+  } catch (e: any) {
+    onError(e, req, res);
+  }
+};
+
+const getRelatedSubgoalsForDocumentByClassId = async (req: Request, res: NodeArrayResponse) => {
+  try {
+    let nodes = await getRelatedSubgoalsForDocument(req.params.classId);
+    res.json(nodes);
+  } catch (e: any) {
+    onError(e, req, res);
+  }
+};
+
+const getSustainabilityGoalByClassId = async (req: Request, res: NodeArrayResponse) => {
+  try {
+    const nodes = await getSustainabilityGoal(req.params.classId);
+    res.json(nodes);
+  } catch (e) {
+    onError(e, req, res);
+  }
+}
+
 router.get('/relations/:classId', verifyDatabaseAccess, getRelationsFromClass);
 router.get('/subclasses/:classId', verifyDatabaseAccess, getSubclassesFromClass);
 router.get('/annotations/:classId', verifyDatabaseAccess, getAnnotationsFromClass);
@@ -127,5 +183,8 @@ router.get('/tradeoff/:classId', verifyDatabaseAccess, getTradeOffToNodes);
 router.get('/developmentarea/:classId', verifyDatabaseAccess, getDevelopmentAreaToNodes);
 router.get('/subgoals/:classId', verifyDatabaseAccess, getSubGoalsfromSDG);
 router.get('/checkMunicipalityByCode', verifyDatabaseAccess, checkMunicipalityByCode);
+router.get('/relatedSubgoalsForDocument/:classId', verifyDatabaseAccess, getRelatedSubgoalsForDocumentByClassId);
+router.get('/subgoalDocuments/:classId/:langCodes/:offset', verifyDatabaseAccess, getDocumentsForSubgoalByClassId);
+router.get('/sustainabilityGoals/:classId', verifyDatabaseAccess, getSustainabilityGoalByClassId);
 
 export default router;

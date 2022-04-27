@@ -13,6 +13,7 @@ export type SustainabilityGoal = {
 };
 
 export interface SubGoal extends Node {
+  Subject: string;
   SubjectLabel: string;
   description: string;
 }
@@ -68,3 +69,52 @@ export type CorrelationFilter = {
   nMedium: boolean;
   nHigh: boolean;
 };
+
+export type Document = {
+  celexID: string;
+  title: string;
+  language: string;
+  format: string;
+  url: string;
+};
+
+export type LanguageItem = {
+  id: number;
+  ISO_639_1: ISO6391Code;
+  ISO_639_2T: ISO6392TCode;
+  ISO_3166_1: string;
+};
+
+export enum ISO6391Code {
+  bg, cs, da, de, el, en, es, et, fi, fr, ga, 
+  hr, hu, it, lt, lv, mt, nl, no, pl, pt, ro, sk, sl, sv, null,
+}
+
+export enum ISO6392TCode {
+  HRV,
+  FIN,
+  CES,
+  SPA,
+  DAN,
+  EST,
+  POL,
+  DEU,
+  ELL,
+  POR,
+  SLV,
+  LAV,
+  LIT,
+  BUL,
+  ITA,
+  GLE,
+  RON,
+  HUN,
+  SWE,
+  MLT,
+  ENG,
+  SLK,
+  FRA,
+  NOR,
+  NLD,
+  null,
+}
