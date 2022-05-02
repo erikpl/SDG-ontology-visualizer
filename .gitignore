@@ -4,3 +4,4 @@ graphdb.license
 deployment/.env
 cellar_documents.json
 .env
+graphdb_home

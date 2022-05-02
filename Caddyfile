@@ -1,6 +1,9 @@
 {$DOMAIN:localhost} { 
-    reverse_proxy frontend:{$FRONTEND_PORT:3000}
+    reverse_proxy frontend:3000
+   
     # Send API requests to the backend container
-    reverse_proxy /api/* backend:{$BACKEND_PORT:3001}
+    reverse_proxy /api/* backend:3001
 
+    # Expose graphdb workbench, for some reason it refused to cooperate when hosting on /rdf/*
+    reverse_proxy :7200 graphdb:7200
 }

@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+  caddy:
+    extends:
+      file: docker-compose.server.yml
+      service: caddy
+  frontend:
+    depends_on:
+      - caddy
+    extends:
+      file: docker-compose.server.yml
+      service: frontend
+  backend:
+    extends:
+      file: docker-compose.server.yml
+      service: backend
+    depends_on:
+      - graphdb
+    environment:
+      - GRAPHDB_BASE_URL=http://graphdb:7200
+      - GRAPHDB_REPOSITORY=TK_SDG
+  graphdb:
+    container_name: graphdb
+    depends_on:
+      - caddy
+    build:
+      context: .
+      dockerfile: "docker/${GRAPHDB_DOCKERFILE:-graphdb.license.Dockerfile}"
+      args:
+        - edition=${GRAPHDB_EDITION:-se}
+        - version=${GRAPHDB_VERSION:-9.10.1}
+    env_file:
+      - .env
+    environment:
+      - GRAPHDB_EXTERNAL_URL=https://${DOMAIN}/rdf/
+    ports:
+      - 7200:7200
+    volumes:
+      - ./graphdb_home:/opt/graphdb/home
+
+volumes:
+  caddy_config:
+  caddy_data:
