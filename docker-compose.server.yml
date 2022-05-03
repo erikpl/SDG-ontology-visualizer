@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  caddy:
+    container_name: caddy
+    image: caddy:2.4.6-alpine
+    restart: unless-stopped
+    environment:
+      - DOMAIN=${DOMAIN:-localhost}
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+  frontend:
+    container_name: frontend
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: ../docker/frontend.Dockerfile
+      args:
+        - DOMAIN=${DOMAIN:-localhost}
+    ports:
+      - 3000:3000
+  backend:
+    container_name: backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    build:
+      context: ./backend
+      dockerfile: ../docker/backend.Dockerfile
+    ports:
+      - 3001:3001
+
+volumes:
+    caddy_data:
+    caddy_config:
+
+    
