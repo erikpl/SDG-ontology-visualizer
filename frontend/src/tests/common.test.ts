@@ -113,7 +113,7 @@ const testSustainabilityNode = {
   name: 'testName',
   id: 'http://www.semanticweb.org/aga/ontologies/2017/9/testPrefix#testName',
   correlation: -1,
-  type: 'undefined',
+  type: '',
 };
 
 test('Map sustainability goal to node', () => {
@@ -155,9 +155,9 @@ test('Map ID to edge', () => {
  */
 
 test('Map correlation to name', () => {
-  expect(mapCorrelationToName(3)).toBe('high');
-  expect(mapCorrelationToName(2)).toBe('moderate');
-  expect(mapCorrelationToName(1)).toBe('low');
+  expect(mapCorrelationToName(3)).toBe('aHigh');
+  expect(mapCorrelationToName(2)).toBe('aModerate');
+  expect(mapCorrelationToName(1)).toBe('aLow');
   expect(mapCorrelationToName(0)).toBe('');
 });
 
@@ -174,7 +174,7 @@ test('Map correlation to color', () => {
 
 test('Is node subgoal', () => {
   expect(isSubgoal(testNode)).toBe(false);
-  const testNodeSubGoal = { ...testNode, type: 'Delmål' };
+  const testNodeSubGoal = { ...testNode, type: 'target' };
   expect(isSubgoal(testNodeSubGoal)).toBe(true);
 });
 

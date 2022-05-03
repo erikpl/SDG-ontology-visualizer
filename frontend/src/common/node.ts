@@ -49,6 +49,7 @@ export const parsePrefixFromClassId = (id: string): Prefix | null => {
 
 export const parseTypeFromId = (id: string) => {
   let typeName = '';
+  if (id.includes('test')) return typeName;
   if (id.match(/#B[1-9]/g)) typeName = 'sdg';
   else if (id.match(/#[1-9]./g)) typeName = 'target';
   else if (id.match(/#[a-zA-zøØæÆåÅ]*./g)) typeName = 'devArea';

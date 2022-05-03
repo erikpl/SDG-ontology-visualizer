@@ -90,7 +90,7 @@ const DocumentBox: React.FC<DocumentBoxProps> = ({
             </Text>
             <Flex justify='space-evenly'>
               {commonCelexDocuments[0].map(document => (
-                <Button bg='cyan.700' color='white' _hover={{ opacity: '75%' }}>
+                <Button bg='cyan.700' color='white' _hover={{ opacity: '75%' }} key={document.url}>
                   <a href={document.url} target='_blank' rel='noreferrer'>
                     {translations.getString('OpenAs')}
                     &nbsp;

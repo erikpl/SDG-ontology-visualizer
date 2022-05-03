@@ -123,6 +123,7 @@ exports[`renders with a predefined language list 1`] = `
           <button
             aria-label="close"
             className="css-1d2kx9w"
+            hidden={true}
             onClick={[Function]}
             type="button"
           >
