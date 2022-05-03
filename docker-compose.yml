@@ -21,6 +21,7 @@ services:
       - GRAPHDB_REPOSITORY=TK_SDG
   graphdb:
     container_name: graphdb
+    restart: unless-stopped
     depends_on:
       - caddy
     build:

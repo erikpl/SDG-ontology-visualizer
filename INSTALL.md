@@ -87,5 +87,31 @@ To fix this follow the following steps:
 
 The application should now be accessible at the domain you specified in `.env`
 
+## Development
 
+When developing the project you usually want hot-reloading and tools attaching to your project dependencies. The easiest way to achieve this is to run the modules using the yarn development server.
 
+You will first need to install and configure a graphdb instance, either locally or remotely. See the [GraphDB quickstart guide](https://graphdb.ontotext.com/documentation/free/quick-start-guide.html)
+
+Also make sure that [node](https://nodejs.org) and [yarn](https://yarnpkg.com/getting-started) is installed on your system.
+
+### Backend
+
+To run the backend:
+- Copy `backend/.env.example` to `backend/.env`
+- Update `.env` with your configuration
+    - `GRAPHDB_BASE_URL`: Where you can access graphdb; if you run graphdb locally this is `http://localhost:7200` by default
+    - `GRAPHDB_REPOSITORY`: The name of the repository that hosts your data. If you created the repository from the `backend/database/conf/TK_SDG-config.ttl` config file the repository name will be `TK_SDG`
+    - `GRAPHDB_USERNAME`: The username of a user with access to the repo. If you have not added any users, use the `admin` user
+    - `GRAPHDB_PASSWORD`: The password for the user above. The default password for `admin` is `root`
+- Enter the backend directory with the commandline
+- Install the backend dependencies with the command `yarn`
+- Run the backend application with `yarn start`
+
+### Frontend
+To run the frontend
+- Copy `frontend/.env.example` to `frontend/.env`
+- Ensure that the `REACT_APP_BACKEND_URL` variable points to your backend application; `http://localhost:3001/api` if no changes has been made
+- Enter the frontend directory on the commandline
+- Install the frontend dependencies with `yarn`
+- Start the development server with `yarn start`
