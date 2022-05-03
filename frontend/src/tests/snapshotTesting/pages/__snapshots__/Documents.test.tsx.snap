@@ -2,59 +2,22 @@
 
 exports[`renders with no items 1`] = `
 <div
-  className="chakra-stack css-efzghl"
+  align="center"
+  className="css-tthxno"
 >
-  <div
-    className="css-1uebyve"
-    spacing="10"
+  <h2
+    className="chakra-heading css-1qtlgnn"
   >
     <div
-      className="css-1sjj4m4"
-      onClick={[Function]}
-      style={Object {}}
+      className="chakra-spinner css-1yjwivi"
     >
-      <img
-        className="chakra-image__placeholder css-1uui2t9"
-        object-fit="cover"
-      />
-    </div>
-    <div
-      className="chakra-stack css-1mlp23a"
-    >
-      <h2
-        className="chakra-heading css-kbn7if"
+      <span
+        className="css-f8n5zr"
       >
-        <span>
-          Delmål 
-        </span>
-      </h2>
-      <p
-        className="chakra-text css-1bqavjz"
-      />
+        Loading...
+      </span>
     </div>
-  </div>
-  <div
-    className="chakra-stack css-eao00i"
-  >
-    <div
-      align="center"
-      className="css-tthxno"
-    >
-      <h2
-        className="chakra-heading css-1qtlgnn"
-      >
-        Laster dokumenter...
-        <div
-          className="chakra-spinner css-1y7joxr"
-        >
-          <span
-            className="css-f8n5zr"
-          >
-            Loading...
-          </span>
-        </div>
-      </h2>
-    </div>
-  </div>
+    Laster...
+  </h2>
 </div>
 `;

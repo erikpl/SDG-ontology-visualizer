@@ -2,7 +2,7 @@
 
 exports[`renders when there is one item 1`] = `
 <div
-  className="chakra-accordion css-0"
+  className="chakra-accordion css-cxmp86"
 >
   <div
     className="chakra-accordion__item css-rydg3k"

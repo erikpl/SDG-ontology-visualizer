@@ -284,6 +284,7 @@ exports[`renders when there are no items 1`] = `
                   <button
                     aria-label="close"
                     className="css-jqw19c"
+                    hidden={true}
                     onClick={[Function]}
                     type="button"
                   >

@@ -1,5 +1,5 @@
 
-import { Flex, Heading, Stack, Text, Image } from '@chakra-ui/react';
+import { Flex, Heading, Stack, Text, Image, Box, Spinner } from '@chakra-ui/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -13,6 +13,17 @@ const Documents: React.FC = () => {
   const selectedSDG = useSelector((state: RootState) => state.ontology.selectedSDG);
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
   const translations = useTranslation(); 
+
+  if (selectedSubgoal == undefined) {
+    return (
+      <Box align="center" px="10">
+        <Heading size="lg" mb="10" color="cyan.700">
+          <Spinner marginRight='5' />
+          {translations.getString('Loading').concat('...')}
+        </Heading>
+      </Box>
+    );
+  }
 
   return (
     <Stack spacing="10">
