@@ -14,7 +14,7 @@ const Documents: React.FC = () => {
   const selectedSubgoal = useSelector((state: RootState) => state.ontology.selectedSubGoal);
   const translations = useTranslation(); 
 
-  if (selectedSubgoal == undefined) {
+  if (selectedSubgoal === undefined) {
     return (
       <Box align="center" px="10">
         <Heading size="lg" mb="10" color="cyan.700">
