@@ -62,6 +62,8 @@ For licensed editions of graphdb, fill in the following in `.env`:
 - `GRAPHDB_VERSION`: The version of graphdb you want to use, recommended `9.11.1`
 - `GRAPHDB_DOCKERFILE`: `graphdb.license.Dockerfile`
 
+Copy your GraphDB license file to `deployment/license/graphdb.license`
+
 ### Preloading data
 
 To initialize the database with data, add the rdf-files (.rdf, .owl, .brf etc.) (e.g `statements.brf`) containing the data to the `backend/database/data` folder.
